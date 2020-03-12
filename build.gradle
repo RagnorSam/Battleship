@@ -6,6 +6,8 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
+mainClassName = 'HelloWorld'
+
 sourceCompatibility = 1.8
 
 repositories {
