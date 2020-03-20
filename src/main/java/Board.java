@@ -8,4 +8,5 @@ public class Board extends GridPane {
             }
         }
     }
+
 }
