@@ -1,8 +1,10 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Border;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class BattleshipGameDriver extends Application {
@@ -12,12 +14,37 @@ public class BattleshipGameDriver extends Application {
         Board board1 = new Board();
         Board board2 = new Board();
         BorderPane leftPane = new BorderPane();     //Timer, Announcement, Move History
-        BorderPane rightPane = new BorderPane();    //Ships
         BorderPane midPane = new BorderPane();
         mainPane.setLeft(leftPane);
-        mainPane.setRight(rightPane);
         mainPane.setCenter(midPane);
         makeBoardPane(midPane, board1, board2);
+
+        StackPane timerPane = new StackPane();
+        timerPane.setStyle("-fx-border-color: black");
+        Label timer = new Label("Timer here");
+        timerPane.getChildren().add(timer);
+        leftPane.setTop(timerPane);
+
+        StackPane textAnnouncementPane = new StackPane();
+        textAnnouncementPane.setStyle("-fx-border-color: black");
+        Label textAnnouncement = new Label("Text Announcement here");
+        textAnnouncementPane.getChildren().add(textAnnouncement);
+        leftPane.setCenter(textAnnouncementPane);
+
+        ScrollPane historyPane = new ScrollPane();
+        historyPane.setStyle("-fx-border-color: black");
+        Label history = new Label("History here");
+        leftPane.setBottom(historyPane);
+
+        Player me = new Player("A");
+        Player enemy = new Player("B");
+
+        VBox rightPane = new VBox();
+        rightPane.setStyle("-fx-border-color: black");
+        rightPane.getChildren().addAll(new Label("Enemy Ships here"), new Label(enemy.getName()));
+        rightPane.getChildren().addAll(new Label("My Ships here"), new Label(me.getName()));
+
+        mainPane.setRight(rightPane);
 
         Scene scene = new Scene(mainPane);
         stage.setScene(scene);
