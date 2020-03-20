@@ -14,10 +14,8 @@ public class BattleshipGameDriver extends Application {
         Board board1 = new Board();
         Board board2 = new Board();
         BorderPane leftPane = new BorderPane();     //Timer, Announcement, Move History
-        BorderPane rightPane = new BorderPane();    //Ships
         BorderPane midPane = new BorderPane();
         mainPane.setLeft(leftPane);
-        mainPane.setRight(rightPane);
         mainPane.setCenter(midPane);
         makeBoardPane(midPane, board1, board2);
 
@@ -41,15 +39,12 @@ public class BattleshipGameDriver extends Application {
         Player me = new Player("A");
         Player enemy = new Player("B");
 
-        VBox enemyShips = new VBox();
-        enemyShips.setStyle("-fx-border-color: black");
-        enemyShips.getChildren().addAll(new Label("Enemy Ships here"), new Label(enemy.getName()));
-        rightPane.setTop(enemyShips);
+        VBox rightPane = new VBox();
+        rightPane.setStyle("-fx-border-color: black");
+        rightPane.getChildren().addAll(new Label("Enemy Ships here"), new Label(enemy.getName()));
+        rightPane.getChildren().addAll(new Label("My Ships here"), new Label(me.getName()));
 
-        VBox myShips = new VBox();
-        myShips.setStyle("-fx-border-color: black");
-        myShips.getChildren().addAll(new Label("My Ships here"), new Label(me.getName()));
-        rightPane.setBottom(myShips);
+        mainPane.setRight(rightPane);
 
         Scene scene = new Scene(mainPane);
         stage.setScene(scene);
