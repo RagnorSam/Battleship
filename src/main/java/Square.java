@@ -7,5 +7,4 @@ public class Square extends Pane {
         this.setStyle("-fx-border-color: black");
         this.getChildren().add(new Text("hi"));
     }
-
 }
