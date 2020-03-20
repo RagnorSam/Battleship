@@ -14,7 +14,7 @@ version '1.0-SNAPSHOT'
 
 mainClassName = 'BattleshipGameDriver'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.11
 
 repositories {
     mavenCentral()

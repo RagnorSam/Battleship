@@ -4,4 +4,8 @@ public class Player {
     Player(String name){
         this.name = name;
     }
+
+    protected String getName(){
+        return this.name;
+    }
 }
