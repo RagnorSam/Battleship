@@ -1,8 +1,10 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Border;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class BattleshipGameDriver extends Application {
@@ -18,6 +20,36 @@ public class BattleshipGameDriver extends Application {
         mainPane.setRight(rightPane);
         mainPane.setCenter(midPane);
         makeBoardPane(midPane, board1, board2);
+
+        StackPane timerPane = new StackPane();
+        timerPane.setStyle("-fx-border-color: black");
+        Label timer = new Label("Timer here");
+        timerPane.getChildren().add(timer);
+        leftPane.setTop(timerPane);
+
+        StackPane textAnnouncementPane = new StackPane();
+        textAnnouncementPane.setStyle("-fx-border-color: black");
+        Label textAnnouncement = new Label("Text Announcement here");
+        textAnnouncementPane.getChildren().add(textAnnouncement);
+        leftPane.setCenter(textAnnouncementPane);
+
+        ScrollPane historyPane = new ScrollPane();
+        historyPane.setStyle("-fx-border-color: black");
+        Label history = new Label("History here");
+        leftPane.setBottom(historyPane);
+
+        Player me = new Player("A");
+        Player enemy = new Player("B");
+
+        VBox enemyShips = new VBox();
+        enemyShips.setStyle("-fx-border-color: black");
+        enemyShips.getChildren().addAll(new Label("Enemy Ships here"), new Label(enemy.getName()));
+        rightPane.setTop(enemyShips);
+
+        VBox myShips = new VBox();
+        myShips.setStyle("-fx-border-color: black");
+        myShips.getChildren().addAll(new Label("My Ships here"), new Label(me.getName()));
+        rightPane.setBottom(myShips);
 
         Scene scene = new Scene(mainPane);
         stage.setScene(scene);
