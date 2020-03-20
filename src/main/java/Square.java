@@ -5,6 +5,6 @@ public class Square extends Pane {
     Square(){
         this.setMinSize(30,30);
         this.setStyle("-fx-border-color: black");
-        this.getChildren().add(new Text("eruiber"));
+        this.getChildren().add(new Text("hi"));
     }
 }
