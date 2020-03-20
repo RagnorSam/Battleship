@@ -3,3 +3,5 @@
 *.lock
 *.bin
 *.xml
+.idea/workspace.xml
+.idea/misc.xml

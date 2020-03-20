@@ -10,5 +10,4 @@ public class Square extends Pane {
         txt.setY(30);
         this.getChildren().add(txt);
     }
-
 }
