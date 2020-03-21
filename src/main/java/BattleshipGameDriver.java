@@ -96,8 +96,6 @@ public class BattleshipGameDriver extends Application {
         //midPane.setBottom(board2);
     }
 
-    private void
-
     public static void main(String[] args) {
         launch(args);
     }
