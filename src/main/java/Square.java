@@ -1,7 +1,7 @@
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 
 public class Square extends Pane {
+    Boolean hasShip = false;
     Square(){
         this.setMinSize(30,30);
         this.setStyle("-fx-background-color: blue");
