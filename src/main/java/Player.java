@@ -8,4 +8,8 @@ public class Player {
     protected String getName(){
         return this.name;
     }
+
+    public void attack(Board board){
+
+    }
 }

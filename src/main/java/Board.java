@@ -1,6 +1,6 @@
 import javafx.scene.layout.GridPane;
 
-public abstract class Board{
+public class Board{
     Square[][] board = new Square[10][10];
     Board(){
         boolean prep = true;           //Preparing your own board
@@ -8,9 +8,11 @@ public abstract class Board{
             for(int k = 0; k < 10; k++) {
                 Square square = new Square();
                 board[i][k] = square;
+                square.setOnMouseClicked(e -> {
+
+                });
             }
         }
     }
-    abstract protected void move();
 }
 

@@ -4,11 +4,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+import java.net.ServerSocket;
 
 public class BattleshipGameDriver extends Application {
     BorderPane mainPane;    //Main game pane
@@ -27,11 +26,15 @@ public class BattleshipGameDriver extends Application {
         Scene scene = new Scene(mainPane);
         stage.setScene(scene);
         stage.show();
+
+        ServerSocket serverSocket = new ServerSocket();
+
     }
 
     private void makeGameScreen(){
         board1 = new Board();
         board2 = new Board();
+
         mainPane = new BorderPane();
         leftPane = new BorderPane();
         midPane = new BorderPane();
@@ -92,11 +95,17 @@ public class BattleshipGameDriver extends Application {
         HBox border = new HBox(new Label(""));
         border.setStyle("-fx-background-color: black");
         midPane.setCenter(border);
-        //midPane.setTop(board1);
-        //midPane.setBottom(board2);
+        GridPane enemyGridPane = new GridPane();
+        GridPane myGridPane = new GridPane();
+        for(int i = 0; i < 10; i++){
+            for(int k = 0; k < 10; k++){
+                enemyGridPane.add(board2.board[i][k], i, k);
+                myGridPane.add(board1.board[i][k], i, k);
+            }
+        }
+        midPane.setTop(enemyGridPane);
+        midPane.setBottom(myGridPane);
     }
-
-    private void
 
     public static void main(String[] args) {
         launch(args);
