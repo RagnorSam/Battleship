@@ -18,27 +18,39 @@ public class BattleshipGameDriver extends Application {
     VBox rightPane;         //Display ships' status for both players
     Player player1;
     Player player2;
+    Boolean myturn;
+
 
     @Override
     public void start(Stage stage) throws Exception {
+        myturn= true;
         makeGameScreen();
 
         Scene scene = new Scene(mainPane);
         stage.setScene(scene);
         stage.show();
 
-        ServerSocket serverSocket = new ServerSocket();
-
+        //Gameplay
+        player2 = new Player("erkjv");
+        if(myturn) {
+            player1.attack(board2);
+            myturn = !myturn;
+        }
+        else{
+            player2.attack(board1);
+            myturn = !myturn;
+        }
     }
 
     private void makeGameScreen(){
         board1 = new Board();
         board2 = new Board();
+        player1 = new Player();
 
-        mainPane = new BorderPane();
-        leftPane = new BorderPane();
-        midPane = new BorderPane();
-        rightPane = new VBox();
+        mainPane = new BorderPane();        //Pane that will be added to the scene
+        leftPane = new BorderPane();        //Pane that contains the timer, text announcement, move history
+        midPane = new BorderPane();         //Pane where the board will be placed
+        rightPane = new VBox();             //Pane to display the ship you and your opponent have along with the status
 
         mainPane.setMinSize(535, 500);
         mainPane.setStyle("-fx-background-color: blue");
@@ -54,10 +66,9 @@ public class BattleshipGameDriver extends Application {
         midPane.setCenter(inputName);
 
         enterName.setOnMouseClicked(e -> {
-            player1 = new Player(nameField.getText());
+            player1.setName(nameField.getText());
             makeBoard();
         });
-
 
         mainPane.setCenter(midPane);
 
