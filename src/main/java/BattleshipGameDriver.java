@@ -22,6 +22,7 @@ public class BattleshipGameDriver extends Application {
     GridPane enemyGridPane = new GridPane();
     GridPane myGridPane = new GridPane();
     Player[] players = new Player[2];
+    GameTimer gtimer;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -70,7 +71,7 @@ public class BattleshipGameDriver extends Application {
         //leftPane
         StackPane timerPane = new StackPane();
         timerPane.setStyle("-fx-border-color: black");
-        GameTimer gtimer = new GameTimer();
+        gtimer = new GameTimer();
         gtimer.startTime(00);
         Label timer = new Label(gtimer.getTotalTime().get());
         gtimer.getTotalTime().addListener(new InvalidationListener() {
@@ -116,10 +117,10 @@ public class BattleshipGameDriver extends Application {
     }
 
     //show your board and enemy's board
-    private void displayBoard(){
-        enemyGridPane.setPadding(new Insets(5,5,5,5));
+    private void displayBoard() {
+        enemyGridPane.setPadding(new Insets(5, 5, 5, 5));
         enemyGridPane.setAlignment(Pos.CENTER);
-        myGridPane.setPadding(new Insets(5,5,5,5));
+        myGridPane.setPadding(new Insets(5, 5, 5, 5));
         myGridPane.setAlignment(Pos.CENTER);
         midPane.getChildren().removeAll();
         HBox border = new HBox(new Label(""));
@@ -131,8 +132,8 @@ public class BattleshipGameDriver extends Application {
         myGridPane.setVgap(5);
         myGridPane.setHgap(5);
 
-        for(int i = 0; i < 10; i++){
-            for(int k = 0; k < 10; k++){
+        for (int i = 0; i < 10; i++) {
+            for (int k = 0; k < 10; k++) {
                 enemyGridPane.add(players[1].board.board[i][k], i, k);
                 myGridPane.add(players[0].board.board[i][k], i, k);
             }
@@ -140,6 +141,11 @@ public class BattleshipGameDriver extends Application {
         midPane.setTop(enemyGridPane);
         midPane.setBottom(myGridPane);
 
+    }
+
+    @Override
+    public void stop(){
+        gtimer.stopTime(0);
     }
 
     public static void main(String[] args) {
