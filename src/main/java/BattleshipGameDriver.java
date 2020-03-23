@@ -1,4 +1,7 @@
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -21,7 +24,15 @@ public class BattleshipGameDriver extends Application {
 
         StackPane timerPane = new StackPane();
         timerPane.setStyle("-fx-border-color: black");
-        Label timer = new Label("Timer here");
+        GameTimer gtimer = new GameTimer();
+        gtimer.startTime(00);
+        Label timer = new Label(gtimer.getTotalTime().get());
+        gtimer.getTotalTime().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                Platform.runLater(() -> timer.setText(gtimer.getTotalTime().get()));
+            }
+        });
         timerPane.getChildren().add(timer);
         leftPane.setTop(timerPane);
 
