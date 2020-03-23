@@ -11,7 +11,9 @@ public class Board{
             for(int k = 0; k < 10; k++) {
                 Square square = new Square();
                 board[i][k] = square;
-
+                square.setOnMouseClicked(e -> {
+                    System.out.println("Ship on my square is: " + square.hasShip());
+                });
             }
         }
     }

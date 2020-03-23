@@ -16,11 +16,12 @@ public class Player {
     }
 
     public void attack(Board board, Player player2){
+        //?????
         if(turn) {
             for (int i = 0; i < board.size(); i++) {
                 for (Square s : board.getRow(i)) {
                     s.setOnMouseClicked(e -> {
-                        System.out.println(e.getTarget().toString());
+                        System.out.println("attack " + e.getTarget().toString());
                         System.out.println(player2.getTurn());
                         if(s.hasShip()){
                             player2.setTurn(turn);
@@ -30,7 +31,12 @@ public class Player {
                 }
             }
         }
+    }
 
+    public void setShips(){
+        for(int i = 0; i < 5; i++){
+            //set the ships
+        }
     }
 
     public void setName(String name){

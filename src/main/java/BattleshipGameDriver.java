@@ -1,5 +1,8 @@
+import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -34,17 +37,14 @@ public class BattleshipGameDriver extends Application {
         stage.show();
         //Gameplay
         players[1] = new Player("erkjv");
-        //why not working>??????????????????????????????
-        mainPane.setOnMouseClicked(e ->{
-            System.out.println("hi");
-            players[0].attack(board2,players[1]);
-        });
 
+        players[0].attack(board2,players[1]);
     }
 
+    //create the "starting screen"
     private void makeGameScreen(){
         players[0] = new Player();
-        mainPane.setMinSize(535, 500);
+        mainPane.setMinSize(620, 720);
         mainPane.setStyle("-fx-background-color: blue");
         leftPane.setStyle("-fx-background-color: Green");
         rightPane.setStyle("-fx-background-color: Green");
@@ -102,11 +102,34 @@ public class BattleshipGameDriver extends Application {
         mainPane.setRight(rightPane);
     }
 
+    //Set your ships on your board
     private void makeBoard(){
+        midPane.getChildren().removeAll();
+        midPane.setCenter(myGridPane);
+
+        //set the pieces
+        players[0].setShips();
+
+        //After pieces are set
+        displayBoard();
+    }
+
+    //show your board and enemy's board
+    private void displayBoard(){
+        enemyGridPane.setPadding(new Insets(5,5,5,5));
+        enemyGridPane.setAlignment(Pos.CENTER);
+        myGridPane.setPadding(new Insets(5,5,5,5));
+        myGridPane.setAlignment(Pos.CENTER);
         midPane.getChildren().removeAll();
         HBox border = new HBox(new Label(""));
         border.setStyle("-fx-background-color: black");
         midPane.setCenter(border);
+
+        enemyGridPane.setHgap(5);
+        enemyGridPane.setVgap(5);
+        myGridPane.setVgap(5);
+        myGridPane.setHgap(5);
+
         for(int i = 0; i < 10; i++){
             for(int k = 0; k < 10; k++){
                 enemyGridPane.add(board2.board[i][k], i, k);
@@ -115,6 +138,7 @@ public class BattleshipGameDriver extends Application {
         }
         midPane.setTop(enemyGridPane);
         midPane.setBottom(myGridPane);
+
     }
 
     public static void main(String[] args) {
