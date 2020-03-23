@@ -27,8 +27,6 @@ public class BattleshipGameDriver extends Application {
     GridPane enemyGridPane = new GridPane();
     GridPane myGridPane = new GridPane();
     Player[] players = new Player[2];
-    Board board1 = new Board();           //Player1's board
-    Board board2 = new Board();           //Player2's board
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -38,9 +36,9 @@ public class BattleshipGameDriver extends Application {
         stage.setScene(scene);
         stage.show();
         //Gameplay
-        players[1] = new Player("erkjv");
+        players[1] = new Player("player 2");
 
-        players[0].attack(board2,players[1]);
+        players[0].attack(players[1]);
     }
 
     //create the "starting screen"
@@ -62,14 +60,12 @@ public class BattleshipGameDriver extends Application {
         enterName.setOnMouseClicked(e -> {
             players[0].setName(nameField.getText());
             players[0].setTurn(true);
-            players[1].setTurn(false);
             makeBoard();
         });
         nameField.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.ENTER){
                 players[0].setName(nameField.getText());
                 players[0].setTurn(true);
-                players[1].setTurn(false);
                 makeBoard();
             }
         });
@@ -142,8 +138,8 @@ public class BattleshipGameDriver extends Application {
 
         for(int i = 0; i < 10; i++){
             for(int k = 0; k < 10; k++){
-                enemyGridPane.add(board2.board[i][k], i, k);
-                myGridPane.add(board1.board[i][k], i, k);
+                enemyGridPane.add(players[1].board.board[i][k], i, k);
+                myGridPane.add(players[0].board.board[i][k], i, k);
             }
         }
         midPane.setTop(enemyGridPane);
