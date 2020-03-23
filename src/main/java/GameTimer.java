@@ -41,6 +41,10 @@ public class GameTimer extends Thread {
         return totaltime;
     }
 
+    public void stopTime() {
+        if(thread != null) { thread.stop(); }
+    }
+
 
     @Override
     public void run() {
