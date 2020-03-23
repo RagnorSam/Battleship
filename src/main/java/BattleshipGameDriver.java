@@ -13,6 +13,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import javax.swing.plaf.TableHeaderUI;
+import java.awt.image.renderable.RenderableImageProducer;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 
 public class BattleshipGameDriver extends Application {
     BorderPane mainPane = new BorderPane();     //Main game pane
@@ -33,8 +38,22 @@ public class BattleshipGameDriver extends Application {
         stage.show();
         //Gameplay
         players[1] = new Player("player 2");
+        setShips();
+    }
+    void setShips(){
+        players[0].setShips();
+        players[1].setShips();
 
-        players[0].attack(players[1]);
+        while(true) {
+            if(players[0].getTurn()){
+                players[0].attack(players[1]);
+            }
+            else{
+                players[1].attack(players[0]);
+            }
+        }
+
+
     }
 
     //create the "starting screen"
@@ -55,13 +74,11 @@ public class BattleshipGameDriver extends Application {
 
         enterName.setOnMouseClicked(e -> {
             players[0].setName(nameField.getText());
-            players[0].setTurn(true);
             displayBoard();
         });
         nameField.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.ENTER){
                 players[0].setName(nameField.getText());
-                players[0].setTurn(true);
                 displayBoard();
             }
         });

@@ -1,12 +1,16 @@
 import javafx.application.Platform;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+
+import java.util.Map;
 
 public class Player {
     protected Boolean turn = false;
     Board board;
     String name;
     int count = 0;
+    Map<Ship, Button[]> myShips;
 
     Player(){
         this.board = new Board();
@@ -25,37 +29,33 @@ public class Player {
             for(Square s: player2.board.getRow(i)){
                 s.setOnMouseClicked(e -> {
                     if(count < 5){
-                        System.out.println("Set your ships first");
+                        System.out.println(this.name + " Set your ships first");
                     }
                     else{
                         System.out.println(this.name + " attacks " + player2.getName() + " at " + e.getTarget());
-                        player2.setTurn(true);
-                        this.turn = false;
-
                     }
                 });
-
             }
         }
+    }
+
+    public void setShips(){
         for(int i = 0; i < this.board.size(); i++){
             for(Square s: this.board.getRow(i)){
                 s.setOnMouseClicked(e -> {
                     if(count < 5) {
                         System.out.println(this.name + " ship #" + count + " set at square " + e.getTarget());
+                        if (count==5){
+                            this.turn = true;
+                        }
                         this.count++;
                     }
                     else {
-                        System.out.println("Your ships are set. Go to war!");
+
+                        System.out.println(this.name + " Your ships are set. Go to war!");
                     }
                 });
             }
-        }
-
-    }
-
-    public void setShips(){
-        for(int i = 0; i < 5; i++){
-            //set the ships
         }
     }
 
