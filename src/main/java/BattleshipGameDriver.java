@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -54,22 +53,25 @@ public class BattleshipGameDriver extends Application {
         Button host = new Button("Host Game");
         Button join = new Button("Join Game");
 
+        //Background image
         Image image = new Image(new FileInputStream("src/images/menu_image.jpg"));
         BackgroundImage backgroundI = new BackgroundImage(image,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background background = new Background(backgroundI);
         menuPane.setBackground(background);
 
+        //Button functionality
         buttons.getChildren().addAll(host,join);
         menuPane.setCenter(buttons);
-        //System.out.println(System.getProperty("user.dir")); //delete
-
         host.setOnAction(e -> {
+            //Start server instance
+            //Connect to server
             System.out.println("Hosting game");
             ((Node)(e.getSource())).getScene().getWindow().hide();
             makeGameScreen();
         });
         join.setOnAction(e -> {
+            //Connect to server only
             System.out.println("Join game");
             ((Node)(e.getSource())).getScene().getWindow().hide();
             makeGameScreen();
