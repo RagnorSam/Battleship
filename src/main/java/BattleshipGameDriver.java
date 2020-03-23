@@ -1,4 +1,3 @@
-import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -11,19 +10,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-import java.net.ServerSocket;
 
 public class BattleshipGameDriver extends Application {
-    BorderPane mainPane = new BorderPane();    //Main game pane
-    BorderPane leftPane = new BorderPane();    //Timer, Announcement, Move History
-    BorderPane midPane = new BorderPane();     //Display of both Boards
-    VBox rightPane = new VBox();         //Display ships' status for both players
+    BorderPane mainPane = new BorderPane();     //Main game pane
+    BorderPane leftPane = new BorderPane();     //Timer, Announcement, Move History
+    BorderPane midPane = new BorderPane();      //Display of both Boards
+    VBox rightPane = new VBox();                //Display ships' status for both players
     GridPane enemyGridPane = new GridPane();
     GridPane myGridPane = new GridPane();
     Player[] players = new Player[2];
