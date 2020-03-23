@@ -95,12 +95,9 @@ public class BattleshipGameDriver extends Application {
         mainPane.setLeft(leftPane);
 
         //rightPane
-        Player me = new Player("A");
-        Player enemy = new Player("B");
-
         rightPane.setStyle("-fx-border-color: black");
-        rightPane.getChildren().addAll(new Label("Enemy Ships here"), new Label(enemy.getName()));
-        rightPane.getChildren().addAll(new Label("My Ships here"), new Label(me.getName()));
+        rightPane.getChildren().addAll(new Label("Enemy Ships here"));
+        rightPane.getChildren().addAll(new Label("My Ships here"));
         mainPane.setRight(rightPane);
     }
 
