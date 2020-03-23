@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.text.SimpleDateFormat;
@@ -13,6 +14,7 @@ public class GameTimer extends Thread {
         mins = new SimpleStringProperty("00");
         secs = new SimpleStringProperty("00");
         totaltime = new SimpleStringProperty("00:00");
+        //Platform.runLater(() -> run());
     }
     public void adjustTimes(int time){
         this.time = time;

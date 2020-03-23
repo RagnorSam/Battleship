@@ -25,15 +25,15 @@ public class BattleshipGameDriver extends Application {
         StackPane timerPane = new StackPane();
         timerPane.setStyle("-fx-border-color: black");
         GameTimer gtimer = new GameTimer();
+        gtimer.startTime(00);
         Label timer = new Label(gtimer.getTotalTime().get());
         gtimer.getTotalTime().addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable observable) {
-                timer.setText(gtimer.getTotalTime().get());
+                Platform.runLater(() -> timer.setText(gtimer.getTotalTime().get()));
             }
         });
         timerPane.getChildren().add(timer);
-        gtimer.startTime(00);
         leftPane.setTop(timerPane);
 
         StackPane textAnnouncementPane = new StackPane();
