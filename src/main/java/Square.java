@@ -1,27 +1,13 @@
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
-public class Square extends Pane {
-    private Boolean hasShip = false;
-    private int x;
-    private int y;
-
+public class Square extends Button {
+    Boolean hasShip = false;
     Square(){
         this.setMinSize(30,30);
-        this.setStyle("-fx-background-color: blue");
-        this.setStyle("-fx-border-color: black");
+        this.setStyle("-fx-background-color: white");
     }
-
-    Square(int x, int y) { //delete this if not storing coordinates here
-        this();
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getX() {
-        return this.x;
-    }
-
-    public int getY() {
-        return this.y;
+    public boolean hasShip(){
+        return hasShip;
     }
 }

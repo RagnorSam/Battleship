@@ -1,16 +1,32 @@
 import javafx.scene.layout.GridPane;
 
-public abstract class Board{
-    Square[][] board = new Square[10][10];
+import java.util.Iterator;
+
+public class Board{
+    int size = 10;
+    Square[][] board = new Square[size][size];
     Board(){
         boolean prep = true;           //Preparing your own board
         for(int i = 0; i < 10; i++){
             for(int k = 0; k < 10; k++) {
-                Square square = new Square(i,k);
+                Square square = new Square();
                 board[i][k] = square;
+                square.setOnMouseClicked(e -> {
+                    System.out.println("Ship on my square is: " + square.hasShip());
+                });
             }
         }
     }
-    abstract protected void move();
-}
 
+    public int size(){
+        return this.size;
+    }
+
+    public Square[] getRow(int row){
+        Square[] temp = new Square[this.size];
+        for(int i = 0; i < this.size; i++){
+            temp[i] = board[row][i];
+        }
+        return temp;
+    }
+}
