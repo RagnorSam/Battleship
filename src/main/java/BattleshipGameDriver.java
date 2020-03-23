@@ -1,57 +1,49 @@
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.ServerSocket;
 
 public class BattleshipGameDriver extends Application {
-    BorderPane mainPane;    //Main game pane
-    Board board1;           //Player1's board
-    Board board2;           //Player2's board
-    BorderPane leftPane;    //Timer, Announcement, Move History
-    BorderPane midPane;     //Display of both Boards
-    VBox rightPane;         //Display ships' status for both players
-    Player player1;
-    Player player2;
-    Boolean myturn;
-
+    BorderPane mainPane = new BorderPane();    //Main game pane
+    BorderPane leftPane = new BorderPane();    //Timer, Announcement, Move History
+    BorderPane midPane = new BorderPane();     //Display of both Boards
+    VBox rightPane = new VBox();         //Display ships' status for both players
+    GridPane enemyGridPane = new GridPane();
+    GridPane myGridPane = new GridPane();
+    Player[] players = new Player[2];
+    Board board1 = new Board();           //Player1's board
+    Board board2 = new Board();           //Player2's board
 
     @Override
     public void start(Stage stage) throws Exception {
-        myturn= true;
         makeGameScreen();
 
         Scene scene = new Scene(mainPane);
         stage.setScene(scene);
         stage.show();
-
         //Gameplay
-        player2 = new Player("erkjv");
-        if(myturn) {
-            player1.attack(board2);
-            myturn = !myturn;
-        }
-        else{
-            player2.attack(board1);
-            myturn = !myturn;
-        }
+        players[1] = new Player("erkjv");
+        //why not working>??????????????????????????????
+        mainPane.setOnMouseClicked(e ->{
+            System.out.println("hi");
+            players[0].attack(board2,players[1]);
+        });
+
     }
 
     private void makeGameScreen(){
-        board1 = new Board();
-        board2 = new Board();
-        player1 = new Player();
-
-        mainPane = new BorderPane();        //Pane that will be added to the scene
-        leftPane = new BorderPane();        //Pane that contains the timer, text announcement, move history
-        midPane = new BorderPane();         //Pane where the board will be placed
-        rightPane = new VBox();             //Pane to display the ship you and your opponent have along with the status
-
+        players[0] = new Player();
         mainPane.setMinSize(535, 500);
         mainPane.setStyle("-fx-background-color: blue");
         leftPane.setStyle("-fx-background-color: Green");
@@ -66,8 +58,18 @@ public class BattleshipGameDriver extends Application {
         midPane.setCenter(inputName);
 
         enterName.setOnMouseClicked(e -> {
-            player1.setName(nameField.getText());
+            players[0].setName(nameField.getText());
+            players[0].setTurn(true);
+            players[1].setTurn(false);
             makeBoard();
+        });
+        nameField.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ENTER){
+                players[0].setName(nameField.getText());
+                players[0].setTurn(true);
+                players[1].setTurn(false);
+                makeBoard();
+            }
         });
 
         mainPane.setCenter(midPane);
@@ -101,13 +103,10 @@ public class BattleshipGameDriver extends Application {
     }
 
     private void makeBoard(){
-        mainPane.setLeft(leftPane);
-        mainPane.setCenter(midPane);
+        midPane.getChildren().removeAll();
         HBox border = new HBox(new Label(""));
         border.setStyle("-fx-background-color: black");
         midPane.setCenter(border);
-        GridPane enemyGridPane = new GridPane();
-        GridPane myGridPane = new GridPane();
         for(int i = 0; i < 10; i++){
             for(int k = 0; k < 10; k++){
                 enemyGridPane.add(board2.board[i][k], i, k);
