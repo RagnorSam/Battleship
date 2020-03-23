@@ -56,13 +56,13 @@ public class BattleshipGameDriver extends Application {
         enterName.setOnMouseClicked(e -> {
             players[0].setName(nameField.getText());
             players[0].setTurn(true);
-            makeBoard();
+            displayBoard();
         });
         nameField.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.ENTER){
                 players[0].setName(nameField.getText());
                 players[0].setTurn(true);
-                makeBoard();
+                displayBoard();
             }
         });
 
@@ -104,18 +104,6 @@ public class BattleshipGameDriver extends Application {
         mainPane.setRight(rightPane);
     }
 
-    //Set your ships on your board
-    private void makeBoard(){
-        midPane.getChildren().removeAll();
-        midPane.setCenter(myGridPane);
-
-        //set the pieces
-        players[0].setShips();
-
-        //After pieces are set
-        displayBoard();
-    }
-
     //show your board and enemy's board
     private void displayBoard() {
         enemyGridPane.setPadding(new Insets(5, 5, 5, 5));
@@ -140,7 +128,6 @@ public class BattleshipGameDriver extends Application {
         }
         midPane.setTop(enemyGridPane);
         midPane.setBottom(myGridPane);
-
     }
 
     @Override

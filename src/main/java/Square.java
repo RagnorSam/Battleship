@@ -5,7 +5,7 @@ public class Square extends Button {
     Boolean hasShip = false;
     Square(){
         this.setMinSize(30,30);
-        this.setStyle("-fx-background-color: white");
+        this.setStyle("-fx-background-color: white; -fx-border-color: black");
     }
     public boolean hasShip(){
         return hasShip;

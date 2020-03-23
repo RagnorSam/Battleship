@@ -21,23 +21,6 @@ public class Player {
     }
 
     public void attack(Player player2){
-        //?????
-        /*
-        if(turn) {
-            for (int i = 0; i < this.board.size(); i++) {
-                for (Square s : player2.board.getRow(i)) {
-                    s.setOnMouseClicked(e -> {
-                        System.out.println(this.name + " attacks " + player2.getName() + " at " + e.getTarget().toString());
-                        System.out.println(player2.getTurn());
-                        if(s.hasShip()){
-                            player2.setTurn(turn);
-                            this.turn = !turn;
-                        }
-                    });
-                }
-            }
-        }
-        */
         for(int i = 0; i < this.board.size(); i++){
             for(Square s: player2.board.getRow(i)){
                 s.setOnMouseClicked(e -> {
@@ -54,7 +37,6 @@ public class Player {
 
             }
         }
-
         for(int i = 0; i < this.board.size(); i++){
             for(Square s: this.board.getRow(i)){
                 s.setOnMouseClicked(e -> {
