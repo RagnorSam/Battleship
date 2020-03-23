@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class BattleshipGameDriver extends Application {
+    GameTimer gtimer;
     @Override
     public void start(Stage stage) throws Exception {
         BorderPane mainPane = new BorderPane();
@@ -24,7 +25,7 @@ public class BattleshipGameDriver extends Application {
 
         StackPane timerPane = new StackPane();
         timerPane.setStyle("-fx-border-color: black");
-        GameTimer gtimer = new GameTimer();
+        gtimer = new GameTimer();
         gtimer.startTime(00);
         Label timer = new Label(gtimer.getTotalTime().get());
         gtimer.getTotalTime().addListener(new InvalidationListener() {
@@ -62,6 +63,10 @@ public class BattleshipGameDriver extends Application {
         stage.show();
     }
 
+    @Override
+    public void stop(){
+        gtimer.stopTime(0);
+    }
     private void makeBoardPane(BorderPane pane,Board board1, Board board2){
         pane.setTop(board1);
         pane.setBottom(board2);
