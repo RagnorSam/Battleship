@@ -6,7 +6,7 @@ public abstract class Board{
         boolean prep = true;           //Preparing your own board
         for(int i = 0; i < 10; i++){
             for(int k = 0; k < 10; k++) {
-                Square square = new Square();
+                Square square = new Square(i,k);
                 board[i][k] = square;
             }
         }

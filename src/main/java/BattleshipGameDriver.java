@@ -12,8 +12,8 @@ import javafx.stage.Stage;
 
 public class BattleshipGameDriver extends Application {
     BorderPane mainPane;    //Main game pane
-    Board board1;           //Player1's board
-    Board board2;           //Player2's board
+    bottomBoard board1;           //Player1's board
+    topBoard board2;           //Player2's board
     BorderPane leftPane;    //Timer, Announcement, Move History
     BorderPane midPane;     //Display of both Boards
     VBox rightPane;         //Display ships' status for both players
@@ -30,8 +30,8 @@ public class BattleshipGameDriver extends Application {
     }
 
     private void makeGameScreen(){
-        board1 = new Board();
-        board2 = new Board();
+        board1 = new bottomBoard();
+        board2 = new topBoard();
         mainPane = new BorderPane();
         leftPane = new BorderPane();
         midPane = new BorderPane();
@@ -96,7 +96,7 @@ public class BattleshipGameDriver extends Application {
         //midPane.setBottom(board2);
     }
 
-    private void
+    //private void
 
     public static void main(String[] args) {
         launch(args);
