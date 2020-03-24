@@ -7,6 +7,8 @@ public class Board{
             for(int k = 0; k < 10; k++) {
                 Square square = new Square();
                 board[i][k] = square;
+                square.setX(i);
+                square.setY(k);
             }
         }
     }

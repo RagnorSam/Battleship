@@ -5,19 +5,10 @@ import javafx.geometry.Pos;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
-import javax.swing.plaf.TableHeaderUI;
-import java.awt.image.renderable.RenderableImageProducer;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 
 public class BattleshipGameDriver extends Application {
     BorderPane mainPane = new BorderPane();     //Main game pane
@@ -28,6 +19,7 @@ public class BattleshipGameDriver extends Application {
     GridPane myGridPane = new GridPane();
     Player[] players = new Player[2];
     GameTimer gtimer;
+    StackPane textAnnouncementPane;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -38,21 +30,6 @@ public class BattleshipGameDriver extends Application {
         stage.show();
         //Gameplay
         players[1] = new Player("player 2");
-        setShips();
-    }
-    void setShips(){
-        players[0].setShips();
-        players[1].setShips();
-
-        while(true) {
-            if(players[0].getTurn()){
-                players[0].attack(players[1]);
-            }
-            else{
-                players[1].attack(players[0]);
-            }
-        }
-
 
     }
 
@@ -100,7 +77,7 @@ public class BattleshipGameDriver extends Application {
         timerPane.getChildren().add(timer);
         leftPane.setTop(timerPane);
 
-        StackPane textAnnouncementPane = new StackPane();
+        textAnnouncementPane = new StackPane();
         textAnnouncementPane.setStyle("-fx-border-color: black");
         Label textAnnouncement = new Label("Text Announcement here");
         textAnnouncementPane.getChildren().add(textAnnouncement);
@@ -142,6 +119,25 @@ public class BattleshipGameDriver extends Application {
         }
         midPane.setTop(enemyGridPane);
         midPane.setBottom(myGridPane);
+
+        setShips();
+    }
+
+    public void setShips(){
+        players[0].setShips();
+        players[1].setShips();
+        Button bt = new Button("READY");
+        textAnnouncementPane.getChildren().add(bt);
+        bt.setOnMouseClicked(e -> {
+            if(players[0].count >= 5 && players[1].count >= 5) {
+                players[0].setTurn(true);
+                textAnnouncementPane.getChildren().removeAll();
+                Boolean gameOver = false;
+                for(int i =0; i < 2; i++){
+                    players[0+(i%2)].attack(players[1-(i%2)]);
+                }
+            }
+        });
     }
 
     @Override

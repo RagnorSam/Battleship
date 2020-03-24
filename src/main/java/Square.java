@@ -2,6 +2,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 public class Square extends Button {
+    int x;
+    int y;
     Boolean hasShip = false;
     Square(){
         this.setMinSize(30,30);
@@ -10,4 +12,8 @@ public class Square extends Button {
     public boolean hasShip(){
         return hasShip;
     }
+    public int getX(){ return this.x; }
+    public int getY(){ return this.y; }
+    public void setX(int x){this.x = x;}
+    public void setY(int y){this.y = y;}
 }

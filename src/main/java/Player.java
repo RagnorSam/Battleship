@@ -1,16 +1,8 @@
-import javafx.application.Platform;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-
-import java.util.Map;
-
 public class Player {
     protected Boolean turn = false;
     Board board;
     String name;
     int count = 0;
-    Map<Ship, Button[]> myShips;
 
     Player(){
         this.board = new Board();
@@ -24,19 +16,26 @@ public class Player {
         return this.name;
     }
 
-    public void attack(Player player2){
+    public int[] attack(Player player2){
+        int[] loc = new int[2];
         for(int i = 0; i < this.board.size(); i++){
             for(Square s: player2.board.getRow(i)){
                 s.setOnMouseClicked(e -> {
-                    if(count < 5){
-                        System.out.println(this.name + " Set your ships first");
+                    if(count >= 5) {
+                        if(!turn){
+                            return;
+                        }
+                        System.out.println(this.name + " attack " + e.getTarget());
+                        player2.setTurn(true);
+                        this.turn = false;
                     }
-                    else{
-                        System.out.println(this.name + " attacks " + player2.getName() + " at " + e.getTarget());
+                    else {
+                        System.out.println(this.name + " Fix Your Ships!");
                     }
                 });
             }
         }
+        return loc;
     }
 
     public void setShips(){
@@ -44,7 +43,7 @@ public class Player {
             for(Square s: this.board.getRow(i)){
                 s.setOnMouseClicked(e -> {
                     if(count < 5) {
-                        System.out.println(this.name + " ship #" + count + " set at square " + e.getTarget());
+                        System.out.println(this.name + " ship #" + count + " set at square " + s.getX() + " " + s.getY());
                         if (count==5){
                             this.turn = true;
                         }
