@@ -23,4 +23,11 @@ public class Board {
         }
         return temp;
     }
+    public Square[] getCol(int col) {
+        Square[] temp = new Square[this.size];
+        for (int i = 0; i < this.size; i++) {
+            temp[i] = board[i][col];
+        }
+        return temp;
+    }
 }

@@ -1,5 +1,8 @@
+import javafx.geometry.Side;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 
@@ -8,60 +11,42 @@ import java.io.FileNotFoundException;
 
 import javax.xml.crypto.Data;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Player {
     protected Boolean turn = false;
     Board board;
     String name;
     int count = 0;
+    int shipNum = 0;
     Ship[] fleet = new Ship[5];
+    Map<ImageView, Integer> mapShips = new HashMap<>();
 
     Player() {
         this.board = new Board();
-        Image img = null;
-        try {
-            img = new Image(new FileInputStream("Boat Pictures/Boat2.png"));
-            fleet[0] = new Ship(this,2, img);
-            img = new Image(new FileInputStream("Boat Pictures/Boat3a.png"));
-            fleet[1] = new Ship(this,3, img);
-            img = new Image(new FileInputStream("Boat Pictures/Boat3b.png"));
-            fleet[2] = new Ship(this,3, img);
-            img = new Image(new FileInputStream("Boat Pictures/Boat4.png"));
-            fleet[3] = new Ship(this,4, img);
-            img = new Image(new FileInputStream("Boat Pictures/Boat5.png"));
-            fleet[4] = new Ship(this,5, img);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        fleet[0] = new Ship(this,2, "Boat2");
+        fleet[1] = new Ship(this,3, "Boat3a");
+        fleet[2] = new Ship(this,3, "Boat3b");
+        fleet[3] = new Ship(this,4, "Boat4");
+        fleet[4] = new Ship(this,5, "Boat5");
     }
 
     Player(String name) {
         this.name = name;
         this.board = new Board();
-        Image img = null;
-        try {
-            img = new Image(new FileInputStream("Boat Pictures/Boat2.png"));
-            fleet[0] = new Ship(this,2, img);
-            img = new Image(new FileInputStream("Boat Pictures/Boat3a.png"));
-            fleet[1] = new Ship(this,3, img);
-            img = new Image(new FileInputStream("Boat Pictures/Boat3b.png"));
-            fleet[2] = new Ship(this,3, img);
-            img = new Image(new FileInputStream("Boat Pictures/Boat4.png"));
-            fleet[3] = new Ship(this,4, img);
-            img = new Image(new FileInputStream("Boat Pictures/Boat5.png"));
-            fleet[4] = new Ship(this,5, img);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        fleet[0] = new Ship(this,2, "Boat2");
+        fleet[1] = new Ship(this,3, "Boat3a");
+        fleet[2] = new Ship(this,3, "Boat3b");
+        fleet[3] = new Ship(this,4, "Boat4");
+        fleet[4] = new Ship(this,5, "Boat5");
     }
 
     protected String getName() {
         return this.name;
     }
 
-    public int[] attack(Player player2, DataOutputStream out, DataInputStream in) {
-        int[] loc = new int[2];
+    public void attack(Player player2, DataOutputStream out, DataInputStream in) {
         for (int i = 0; i < this.board.size(); i++) {
             for (Square s : player2.board.getRow(i)) {
                 s.setOnMouseClicked(e -> {
@@ -109,29 +94,63 @@ public class Player {
                 });
             }
         }
-        return loc;
     }
 
-    public void setShips() {
-        for (int i = 0; i < this.board.size(); i++) {
-            for (Square s : this.board.getRow(i)) {
-                s.setOnMouseClicked(e -> {
-                    if (count < 5) {
-                        if (s.hasShip()) {
-                            System.out.println("Already has a ship on it");
-                            return;
-                        }
-                        System.out.println(this.name + " ship #" + count + " set at square " + s.getX() + " " + s.getY());
-                        s.setShip(true);
-                        if (count == 5) {
-                            this.turn = true;
-                        }
-                        this.count++;
-                    } else {
-                        System.out.println(this.name + " Your ships are set. Go to war!");
+    public void setShips(Scene scene, ImageView[] ships) {
+        for(ImageView s: ships){
+            mapShips.put(s, shipNum);
+            shipNum++;
+        }
+        System.out.println(mapShips.get(ships[0]));
+        for(ImageView s: ships){
+            s.setOnMouseClicked(e -> {
+                int setNum = mapShips.get(e.getTarget());
+                // The ship has been set so cannot set it again
+                if(fleet[setNum].isSet){
+                    return;
+                }
+                for (int i = 0; i < this.board.size(); i++) {
+                    for (Square sq : this.board.getRow(i)) {
+                        sq.setOnMouseClicked(ex -> {
+                            if (sq.hasShip()) {
+                                System.out.println("Already has a ship on it");
+                                return;
+                            }
+                            if (count < 5) {
+                                System.out.println(this.name + " ship #" + count + " set at square " + sq.getX() + " " + sq.getY());
+
+                                int increment;
+                                Square[] temp;
+                                if(fleet[setNum].isHorizontal){
+                                    increment = 1;
+                                    temp = board.getRow(sq.getX());
+                                }else {
+                                    increment = 10;
+                                    temp = board.getCol(sq.getY());
+                                }
+                                for(int k = 0; k < fleet[setNum].shipSize; k++){
+                                    double db = k/(double)fleet[setNum].shipSize;
+                                    System.out.println(db);
+                                    BackgroundImage backgroundI = new BackgroundImage(fleet[setNum].shipPicture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                                            new BackgroundPosition(Side.LEFT, 0, true,
+                                                    Side.BOTTOM, 0.5, true),
+                                            BackgroundSize.DEFAULT);
+                                    Background background = new Background(backgroundI);
+                                    temp[sq.getX()+k].setShip(true);
+                                    temp[sq.getX()+k].setBackground(background);
+                                }
+
+                                if (count == 5) {
+                                    this.turn = true;
+                                }
+                                this.count++;
+                            } else {
+                                System.out.println(this.name + " Your ships are set. Go to war!");
+                            }
+                        });
                     }
-                });
-            }
+                }
+            });
         }
     }
 

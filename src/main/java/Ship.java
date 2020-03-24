@@ -1,7 +1,11 @@
 import javafx.scene.image.Image;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class Ship {
     Player player;
+    public boolean isSet;
     public int shipSize;
     public int shipLives;
     public int[] shipLocation;
@@ -28,15 +32,21 @@ public class Ship {
         this.life = length;
     }
 
-    public void hit(){
-        this.life--;
-    }
      */
-    Ship(Player player, int shipSize, Image shipPicture){
+
+
+
+    Ship(Player player, int shipSize, String name){
         this.player = player;
         this.shipSize = shipSize;
         this.shipLives = shipSize;
-        this.shipPicture = shipPicture;
+        this.isSet = false;
+        try {
+            this.shipPicture = new Image(new FileInputStream("Boat Pictures/" + name + ".png"),
+                    35*(shipSize),35,false,true);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setShipLocation(Ship ship){
@@ -60,6 +70,10 @@ public class Ship {
             return false;
         }
         return true;
+    }
+
+    public void hit(){
+        this.shipLives--;
     }
 }
 

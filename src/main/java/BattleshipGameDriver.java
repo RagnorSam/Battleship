@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,10 +41,13 @@ public class BattleshipGameDriver extends Application {
     GridPane myGridPane = new GridPane();
     Player[] players = new Player[2];
     GameTimer gtimer = new GameTimer();
-    StackPane textAnnouncementPane;
-    ImageView[] ships;
+    VBox textAnnouncementPane;
+    Label textAnnouncement;
+    ImageView[] myShips;
+    ImageView[] enemyShips;
     VBox enemyVbox = new VBox();
     VBox myVbox = new VBox();
+    Scene scene;
 
     //IO streams
     DataOutputStream toServer = null;
@@ -94,7 +98,7 @@ public class BattleshipGameDriver extends Application {
             makeGameScreen();
         });
 
-        Scene scene = new Scene(menuPane);
+        scene = new Scene(menuPane);
         stage.setScene(scene);
         stage.show();
     }
@@ -178,37 +182,39 @@ public class BattleshipGameDriver extends Application {
         enemyVbox.setAlignment(Pos.TOP_LEFT);
         enemyVbox.setSpacing(35);
         enemyVbox.setPadding(new Insets(5,5,5,5));
-        ships = new ImageView[10];
+        myShips = new ImageView[5];
+        enemyShips = new ImageView[5];
         int count = 0;
         for(Ship s: players[1].fleet){
             //load image
-            //ImageView imgs = new ImageView();
-            //imgs.setStyle("-fx-border-color: black");
-            //ships[count] = imgs;
-            //enemyVbox.getChildren().add(imgs);
+            ImageView imgs = new ImageView(s.shipPicture);
+            imgs.setStyle("-fx-border-color: black");
+            enemyShips[count] = imgs;
+            enemyVbox.getChildren().add(imgs);
             count++;
         }
-        rightPane.setTop(enemyVbox);
+        count = 0;
+        rightPane.getChildren().add(enemyVbox);
         HBox border = new HBox(new Label(""));
         border.setStyle("-fx-background-color: black");
-        rightPane.setCenter(border);
-        rightPane.setBottom(myVbox);
+        rightPane.getChildren().add(border);
+        rightPane.getChildren().add(myVbox);
         myVbox.setAlignment(Pos.TOP_LEFT);
         myVbox.setSpacing(35);
         myVbox.setPadding(new Insets(5,5,5,5));
         for(Ship s: players[0].fleet){
             //Load image
-            //ImageView imgs = new ImageView(s.getImg());
-            //imgs.setStyle("-fx-border-color: black");
-            //ships[count] = imgs;
-            //myVbox.getChildren().add(imgs);
+            ImageView imgs = new ImageView(s.shipPicture);
+            imgs.setStyle("-fx-border-color: black");
+            myShips[count] = imgs;
+            myVbox.getChildren().add(imgs);
             count++;
         }
 
         mainPane.setRight(rightPane);
 
         //Create new window
-        Scene scene = new Scene(mainPane);
+        scene = new Scene(mainPane);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Battleship");
@@ -217,19 +223,14 @@ public class BattleshipGameDriver extends Application {
 
     //show your board and enemy's board
     private void displayBoard() {
-        enemyGridPane.setPadding(new Insets(5, 5, 5, 5));
+        enemyGridPane.setGridLinesVisible(true);
         enemyGridPane.setAlignment(Pos.CENTER);
-        myGridPane.setPadding(new Insets(5, 5, 5, 5));
+        myGridPane.setGridLinesVisible(true);
         myGridPane.setAlignment(Pos.CENTER);
         midPane.getChildren().removeAll();
         HBox border = new HBox(new Label(""));
         border.setStyle("-fx-background-color: black");
         midPane.setCenter(border);
-
-        enemyGridPane.setHgap(5);
-        enemyGridPane.setVgap(5);
-        myGridPane.setVgap(5);
-        myGridPane.setHgap(5);
 
         for (int i = 0; i < 10; i++) {
             for (int k = 0; k < 10; k++) {
@@ -244,8 +245,9 @@ public class BattleshipGameDriver extends Application {
     }
 
     public void setShips(){
-        players[0].setShips(mainPane, ships);
-        players[1].setShips(mainPane, ships);
+        textAnnouncementPane.getChildren().removeAll();
+        players[0].setShips(scene, myShips);
+        players[1].setShips(scene, enemyShips);
         Button bt = new Button("READY");
         textAnnouncementPane.getChildren().add(bt);
         bt.setOnMouseClicked(e -> {
@@ -260,6 +262,7 @@ public class BattleshipGameDriver extends Application {
                     gameOver = checkWin(i);
                     if(gameOver){
                         //gameOver Screen
+                        showGameOver();
                     }
                 }
             }
@@ -287,6 +290,13 @@ public class BattleshipGameDriver extends Application {
             }
         }
         return check;
+    }
+
+    public void showGameOver(){
+        textAnnouncementPane.getChildren().removeAll();
+        Label lbl = new Label("Game \n Over");
+        lbl.setFont(Font.font(30));
+        textAnnouncementPane.getChildren().add(lbl);
     }
 
     @Override
