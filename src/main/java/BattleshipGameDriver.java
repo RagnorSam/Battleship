@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.control.*;
+
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -29,6 +31,7 @@ public class BattleshipGameDriver extends Application {
     VBox rightPane = new VBox();         //Display ships' status for both players
     GridPane enemyGridPane = new GridPane();
     GridPane myGridPane = new GridPane();
+    StackPane textAnnouncementPane;
     Player[] players = new Player[2];
     Board board1 = new Board();           //Player1's board
     Board board2 = new Board();           //Player2's board
@@ -94,22 +97,22 @@ public class BattleshipGameDriver extends Application {
         try {
             //Create a socket to connect to the server
             //Change host to be address
-            Socket socket = new Socket("localhost" , 8000);
+            Socket socket = new Socket("localhost", 8000);
 
             //Create an input stream to receive data to the server
             fromServer = new DataInputStream(socket.getInputStream());
 
             //Create an output stream to send data to the server
             toServer = new DataOutputStream(socket.getOutputStream());
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             System.out.println("Failed to connect to server");
         }
     }
 
     //create the "starting screen"
-    private void makeGameScreen(){
+    private void makeGameScreen() {
         players[0] = new Player();
+        players[1] = new Player();
         mainPane.setMinSize(620, 720);
         mainPane.setStyle("-fx-background-color: lightblue");
         leftPane.setStyle("-fx-background-color: Green");
@@ -153,7 +156,7 @@ public class BattleshipGameDriver extends Application {
         timerPane.getChildren().add(timer);
         leftPane.setTop(timerPane);
 
-        StackPane textAnnouncementPane = new StackPane();
+        textAnnouncementPane = new StackPane();
         textAnnouncementPane.setStyle("-fx-border-color: black");
         Label textAnnouncement = new Label("Text Announcement here");
         textAnnouncementPane.getChildren().add(textAnnouncement);
@@ -170,20 +173,16 @@ public class BattleshipGameDriver extends Application {
         rightPane.getChildren().addAll(new Label("My Ships here"));
         mainPane.setRight(rightPane);
 
+        //Create new window
         Scene scene = new Scene(mainPane);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Battleship");
         stage.show();
-
-        //Gameplay
-        players[1] = new Player("player 2");
-
-        players[0].attack(players[1],toServer,fromServer);
     }
 
     //show your board and enemy's board
-    private void displayBoard(){
+    private void displayBoard() {
         enemyGridPane.setPadding(new Insets(5, 5, 5, 5));
         enemyGridPane.setAlignment(Pos.CENTER);
         myGridPane.setPadding(new Insets(5, 5, 5, 5));
@@ -206,6 +205,25 @@ public class BattleshipGameDriver extends Application {
         }
         midPane.setTop(enemyGridPane);
         midPane.setBottom(myGridPane);
+
+        setShips();
+    }
+
+    public void setShips(){
+        players[0].setShips();
+        players[1].setShips();
+        Button bt = new Button("READY");
+        textAnnouncementPane.getChildren().add(bt);
+        bt.setOnMouseClicked(e -> {
+            if(players[0].count >= 5 && players[1].count >= 5) {
+                players[0].setTurn(true);
+                textAnnouncementPane.getChildren().removeAll();
+                Boolean gameOver = false;
+                for(int i =0; i < 200; i++){
+                    players[0+(i%2)].attack(players[1-(i%2)],toServer,fromServer);
+                }
+            }
+        });
     }
 
     @Override

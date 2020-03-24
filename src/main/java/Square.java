@@ -5,6 +5,7 @@ public class Square extends Button {
     private int x;
     private int y;
     private Boolean hasShip = false;
+
     Square(){
         this.setMinSize(30,30);
         this.setStyle("-fx-background-color: white; -fx-border-color: black");
@@ -20,11 +21,12 @@ public class Square extends Button {
     {
         return this.x;
     }
+    public void setX(int x){ this.x = x; }
     public int getY()
     {
         return this.y;
     }
-    public boolean hasShip(){
-        return hasShip;
-    }
+    public void setY(int y){ this.y = y; }
+    public boolean hasShip(){ return hasShip; }
+    public void setShip(boolean hasShip) { this.hasShip = hasShip;}
 }

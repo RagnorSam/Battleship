@@ -2,9 +2,8 @@ import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import javax.xml.crypto.Data;
+import java.io.*;
 
 public class Player {
     protected Boolean turn = false;
@@ -12,29 +11,35 @@ public class Player {
     String name;
     int count = 0;
 
-    Player(){
+    Player() {
         this.board = new Board();
     }
-    Player(String name){
+
+    Player(String name) {
         this.name = name;
         this.board = new Board();
     }
 
-    protected String getName(){
+    protected String getName() {
         return this.name;
     }
 
-    public void attack(Player player2, DataOutputStream out, DataInputStream in){
-        for(int i = 0; i < this.board.size(); i++){
-            for(Square s: player2.board.getRow(i)){
+    public int[] attack(Player player2, DataOutputStream out, DataInputStream in) {
+        int[] loc = new int[2];
+        for (int i = 0; i < this.board.size(); i++) {
+            for (Square s : player2.board.getRow(i)) {
                 s.setOnMouseClicked(e -> {
-                    if(count < 5){
-                        System.out.println("Set your ships first");
-                    }
-                    else{
-                        System.out.println(this.name + " attacks " + player2.getName() + " at " + e.getTarget());
-                        player2.setTurn(true);
-                        this.turn = false;
+                    if (count >= 5) {
+                        if (!turn) {
+                            return;
+                        }
+                        System.out.println(this.name + " attack " + e.getTarget());
+                        if (s.hasShip()) {
+                            System.out.println("HIT!!");
+                            s.setStyle("-fx-background-color: red");
+                        }
+                        //player2.setTurn(true);
+                        //this.turn = false;
 
                         //Run other player's turn (using server) (for testing purposes)
                         try {
@@ -44,48 +49,68 @@ public class Player {
                             out.writeInt(s.getY());
 
                             //Receive attack info
+                            int serverAtkX = in.readInt();
+                            int serverAtkY = in.readInt();
 
-                        } catch(IOException err) {
+                            //Check for hit
+                            Square temp = board.board[serverAtkX][serverAtkY];
+                            if(temp.hasShip()) {
+                                System.out.println("HIT!!");
+                                temp.setStyle("-fx-background-color: red");
+                            }
+                        } catch (IOException err) {
                             System.out.println("fatal error");
                         }
+                    } else {
+                        System.out.println(this.name + " Fix Your Ships!");
                     }
                 });
-
             }
         }
-        for(int i = 0; i < this.board.size(); i++){
-            for(Square s: this.board.getRow(i)){
+        return loc;
+    }
+
+    public void serverTurn(Player player1, DataOutputStream out, DataInputStream in) {
+
+    }
+
+    public void setShips() {
+        for (int i = 0; i < this.board.size(); i++) {
+            for (Square s : this.board.getRow(i)) {
                 s.setOnMouseClicked(e -> {
-                    if(count < 5) {
-                        System.out.println(this.name + " ship #" + count + " set at square " + e.getTarget());
+                    if (count < 5) {
+                        if (s.hasShip()) {
+                            System.out.println("Already has a ship on it");
+                            return;
+                        }
+                        System.out.println(this.name + " ship #" + count + " set at square " + s.getX() + " " + s.getY());
+                        s.setShip(true);
+                        if (count == 5) {
+                            this.turn = true;
+                        }
                         this.count++;
-                    }
-                    else {
-                        System.out.println("Your ships are set. Go to war!");
+                    } else {
+
+                        System.out.println(this.name + " Your ships are set. Go to war!");
                     }
                 });
             }
         }
-
     }
 
-    public void setShips(){
-        for(int i = 0; i < 5; i++){
-            //set the ships
-        }
-    }
-
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
-    public void setTurn(){
+
+    public void setTurn() {
         this.turn = !turn;
     }
-    public void setTurn(Boolean turn){
+
+    public void setTurn(Boolean turn) {
         this.turn = turn;
     }
 
-    public Boolean getTurn(){
+    public Boolean getTurn() {
         return this.turn;
     }
 }

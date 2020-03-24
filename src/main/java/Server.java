@@ -98,6 +98,8 @@ public class Server extends Application {
                     //Attack a random square
                     int targetX = (int)(Math.random()*9);
                     int targetY = (int)(Math.random()*9);
+                    outputToClient.writeInt(targetX);
+                    outputToClient.writeInt(targetY);
 
                     Platform.runLater(() -> {
                         ta.appendText(attacker + " attacked (" + attackX + "," + attackY + ")\n");
