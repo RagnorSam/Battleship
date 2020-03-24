@@ -13,15 +13,14 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.*;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class BattleshipGameDriver extends Application {
     BorderPane mainPane = new BorderPane();    //Main game pane
@@ -35,6 +34,11 @@ public class BattleshipGameDriver extends Application {
     Board board2 = new Board();           //Player2's board
 
     GameTimer gtimer = new GameTimer(); //time for how long the game takes
+
+    //IO streams
+    DataOutputStream toServer = null;
+    DataInputStream fromServer = null;
+    Server server = null; //server for the game
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -63,7 +67,12 @@ public class BattleshipGameDriver extends Application {
         menuPane.setCenter(buttons);
         host.setOnAction(e -> {
             //Start server instance
+            server = new Server();
+            server.start(new Stage());
+
             //Connect to server
+            connect();
+
             System.out.println("Hosting game");
             ((Node)(e.getSource())).getScene().getWindow().hide();
             makeGameScreen();
@@ -78,6 +87,24 @@ public class BattleshipGameDriver extends Application {
         Scene scene = new Scene(menuPane);
         stage.setScene(scene);
         stage.show();
+    }
+
+    //Connect to the game server
+    public void connect() {
+        try {
+            //Create a socket to connect to the server
+            //Change host to be address
+            Socket socket = new Socket("localhost" , 8000);
+
+            //Create an input stream to receive data to the server
+            fromServer = new DataInputStream(socket.getInputStream());
+
+            //Create an output stream to send data to the server
+            toServer = new DataOutputStream(socket.getOutputStream());
+        }
+        catch (IOException ex){
+            System.out.println("Failed to connect to server");
+        }
     }
 
     //create the "starting screen"
@@ -152,7 +179,7 @@ public class BattleshipGameDriver extends Application {
         //Gameplay
         players[1] = new Player("player 2");
 
-        players[0].attack(players[1]);
+        players[0].attack(players[1],toServer,fromServer);
     }
 
     //show your board and enemy's board
@@ -184,6 +211,9 @@ public class BattleshipGameDriver extends Application {
     @Override
     public void stop(){
         gtimer.stopTime(0);
+        if (server != null) {
+            server.stop();
+        }
     }
 
     public static void main(String[] args) {

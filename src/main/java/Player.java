@@ -2,6 +2,10 @@ import javafx.application.Platform;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+
 public class Player {
     protected Boolean turn = false;
     Board board;
@@ -20,7 +24,7 @@ public class Player {
         return this.name;
     }
 
-    public void attack(Player player2){
+    public void attack(Player player2, DataOutputStream out, DataInputStream in){
         for(int i = 0; i < this.board.size(); i++){
             for(Square s: player2.board.getRow(i)){
                 s.setOnMouseClicked(e -> {
@@ -32,6 +36,18 @@ public class Player {
                         player2.setTurn(true);
                         this.turn = false;
 
+                        //Run other player's turn (using server) (for testing purposes)
+                        try {
+                            //Send data
+                            out.writeUTF(name);
+                            out.writeInt(s.getX());
+                            out.writeInt(s.getY());
+
+                            //Receive attack info
+
+                        } catch(IOException err) {
+                            System.out.println("fatal error");
+                        }
                     }
                 });
 
