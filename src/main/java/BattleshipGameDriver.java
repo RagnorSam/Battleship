@@ -1,7 +1,6 @@
 //import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.beans.InvalidationListener;
@@ -116,7 +115,6 @@ public class BattleshipGameDriver extends Application {
         //leftPane
         StackPane timerPane = new StackPane();
         timerPane.setStyle("-fx-border-color: black");
-        gtimer = new GameTimer();
         Label timer = new Label(gtimer.getTotalTime().get());
         gtimer.getTotalTime().addListener(new InvalidationListener() {
             @Override
