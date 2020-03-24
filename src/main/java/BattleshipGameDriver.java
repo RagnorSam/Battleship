@@ -4,18 +4,21 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 
 public class BattleshipGameDriver extends Application {
     BorderPane mainPane = new BorderPane();     //Main game pane
@@ -25,28 +28,60 @@ public class BattleshipGameDriver extends Application {
     GridPane enemyGridPane = new GridPane();
     GridPane myGridPane = new GridPane();
     Player[] players = new Player[2];
-    GameTimer gtimer;
+    GameTimer gtimer = new GameTimer();
     StackPane textAnnouncementPane;
     ImageView[] ships;
 
     @Override
     public void start(Stage stage) throws Exception {
-        makeGameScreen();
-
-        Scene scene = new Scene(mainPane);
-        stage.setScene(scene);
-        stage.show();
-        //Gameplay
-
-
+        mainMenu(stage);
     }
 
-    //create the "starting screen"
+    //The main menu
+    public void mainMenu(Stage stage) throws Exception {
+        BorderPane menuPane = new BorderPane();
+        menuPane.setMinSize(400,400);
+        VBox buttons = new VBox();
+        buttons.setSpacing(5);
+        buttons.setAlignment(Pos.CENTER);
+        Button host = new Button("Host Game");
+        Button join = new Button("Join Game");
+
+        //Background image
+        Image image = new Image(new FileInputStream("src/images/menu_image.jpg"));
+        BackgroundImage backgroundI = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background background = new Background(backgroundI);
+        menuPane.setBackground(background);
+
+        //Button functionality
+        buttons.getChildren().addAll(host,join);
+        menuPane.setCenter(buttons);
+        host.setOnAction(e -> {
+            //Start server instance
+            //Connect to server
+            System.out.println("Hosting game");
+            ((Node)(e.getSource())).getScene().getWindow().hide();
+            makeGameScreen();
+        });
+        join.setOnAction(e -> {
+            //Connect to server only
+            System.out.println("Join game");
+            ((Node)(e.getSource())).getScene().getWindow().hide();
+            makeGameScreen();
+        });
+
+        Scene scene = new Scene(menuPane);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    //create the "strarting screen"
     private void makeGameScreen(){
         players[0] = new Player();
         players[1] = new Player("player 2");
         mainPane.setMinSize(700, 750);
-        mainPane.setStyle("-fx-background-color: blue");
+        mainPane.setStyle("-fx-background-color: lightblue");
         leftPane.setStyle("-fx-background-color: Green");
         rightPane.setStyle("-fx-background-color: Green");
 
@@ -60,11 +95,13 @@ public class BattleshipGameDriver extends Application {
 
         enterName.setOnMouseClicked(e -> {
             players[0].setName(nameField.getText());
+            gtimer.startTime(00);//start timer after name has been entered
             displayBoard();
         });
         nameField.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.ENTER){
                 players[0].setName(nameField.getText());
+                gtimer.startTime(00);//start timer after name has been entered
                 displayBoard();
             }
         });
@@ -74,8 +111,6 @@ public class BattleshipGameDriver extends Application {
         //leftPane
         StackPane timerPane = new StackPane();
         timerPane.setStyle("-fx-border-color: black");
-        gtimer = new GameTimer();
-        gtimer.startTime(00);
         Label timer = new Label(gtimer.getTotalTime().get());
         gtimer.getTotalTime().addListener(new InvalidationListener() {
             @Override
@@ -152,6 +187,11 @@ public class BattleshipGameDriver extends Application {
         midPane.setBottom(myGridPane);
 
         setShips();
+        Scene scene = new Scene(mainPane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Battleship");
+        stage.show();
     }
 
     public void setShips(){

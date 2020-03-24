@@ -1,16 +1,3 @@
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseButton;
-import javafx.scene.layout.VBox;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.Map;
-
-import static java.lang.Math.abs;
-
 public class Player {
     protected Boolean turn = false;
     Board board;
