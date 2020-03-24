@@ -156,11 +156,13 @@ public class BattleshipGameDriver extends Application {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Battleship");
+        /*
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() { //close all threads by clicking exit button on window
             public void handle(WindowEvent we) {
                 gtimer.stopTime();
             }
         });
+        */
         stage.show();
     }
 
@@ -208,6 +210,11 @@ public class BattleshipGameDriver extends Application {
         players[1] = new Player("erkjv");
 
         players[0].attack(board2,players[1]);
+    }
+
+    @Override
+    public void stop(){
+        gtimer.stopTime(0);
     }
 
     public static void main(String[] args) {
