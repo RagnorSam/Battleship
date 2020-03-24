@@ -246,8 +246,8 @@ public class BattleshipGameDriver extends Application {
 
     public void setShips(){
         textAnnouncementPane.getChildren().removeAll();
-        players[0].setShips(scene, myShips);
-        players[1].setShips(scene, enemyShips);
+        players[0].setShips(scene, myShips, myGridPane);
+        players[1].setShips(scene, enemyShips, enemyGridPane);
         Button bt = new Button("READY");
         textAnnouncementPane.getChildren().add(bt);
         bt.setOnMouseClicked(e -> {

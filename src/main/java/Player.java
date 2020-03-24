@@ -1,5 +1,9 @@
 import javafx.geometry.Side;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Skin;
+import javafx.scene.control.Skinnable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -96,7 +100,7 @@ public class Player {
         }
     }
 
-    public void setShips(Scene scene, ImageView[] ships) {
+    public void setShips(Scene scene, ImageView[] ships, GridPane pane) {
         for(ImageView s: ships){
             mapShips.put(s, shipNum);
             shipNum++;
@@ -105,10 +109,6 @@ public class Player {
         for(ImageView s: ships){
             s.setOnMouseClicked(e -> {
                 int setNum = mapShips.get(e.getTarget());
-                // The ship has been set so cannot set it again
-                if(fleet[setNum].isSet){
-                    return;
-                }
                 for (int i = 0; i < this.board.size(); i++) {
                     for (Square sq : this.board.getRow(i)) {
                         sq.setOnMouseClicked(ex -> {
@@ -116,28 +116,28 @@ public class Player {
                                 System.out.println("Already has a ship on it");
                                 return;
                             }
+                            // The ship has been set so cannot set it again
+                            if(fleet[setNum].isSet){
+                                return;
+                            }
+                            fleet[setNum].isSet = !fleet[setNum].isSet;
                             if (count < 5) {
                                 System.out.println(this.name + " ship #" + count + " set at square " + sq.getX() + " " + sq.getY());
 
-                                int increment;
-                                Square[] temp;
-                                if(fleet[setNum].isHorizontal){
-                                    increment = 1;
-                                    temp = board.getRow(sq.getX());
-                                }else {
-                                    increment = 10;
-                                    temp = board.getCol(sq.getY());
-                                }
                                 for(int k = 0; k < fleet[setNum].shipSize; k++){
-                                    double db = k/(double)fleet[setNum].shipSize;
+                                    double db = (k+1)/(double)fleet[setNum].shipSize;
                                     System.out.println(db);
                                     BackgroundImage backgroundI = new BackgroundImage(fleet[setNum].shipPicture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-                                            new BackgroundPosition(Side.LEFT, 0, true,
-                                                    Side.BOTTOM, 0.5, true),
+                                            new BackgroundPosition(Side.LEFT, db,true,Side.BOTTOM,0.5,true),
                                             BackgroundSize.DEFAULT);
                                     Background background = new Background(backgroundI);
-                                    temp[sq.getX()+k].setShip(true);
-                                    temp[sq.getX()+k].setBackground(background);
+                                    if(fleet[setNum].isHorizontal){
+                                        this.board.getRow(sq.getX())[sq.getX()+k].setShip(true);
+                                        this.board.getRow(sq.getX())[sq.getX()+k].setBackground(background);
+                                    }else {
+                                        this.board.getCol(sq.getY())[sq.getX()+k].setShip(true);
+                                        this.board.getCol(sq.getY())[sq.getX()+k].setBackground(background);
+                                    }
                                 }
 
                                 if (count == 5) {
