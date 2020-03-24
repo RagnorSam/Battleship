@@ -1,15 +1,41 @@
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.VBox;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Map;
+
+import static java.lang.Math.abs;
+
 public class Player {
     protected Boolean turn = false;
     Board board;
     String name;
     int count = 0;
+    Ship[] fleet = new Ship[5];
 
     Player(){
         this.board = new Board();
+        FileInputStream file = null;
+        fleet[0] = new Ship(2, "Boat2");
+        fleet[1] = new Ship(3, "Boat3a");
+        fleet[2] = new Ship(3, "Boat3b");
+        fleet[3] = new Ship(4, "Boat4");
+        fleet[4] = new Ship(5, "Boat5");
     }
     Player(String name){
         this.name = name;
         this.board = new Board();
+        FileInputStream file = null;
+        fleet[0] = new Ship(2, "Boat2");
+        fleet[1] = new Ship(3, "Boat3a");
+        fleet[2] = new Ship(3, "Boat3b");
+        fleet[3] = new Ship(4, "Boat4");
+        fleet[4] = new Ship(5, "Boat5");
     }
 
     protected String getName(){
@@ -42,28 +68,16 @@ public class Player {
         return loc;
     }
 
-    public void setShips(){
-        for(int i = 0; i < this.board.size(); i++){
-            for(Square s: this.board.getRow(i)){
-                s.setOnMouseClicked(e -> {
-                    if(count < 5) {
-                        if(s.hasShip()){
-                            System.out.println("Already has a ship on it");
-                            return;
-                        }
-                        System.out.println(this.name + " ship #" + count + " set at square " + s.getX() + " " + s.getY());
-                        s.hasShip = true;
-                        if (count==5){
-                            this.turn = true;
-                        }
-                        this.count++;
-                    }
-                    else {
-
-                        System.out.println(this.name + " Your ships are set. Go to war!");
-                    }
-                });
-            }
+    public void setShips(VBox pane, ImageView[] ships){
+        for(ImageView s:ships){
+            s.setOnMouseDragged(e -> {
+                if(count < 5) {
+                    s.setTranslateX(e.getX() + s.getTranslateX());
+                    s.setTranslateY(e.getY() + s.getTranslateY());
+                    e.consume();
+                    System.out.println(s.getTranslateX()/35);
+                }
+            });
         }
     }
 
