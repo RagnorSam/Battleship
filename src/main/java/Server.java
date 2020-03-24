@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.Date;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -11,10 +12,9 @@ import javafx.stage.Stage;
 public class Server extends Application {
 
     private TextArea ta = new TextArea();
-
     private int clientNo = 0;
-
     Socket socket;
+    ArrayList<Thread> threads = new ArrayList<Thread>();
 
     @Override
     public void start(Stage primaryStage) {
@@ -22,7 +22,7 @@ public class Server extends Application {
         Scene scene = new Scene(new ScrollPane(ta), 450, 200);
         primaryStage.setTitle("Server"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage
-        primaryStage.show(); // Display the stage
+        //primaryStage.show(); // Display the stage
 
         new Thread( () -> {
             try {
@@ -52,7 +52,9 @@ public class Server extends Application {
                     });
 
                     // Create and start a new thread for the connection
-                    new Thread(new HandleAClient(socket)).start();
+                    Thread temp = new Thread(new HandleAClient(socket));
+                    threads.add(temp);
+                    temp.start();
                 }
             }
             catch (SocketException e) {
@@ -67,6 +69,9 @@ public class Server extends Application {
     }
 
     public void stop() {
+        for(Thread i: threads) {
+            i.stop();
+        }
         System.exit(1);
     }
 

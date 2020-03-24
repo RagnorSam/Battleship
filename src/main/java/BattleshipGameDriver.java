@@ -216,6 +216,7 @@ public class BattleshipGameDriver extends Application {
         textAnnouncementPane.getChildren().add(bt);
         bt.setOnMouseClicked(e -> {
             if(players[0].count >= 5 && players[1].count >= 5) {
+                bt.setVisible(false);
                 players[0].setTurn(true);
                 textAnnouncementPane.getChildren().removeAll();
                 Boolean gameOver = false;
