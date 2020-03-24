@@ -26,6 +26,10 @@ public class Player {
                             return;
                         }
                         System.out.println(this.name + " attack " + e.getTarget());
+                        if(s.hasShip()){
+                            System.out.println("HIT!!");
+                            s.setStyle("-fx-background-color: red");
+                        }
                         player2.setTurn(true);
                         this.turn = false;
                     }
@@ -43,7 +47,12 @@ public class Player {
             for(Square s: this.board.getRow(i)){
                 s.setOnMouseClicked(e -> {
                     if(count < 5) {
+                        if(s.hasShip()){
+                            System.out.println("Already has a ship on it");
+                            return;
+                        }
                         System.out.println(this.name + " ship #" + count + " set at square " + s.getX() + " " + s.getY());
+                        s.hasShip = true;
                         if (count==5){
                             this.turn = true;
                         }

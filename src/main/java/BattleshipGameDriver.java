@@ -133,7 +133,7 @@ public class BattleshipGameDriver extends Application {
                 players[0].setTurn(true);
                 textAnnouncementPane.getChildren().removeAll();
                 Boolean gameOver = false;
-                for(int i =0; i < 2; i++){
+                for(int i =0; i < 200; i++){
                     players[0+(i%2)].attack(players[1-(i%2)]);
                 }
             }
