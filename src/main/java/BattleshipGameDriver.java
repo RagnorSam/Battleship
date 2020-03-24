@@ -1,7 +1,6 @@
 //import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.beans.InvalidationListener;
@@ -14,8 +13,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
