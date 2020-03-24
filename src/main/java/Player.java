@@ -38,6 +38,9 @@ public class Player {
                             System.out.println("HIT!!");
                             s.setStyle("-fx-background-color: red");
                         }
+                        else {
+                            s.setStyle("-fx-background-color: grey");
+                        }
                         //player2.setTurn(true);
                         //this.turn = false;
 
@@ -58,6 +61,9 @@ public class Player {
                                 System.out.println("HIT!!");
                                 temp.setStyle("-fx-background-color: red");
                             }
+                            else {
+                                temp.setStyle("-fx-background-color: grey");
+                            }
                         } catch (IOException err) {
                             System.out.println("fatal error");
                         }
@@ -68,10 +74,6 @@ public class Player {
             }
         }
         return loc;
-    }
-
-    public void serverTurn(Player player1, DataOutputStream out, DataInputStream in) {
-
     }
 
     public void setShips() {
@@ -90,7 +92,6 @@ public class Player {
                         }
                         this.count++;
                     } else {
-
                         System.out.println(this.name + " Your ships are set. Go to war!");
                     }
                 });

@@ -31,7 +31,8 @@ public class BattleshipGameDriver extends Application {
     VBox rightPane = new VBox();         //Display ships' status for both players
     GridPane enemyGridPane = new GridPane();
     GridPane myGridPane = new GridPane();
-    StackPane textAnnouncementPane;
+    VBox textAnnouncementPane;
+    Label textAnnouncement;
     Player[] players = new Player[2];
     Board board1 = new Board();           //Player1's board
     Board board2 = new Board();           //Player2's board
@@ -156,9 +157,10 @@ public class BattleshipGameDriver extends Application {
         timerPane.getChildren().add(timer);
         leftPane.setTop(timerPane);
 
-        textAnnouncementPane = new StackPane();
+        textAnnouncementPane = new VBox();
         textAnnouncementPane.setStyle("-fx-border-color: black");
-        Label textAnnouncement = new Label("Text Announcement here");
+        textAnnouncementPane.setAlignment(Pos.CENTER);
+        textAnnouncement = new Label("Text Announcement here");
         textAnnouncementPane.getChildren().add(textAnnouncement);
         leftPane.setCenter(textAnnouncementPane);
 

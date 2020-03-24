@@ -15,6 +15,7 @@ public class Server extends Application {
     private int clientNo = 0;
     Socket socket;
     ArrayList<Thread> threads = new ArrayList<Thread>();
+    Stage window = null;
 
     @Override
     public void start(Stage primaryStage) {
@@ -22,7 +23,8 @@ public class Server extends Application {
         Scene scene = new Scene(new ScrollPane(ta), 450, 200);
         primaryStage.setTitle("Server"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage
-        //primaryStage.show(); // Display the stage
+        primaryStage.show(); // Display the stage
+        window = primaryStage; //testing
 
         new Thread( () -> {
             try {
@@ -72,6 +74,7 @@ public class Server extends Application {
         for(Thread i: threads) {
             i.stop();
         }
+        window.close();
         System.exit(1);
     }
 
@@ -101,8 +104,8 @@ public class Server extends Application {
                     int attackY = inputFromClient.readInt();
 
                     //Attack a random square
-                    int targetX = (int)(Math.random()*9);
-                    int targetY = (int)(Math.random()*9);
+                    int targetX = (int)(Math.random()*10);
+                    int targetY = (int)(Math.random()*10);
                     outputToClient.writeInt(targetX);
                     outputToClient.writeInt(targetY);
 
