@@ -42,14 +42,16 @@ public class Ship {
     public void setShipLocation(Ship ship){
         if(this.isHorizontal==true){
             for(int i = 0; i<this.shipSize; i++){
-                this.shipLocation[i] = {this.shipPicture.getLayoutX()+squareSize,  this.shipPicture.getLayoutY()};
+                this.shipLocation[i] =1;
             }
         }
         else{
             for(int i = 0; i<this.shipSize; i++){
-                this.shipLocation[i] = {this.shipPicture.getLayoutX(),  this.shipPicture.getLayoutY()-squareSize};
+                this.shipLocation[i] = 1;
             }
         }
+
+
     }
 
     public boolean checkShipLives(Ship ship){
@@ -57,6 +59,7 @@ public class Ship {
             isAlive = false;
             return false;
         }
+        return true;
     }
 }
 
@@ -140,3 +143,6 @@ public class Ship {
     public String getName(){
         return this.name;
     }
+
+
+ */

@@ -24,13 +24,15 @@ public class BattleshipGameDriver extends Application {
     BorderPane mainPane = new BorderPane();     //Main game pane
     BorderPane leftPane = new BorderPane();     //Timer, Announcement, Move History
     BorderPane midPane = new BorderPane();      //Display of both Boards
-    VBox rightPane = new VBox();                //Display ships' status for both players
+    BorderPane rightPane = new BorderPane();                //Display ships' status for both players
     GridPane enemyGridPane = new GridPane();
     GridPane myGridPane = new GridPane();
     Player[] players = new Player[2];
     GameTimer gtimer = new GameTimer();
     StackPane textAnnouncementPane;
     ImageView[] ships;
+    VBox enemyVbox = new VBox();
+    VBox myVbox = new VBox();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -133,32 +135,43 @@ public class BattleshipGameDriver extends Application {
         mainPane.setLeft(leftPane);
 
         //rightPane
-        rightPane.setStyle("-fx-border-color: black");
-        rightPane.setAlignment(Pos.TOP_LEFT);
-        rightPane.setSpacing(35);
-        rightPane.setPadding(new Insets(5,5,5,5));
-        Text lbl = new Text("Enemy Ships here");
-        rightPane.getChildren().add(lbl);
+        enemyVbox.setStyle("-fx-border-color: black");
+        enemyVbox.setAlignment(Pos.TOP_LEFT);
+        enemyVbox.setSpacing(35);
+        enemyVbox.setPadding(new Insets(5,5,5,5));
         ships = new ImageView[10];
         int count = 0;
         for(Ship s: players[1].fleet){
-            ImageView imgs = new ImageView(s.getImg());
-            ships[count] = imgs;
-            rightPane.getChildren().add(imgs);
+            //load image
+            //ImageView imgs = new ImageView();
+            //imgs.setStyle("-fx-border-color: black");
+            //ships[count] = imgs;
+            //enemyVbox.getChildren().add(imgs);
             count++;
         }
-
-        rightPane.getChildren().add(new Label("My Ships here"));
-
+        rightPane.setTop(enemyVbox);
+        HBox border = new HBox(new Label(""));
+        border.setStyle("-fx-background-color: black");
+        rightPane.setCenter(border);
+        rightPane.setBottom(myVbox);
+        myVbox.setAlignment(Pos.TOP_LEFT);
+        myVbox.setSpacing(35);
+        myVbox.setPadding(new Insets(5,5,5,5));
         for(Ship s: players[0].fleet){
-            ImageView imgs = new ImageView(s.getImg());
-            ships[count] = imgs;
-            rightPane.getChildren().add(imgs);
+            //Load image
+            //ImageView imgs = new ImageView(s.getImg());
+            //imgs.setStyle("-fx-border-color: black");
+            //ships[count] = imgs;
+            //myVbox.getChildren().add(imgs);
             count++;
         }
-
 
         mainPane.setRight(rightPane);
+        Scene scene = new Scene(mainPane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Battleship");
+        stage.show();
     }
 
     //show your board and enemy's board
@@ -187,16 +200,11 @@ public class BattleshipGameDriver extends Application {
         midPane.setBottom(myGridPane);
 
         setShips();
-        Scene scene = new Scene(mainPane);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Battleship");
-        stage.show();
     }
 
     public void setShips(){
-        players[0].setShips(rightPane, ships);
-        players[1].setShips(rightPane, ships);
+        players[0].setShips(mainPane, ships);
+        players[1].setShips(mainPane, ships);
         Button bt = new Button("READY");
         textAnnouncementPane.getChildren().add(bt);
         bt.setOnMouseClicked(e -> {
@@ -207,21 +215,36 @@ public class BattleshipGameDriver extends Application {
                 Boolean gameOver = false;
                 for(int i =0; i < 200; i++){
                     players[0+(i%2)].attack(players[1-(i%2)]);
-                    checkWin(i);
+                    gameOver = checkWin(i);
+                    if(gameOver){
+                        //gameOver Screen
+                    }
                 }
             }
         });
     }
 
-    public void checkWin(int i){
+    public Boolean checkWin(int i){
+        Boolean check = true;
         //Player 1 attacked last so check for win
         if(i%2 == 0){
-
+            for(Ship s:players[1].fleet){
+                if(s.shipLives != 0){
+                    check = false;
+                    break;
+                }
+            }
         }
         //else check Player 2 for win
         else{
-
+            for(Ship s:players[0].fleet){
+                if(s.shipLives != 0){
+                    check = false;
+                    break;
+                }
+            }
         }
+        return check;
     }
 
     @Override

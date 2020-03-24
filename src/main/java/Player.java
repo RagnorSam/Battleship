@@ -1,3 +1,11 @@
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.*;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class Player {
     protected Boolean turn = false;
     Board board;
@@ -7,22 +15,41 @@ public class Player {
 
     Player(){
         this.board = new Board();
-        FileInputStream file = null;
-        fleet[0] = new Ship(2, "Boat2");
-        fleet[1] = new Ship(3, "Boat3a");
-        fleet[2] = new Ship(3, "Boat3b");
-        fleet[3] = new Ship(4, "Boat4");
-        fleet[4] = new Ship(5, "Boat5");
+        Image img = null;
+        try {
+            img = new Image(new FileInputStream("Boat Pictures/Boat2.png"));
+            fleet[0] = new Ship(this,2, img);
+            img = new Image(new FileInputStream("Boat Pictures/Boat3a.png"));
+            fleet[1] = new Ship(this,3, img);
+            img = new Image(new FileInputStream("Boat Pictures/Boat3b.png"));
+            fleet[2] = new Ship(this,3, img);
+            img = new Image(new FileInputStream("Boat Pictures/Boat4.png"));
+            fleet[3] = new Ship(this,4, img);
+            img = new Image(new FileInputStream("Boat Pictures/Boat5.png"));
+            fleet[4] = new Ship(this,5, img);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
     Player(String name){
         this.name = name;
         this.board = new Board();
-        FileInputStream file = null;
-        fleet[0] = new Ship(2, "Boat2");
-        fleet[1] = new Ship(3, "Boat3a");
-        fleet[2] = new Ship(3, "Boat3b");
-        fleet[3] = new Ship(4, "Boat4");
-        fleet[4] = new Ship(5, "Boat5");
+        Image img = null;
+        try {
+            img = new Image(new FileInputStream("Boat Pictures/Boat2.png"));
+            fleet[0] = new Ship(this,2, img);
+            img = new Image(new FileInputStream("Boat Pictures/Boat3a.png"));
+            fleet[1] = new Ship(this,3, img);
+            img = new Image(new FileInputStream("Boat Pictures/Boat3b.png"));
+            fleet[2] = new Ship(this,3, img);
+            img = new Image(new FileInputStream("Boat Pictures/Boat4.png"));
+            fleet[3] = new Ship(this,4, img);
+            img = new Image(new FileInputStream("Boat Pictures/Boat5.png"));
+            fleet[4] = new Ship(this,5, img);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     protected String getName(){
@@ -55,16 +82,13 @@ public class Player {
         return loc;
     }
 
-    public void setShips(VBox pane, ImageView[] ships){
-        for(ImageView s:ships){
-            s.setOnMouseDragged(e -> {
-                if(count < 5) {
-                    s.setTranslateX(e.getX() + s.getTranslateX());
-                    s.setTranslateY(e.getY() + s.getTranslateY());
-                    e.consume();
-                    System.out.println(s.getTranslateX()/35);
-                }
-            });
+    public void setShips(BorderPane pane, ImageView[] ships){
+        for(int i = 0; i < 10; i++) {
+            for (Square sq : board.getRow(i)) {
+                sq.setOnMouseClicked(ex -> {
+                    System.out.println("feiur");
+                });
+            }
         }
     }
 
