@@ -95,6 +95,7 @@ public class Server extends Application {
                         socket.getInputStream());
                 DataOutputStream outputToClient = new DataOutputStream(
                         socket.getOutputStream());
+                ArrayList<Coordinate> alreadyPicked = new ArrayList<>();
 
                 // Continuously serve the client
                 while (true) {
@@ -103,15 +104,38 @@ public class Server extends Application {
                     int attackX = inputFromClient.readInt();
                     int attackY = inputFromClient.readInt();
 
-                    //Attack a random square
-                    int targetX = (int)(Math.random()*10);
-                    int targetY = (int)(Math.random()*10);
+                    int targetX, targetY;
+                    //Handle if invalid move has been made
+                    boolean valid;
+                    do {
+                        valid = true;
+                        //Pick random square
+                        targetX = (int)(Math.random()*10);
+                        targetY = (int)(Math.random()*10);
+
+                        //Check if valid
+                        if(alreadyPicked.size() == 0) {
+                            valid = true;
+                        }
+                        else {
+                            for(int i = 0; i < alreadyPicked.size(); i++) {
+                                if(targetX == alreadyPicked.get(i).getX() && targetY == alreadyPicked.get(i).getY()) {
+                                    //System.out.println("already hit"); //delete
+                                    valid = false;
+                                    break;
+                                }
+                            }
+                        }
+                    } while(!valid);
+
                     outputToClient.writeInt(targetX);
                     outputToClient.writeInt(targetY);
 
+                    alreadyPicked.add(new Coordinate(targetX,targetY));
+
                     Platform.runLater(() -> {
                         ta.appendText(attacker + " attacked (" + attackX + "," + attackY + ")\n");
-                        ta.appendText("Attacking square (" + targetX + "," + targetY + ")\n");
+                        //ta.appendText("Attacking square (" + targetX + "," + targetY + ")\n"); //delete
                     });
                 }
             }
@@ -119,5 +143,16 @@ public class Server extends Application {
                 ex.printStackTrace();
             }
         }
+    }
+
+    class Coordinate {
+        private int x;
+        private int y;
+        public Coordinate(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+        public int getX() { return this.x; }
+        public int getY() { return this.y; }
     }
 }
