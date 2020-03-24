@@ -1,7 +1,3 @@
-import javafx.scene.layout.GridPane;
-
-import java.util.Iterator;
-
 public class Board{
     int size = 10;
     Square[][] board = new Square[size][size];
@@ -11,9 +7,7 @@ public class Board{
             for(int k = 0; k < 10; k++) {
                 Square square = new Square();
                 board[i][k] = square;
-                square.setOnMouseClicked(e -> {
-                    System.out.println("Ship on my square is: " + square.hasShip());
-                });
+
             }
         }
     }
