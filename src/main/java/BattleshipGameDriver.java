@@ -116,7 +116,6 @@ public class BattleshipGameDriver extends Application {
         //leftPane
         StackPane timerPane = new StackPane();
         timerPane.setStyle("-fx-border-color: black");
-        gtimer = new GameTimer();
         Label timer = new Label(gtimer.getTotalTime().get());
         gtimer.getTotalTime().addListener(new InvalidationListener() {
             @Override
