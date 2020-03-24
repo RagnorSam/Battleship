@@ -24,4 +24,3 @@ public class Board{
         return temp;
     }
 }
-

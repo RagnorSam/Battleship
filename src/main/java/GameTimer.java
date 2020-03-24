@@ -41,7 +41,6 @@ public class GameTimer extends Thread {
         return totaltime;
     }
 
-
     @Override
     public void run() {
         try {
