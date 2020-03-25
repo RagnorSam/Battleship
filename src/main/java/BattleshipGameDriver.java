@@ -50,6 +50,7 @@ public class BattleshipGameDriver extends Application {
 
     //The main menu
     public void mainMenu(Stage stage) throws Exception {
+
         BorderPane menuPane = new BorderPane();
         menuPane.setMinSize(400,400);
         VBox buttons = new VBox();
