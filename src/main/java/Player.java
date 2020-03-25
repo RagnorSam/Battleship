@@ -1,6 +1,5 @@
 import javafx.geometry.Side;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -61,7 +60,6 @@ public class Player {
                                 s.setStyle("-fx-background-color: grey");
                             }
                             s.setIsHit(true);
-
 
                             //player2.setTurn(true);
                             //this.turn = false;
