@@ -105,10 +105,16 @@ public class Player {
             mapShips.put(s, shipNum);
             shipNum++;
         }
+
         System.out.println(mapShips.get(ships[0]));
         for(ImageView s: ships){
             s.setOnMouseClicked(e -> {
                 int setNum = mapShips.get(e.getTarget());
+                scene.setOnKeyPressed(ex -> {
+                    if(ex.getCode() == KeyCode.R){
+                        fleet[setNum].isHorizontal = !fleet[setNum].isHorizontal;
+                    }
+                });
                 for (int i = 0; i < this.board.size(); i++) {
                     for (Square sq : this.board.getRow(i)) {
                         sq.setOnMouseClicked(ex -> {
@@ -120,23 +126,46 @@ public class Player {
                             if(fleet[setNum].isSet){
                                 return;
                             }
-                            fleet[setNum].isSet = !fleet[setNum].isSet;
                             if (count < 5) {
                                 System.out.println(this.name + " ship #" + count + " set at square " + sq.getX() + " " + sq.getY());
+                                for(int k = 0; k < fleet[setNum].shipSize; k++){
+                                    if(fleet[setNum].isHorizontal){
+                                        if(this.board.getRow(sq.getY())[sq.getX()+k].hasShip()){
+                                            System.out.println("Colliding");
+                                            return;
+
+                                        }
+                                    }
+                                    else{
+                                        if(this.board.getCol(sq.getX())[sq.getY()+k].hasShip()){
+                                            System.out.println("Collide");
+                                            return;
+                                        }
+                                    }
+                                }
+                                fleet[setNum].isSet = !fleet[setNum].isSet;
 
                                 for(int k = 0; k < fleet[setNum].shipSize; k++){
                                     double db = (k+1)/(double)fleet[setNum].shipSize;
                                     System.out.println(db);
-                                    BackgroundImage backgroundI = new BackgroundImage(fleet[setNum].shipPicture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-                                            new BackgroundPosition(Side.LEFT, db,true,Side.BOTTOM,0.5,true),
-                                            BackgroundSize.DEFAULT);
-                                    Background background = new Background(backgroundI);
                                     if(fleet[setNum].isHorizontal){
-                                        this.board.getRow(sq.getX())[sq.getX()+k].setShip(true);
-                                        this.board.getRow(sq.getX())[sq.getX()+k].setBackground(background);
+                                        BackgroundImage backgroundI = new BackgroundImage(fleet[setNum].shipPicture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                                                new BackgroundPosition(Side.LEFT, db,true,Side.BOTTOM,0.5,true),
+                                                BackgroundSize.DEFAULT);
+                                        Background background = new Background(backgroundI);
+                                        this.board.getRow(sq.getY())[sq.getX()+k].setShip(true);
+                                        this.board.getRow(sq.getY())[sq.getX()+k].setBackground(background);
+                                        System.out.println("hello");
                                     }else {
-                                        this.board.getCol(sq.getY())[sq.getX()+k].setShip(true);
-                                        this.board.getCol(sq.getY())[sq.getX()+k].setBackground(background);
+                                        //This is for vertical ship placement
+                                        //Needs a vertical picture for background to work
+                                        BackgroundImage backgroundI = new BackgroundImage(fleet[setNum].shipPicture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                                                new BackgroundPosition(Side.LEFT, db,true,Side.BOTTOM,0.5,true),
+                                                BackgroundSize.DEFAULT);
+                                        Background background = new Background(backgroundI);
+                                        this.board.getCol(sq.getX())[sq.getY()+k].setShip(true);
+                                        this.board.getCol(sq.getX())[sq.getY()+k].setBackground(background);
+                                        System.out.println("hi");
                                     }
                                 }
 

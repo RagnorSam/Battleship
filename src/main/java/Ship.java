@@ -11,7 +11,7 @@ public class Ship {
     public int[] shipLocation;
     public int squareSize = 10;
     public boolean isAlive = true;
-    public boolean isHorizontal; // when this is false the ship is vertical
+    public boolean isHorizontal = true; // when this is false the ship is vertical
     public Image shipPicture;
     /*
         int length;
