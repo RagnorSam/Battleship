@@ -4,11 +4,20 @@ public class Square extends Button {
     private int x;
     private int y;
     private Boolean hasShip = false;
+    public int whichShip;
+
     private Boolean isHit = false;
+
+
+    public void setWhichShip(int ship){
+        this.whichShip = ship;
+    }
 
     Square(){
         this.setMinSize(30,30);
         this.setStyle("-fx-border-color: black");
+        this.setStyle("-fx-border-width: 1px");
+
     }
 
     Square(int x, int y) { //added for testing

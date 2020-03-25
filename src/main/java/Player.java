@@ -14,6 +14,7 @@ public class Player {
     String name;
     int count = 0;
     int shipNum = 0;
+    int shipsDead = 0;
     Ship[] fleet = new Ship[5];
     Map<ImageView, Integer> mapShips = new HashMap<>(); //To recognize which ship was clicked
 
@@ -53,8 +54,15 @@ public class Player {
                             if (s.hasShip()) {
                                 ta.appendText('\n' + "HIT!!");
                                 s.setStyle("-fx-background-color: red");
-                                //Implement the damage later
-                                //ship.hit();
+
+                                //get hit
+                                fleet[s.whichShip].hit();
+
+                                // Verify if fleet is defeated
+                                if(this.shipsDead >= 5) {
+                                    System.out.println("YOU Won");
+                                }
+
                             } else {
                                 ta.appendText('\n' + "miss");
                                 s.setStyle("-fx-background-color: grey");
@@ -186,6 +194,9 @@ public class Player {
                                         Background background = new Background(backgroundI);
                                         this.board.getRow(sq.getY())[sq.getX()+k].setHasShip(true);
                                         this.board.getRow(sq.getY())[sq.getX()+k].setBackground(background);
+
+                                        // assign Ship to the square
+                                        this.board.getRow(sq.getY())[sq.getX()+k].setWhichShip(setNum);
                                     }
                                     // vertical ship placement
                                     else {
@@ -197,6 +208,9 @@ public class Player {
                                         Background background = new Background(backgroundI);
                                         this.board.getCol(sq.getX())[sq.getY()+k].setHasShip(true);
                                         this.board.getCol(sq.getX())[sq.getY()+k].setBackground(background);
+
+                                        // assign Ship to the square
+                                        this.board.getCol(sq.getX())[sq.getY()+k].setWhichShip(setNum);
                                     }
                                 }
                                 if (count == 5) {
