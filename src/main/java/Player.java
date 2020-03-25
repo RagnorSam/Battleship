@@ -15,6 +15,7 @@ public class Player {
     int count = 0;
     int shipNum = 0;
     int shipsDead = 0;
+    Boolean isDead = false;
     Ship[] fleet = new Ship[5];
     Map<ImageView, Integer> mapShips = new HashMap<>(); //To recognize which ship was clicked
 
@@ -61,7 +62,9 @@ public class Player {
                                 // Verify if fleet is defeated
                                 if(this.shipsDead >= 5) {
                                     System.out.println("YOU Won");
+                                    this.isDead = true;
                                 }
+
 
                             } else {
                                 ta.appendText('\n' + "miss");
@@ -276,11 +279,14 @@ public class Player {
                         loc[i][0] = x + i;
                         loc[i][1] = y;
                         this.board.getRow(y)[x+i].setHasShip(true);
+                        this.board.getRow(y)[x+i].setWhichShip(s);
+
                     }
                     else{
                         loc[i][0] = x;
                         loc[i][1] = y + i;
                         this.board.getCol(x)[y+i].setHasShip(true);
+                        this.board.getCol(x)[y+i].setWhichShip(s);
                     }
                 }
                 shipInfo.put(s, loc);

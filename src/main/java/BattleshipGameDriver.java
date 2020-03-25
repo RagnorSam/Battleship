@@ -260,8 +260,9 @@ public class BattleshipGameDriver extends Application {
     public void playGame(){
         //Gameplay
         textAnnouncementPane.getChildren().get(5).setOnMouseClicked(e -> {
+            Boolean gameOver = false;
             //check if all ships were placed on the board
-            if(players[0].count >= 5 && players[1].count >= 5) {
+            if(players[0].count >= 5 && players[1].count >= 5 && !gameOver) {
                 gtimer.startTime(00);           //start timer after name has been entered
                 //remove the button
                 textAnnouncementPane.getChildren().get(5).setVisible(false);
@@ -269,57 +270,37 @@ public class BattleshipGameDriver extends Application {
                 textAnnouncementPane.getChildren().remove(0,6);
                 //Game starts
                 players[0].setTurn(true);
-                Boolean gameOver = false;
                 for(int i = 0; i < 200; i++){
                     players[0+(i%2)].attack(players[1-(i%2)],toServer,fromServer, ta);
-                    gameOver = checkWin(i);
-                    if(gameOver){
-                        if(i%2 == 0) {
-                            showGameOver(players[0].getName());
-                        }
-                        else{
-                            showGameOver(players[1].getName());
-                        }
-                    }
                 }
+
             }
         });
     }
-
-    //Check to see if player has won
-    public Boolean checkWin(int i){
-        Boolean check = true;
-        //Player 1 attacked last so check for win
-        if(i%2 == 0){
-            for(Ship s:players[1].fleet){
-                if(s.shipLives != 0){
-                    check = false;
-                    break;
-                }
-            }
+    public void check(Boolean gameOver){
+        if(players[0].shipsDead >= 5){
+            System.out.println("DEAD");
+            gameOver=true;
+            showGameOver(players[0].getName());
         }
-        //else check Player 2 for win
-        else{
-            for(Ship s:players[0].fleet){
-                if(s.shipLives != 0){
-                    check = false;
-                    break;
-                }
-            }
+        else if(players[1].shipsDead >= 5){
+            System.out.println("DEAD");
+            gameOver=true;
+            showGameOver(players[1].getName());
         }
-        return check;
     }
 
     public void showGameOver(String name){
+        System.out.println("eovkjwefknowrjeigfbwr");
         textAnnouncementPane.getChildren().removeAll();
         Label lbl = new Label("GAME OVER");
-        lbl.setFont(Font.font(30));
+        lbl.setFont(Font.font(20));
         Label lbl2 = new Label(name +" WINS");
         lbl2.setFont(Font.font(25));
-        textAnnouncementPane.getChildren().addAll(lbl,lbl2);
         Button exitGame = new Button("Exit Game");
         exitGame.setAlignment(Pos.CENTER);
-        mainPane.setCenter(exitGame);
+        textAnnouncementPane.getChildren().addAll(lbl,lbl2, exitGame);
+
         exitGame.setOnMouseClicked(e -> {
             Stage stage = (Stage) mainPane.getScene().getWindow();
             stage.close();
