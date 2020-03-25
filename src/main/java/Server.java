@@ -22,11 +22,13 @@ public class Server extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        /*
         Scene scene = new Scene(new ScrollPane(ta), 450, 200);
         primaryStage.setTitle("Server"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.show(); // Display the stage
         window = primaryStage; //testing
+        */
 
         new Thread( () -> {
             try {
