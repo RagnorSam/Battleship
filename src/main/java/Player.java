@@ -38,6 +38,27 @@ public class Player {
         fleet[4] = new Ship(this,5, "Boat5");
     }
 
+    // append message to BattleshipHistory.txt
+    public void Print(String message){
+        try {
+            // Create a file
+            File file = new File("BattleshipHistory.txt");
+            FileWriter fr = new FileWriter(file, true);
+            BufferedWriter br = new BufferedWriter(fr);
+            PrintWriter pr = new PrintWriter(br);
+            // Write formatted output to the file
+            pr.println(message);
+            // Close the file
+
+            pr.close();
+            br.close();
+            fr.close();
+
+        } catch (IOException ex) {
+            System.out.println("Failed to write to file");
+        }
+    }
+
     protected String getName() {
         return this.name;
     }
@@ -52,8 +73,10 @@ public class Player {
                                 return;
                             }
                             ta.appendText('\n' + this.name + " attacks " +s.getX() +" "+ s.getY());
+                            Print('\n' + this.name + " attacks " +s.getX() +" "+ s.getY());
                             if (s.hasShip()) {
                                 ta.appendText('\n' + "HIT!!");
+                                Print('\n' + "HIT!!");
                                 s.setStyle("-fx-background-color: red");
 
                                 //get hit
@@ -61,13 +84,15 @@ public class Player {
 
                                 // Verify if fleet is defeated
                                 if(this.shipsDead >= 5) {
-                                    System.out.println("YOU Won");
+                                    System.out.println("YOU Win");
                                     this.isDead = true;
+                                    Print("YOU WIN");
                                 }
 
 
                             } else {
                                 ta.appendText('\n' + "miss");
+                                Print('\n' + "MISS!!");
                                 s.setStyle("-fx-background-color: grey");
                             }
                             s.setIsHit(true);
@@ -89,13 +114,16 @@ public class Player {
                                 Square temp = board.board[serverAtkX][serverAtkY];
 
                                 ta.appendText('\n' + player2.getName() + " attacks");
+                                Print('\n' + player2.getName() + " attacks");
 
                                 //Check for hit
                                 if (temp.hasShip()) {
                                     ta.appendText('\n' + "Hit!!");
+                                    Print('\n' + "Hit!!");
                                     temp.setStyle("-fx-background-color: red");
                                 } else {
                                     ta.appendText('\n' + "miss");
+                                    Print('\n' + "miss");
                                     temp.setStyle("-fx-background-color: grey");
                                 }
                             } catch (IOException err) {
@@ -123,15 +151,20 @@ public class Player {
                 // get the ship that has been clicked
                 int setNum = mapShips.get(e.getTarget());
                 ta.appendText('\n' + "Ship " + setNum + " selected");
+                Print('\n' + "Ship " + setNum + " selected");
+
                 // set the isHorizontal for rotation
                 scene.setOnKeyPressed(ex -> {
                     if(ex.getCode() == KeyCode.R){
                         fleet[setNum].isHorizontal = !fleet[setNum].isHorizontal;
                         if(fleet[setNum].isHorizontal){
                             ta.appendText('\n' + "Horizontal");
+                            Print('\n' + "Horizontal");
                         }
                         else{
                             ta.appendText('\n' + "Vertical");
+                            Print('\n' + "Vertical");
+
                         }
                     }
                 });
@@ -146,6 +179,7 @@ public class Player {
                             // Check if clicked button has a ship already
                             if (sq.hasShip()) {
                                 ta.appendText('\n' + "Already has a ship on it");
+                                Print('\n' + "Already has a ship on it");
                                 return;
                             }
 
@@ -222,6 +256,7 @@ public class Player {
                                 this.count++;
                             } else {
                                 ta.appendText('\n' + "Your ships are set, ready up!");
+                                Print('\n' + "Your ships are set, ready up!");
                             }
                         });
                     }
@@ -295,10 +330,16 @@ public class Player {
         }
         for(Integer[][] i:shipInfo.values()) {
             System.out.println(i[0][0] + " " + i[0][1]);
+            Print(i[0][0] + " " + i[0][1]);
             System.out.println(i[1][0] + " " + i[1][1]);
+            Print(i[1][0] + " " + i[1][1]);
             System.out.println(i[2][0] + " " + i[2][1]);
+            Print(i[2][0] + " " + i[2][1]);
             System.out.println(i[3][0] + " " + i[3][1]);
+            Print(i[3][0] + " " + i[3][1]);
             System.out.println(i[4][0] + " " + i[4][1]);
+            Print(i[4][0] + " " + i[4][1]);
+
         }
     }
     public void setName(String name) {
