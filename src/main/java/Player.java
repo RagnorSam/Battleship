@@ -1,19 +1,8 @@
 import javafx.geometry.Side;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Skin;
-import javafx.scene.control.Skinnable;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -101,6 +90,7 @@ public class Player {
     }
 
     public void setShips(Scene scene, ImageView[] ships, GridPane pane) {
+        //map for ships
         for(ImageView s: ships){
             mapShips.put(s, shipNum);
             shipNum++;
@@ -130,15 +120,32 @@ public class Player {
                                 System.out.println(this.name + " ship #" + count + " set at square " + sq.getX() + " " + sq.getY());
                                 for(int k = 0; k < fleet[setNum].shipSize; k++){
                                     if(fleet[setNum].isHorizontal){
-                                        if(this.board.getRow(sq.getY())[sq.getX()+k].hasShip()){
-                                            System.out.println("Colliding");
+                                        try{
+                                            if(this.board.getRow(sq.getY())[sq.getX()+k].hasShip()){
+                                                if(k+sq.getX() > 9){
+                                                    return;
+                                                }
+                                                System.out.println("Colliding");
+                                                return;
+                                            }
+                                        }
+                                        catch(ArrayIndexOutOfBoundsException a){
+                                            System.out.println("Out Of Bounds");
                                             return;
-
                                         }
                                     }
                                     else{
-                                        if(this.board.getCol(sq.getX())[sq.getY()+k].hasShip()){
-                                            System.out.println("Collide");
+                                        try {
+                                            if (this.board.getCol(sq.getX())[sq.getY() + k].hasShip()) {
+                                                if (k + sq.getY() > 9) {
+                                                    return;
+                                                }
+                                                System.out.println("Collide");
+                                                return;
+                                            }
+                                        }
+                                        catch(ArrayIndexOutOfBoundsException a){
+                                            System.out.println("Out of Bounds");
                                             return;
                                         }
                                     }
