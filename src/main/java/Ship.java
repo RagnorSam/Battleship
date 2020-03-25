@@ -8,33 +8,10 @@ public class Ship {
     public boolean isSet;
     public int shipSize;
     public int shipLives;
-    public int[] shipLocation;
-    public int squareSize = 10;
     public boolean isAlive = true;
     public boolean isHorizontal = true; // when this is false the ship is vertical
     public Image shipPicture;
-    /*
-        int length;
-    boolean horizontal = false; // when this is false the ship is vertical
-    Image img;
-    int life;
-    String name;
-
-    Ship(int length, String name){
-        this.length = length;
-        this.name = name;
-        try {
-            this.img = new Image(new FileInputStream("Boat Pictures/" + name + ".png"),
-                    35*(length),35,false,true);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        this.life = length;
-    }
-
-     */
-
-
+    public Image shipPictureH;
 
     Ship(Player player, int shipSize, String name){
         this.player = player;
@@ -43,26 +20,14 @@ public class Ship {
         this.isSet = false;
         try {
             this.shipPicture = new Image(new FileInputStream("Boat Pictures/" + name + ".png"),
-                    35*(shipSize),35,false,true);
+                    30*(shipSize),30,false,true);
+            this.shipPictureH = new Image(new FileInputStream("Boat Pictures/" + name + " - Copy.png"),
+                    30,30*(shipSize),false,true);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public void setShipLocation(Ship ship){
-        if(this.isHorizontal==true){
-            for(int i = 0; i<this.shipSize; i++){
-                this.shipLocation[i] =1;
-            }
-        }
-        else{
-            for(int i = 0; i<this.shipSize; i++){
-                this.shipLocation[i] = 1;
-            }
-        }
-
-
-    }
 
     public boolean checkShipLives(Ship ship){
         if(this.shipLives <= 0){
