@@ -293,7 +293,7 @@ public class BattleshipGameDriver extends Application {
     }
 
     @Override
-    public void stop(){
+    public void stop() throws Exception{
         gtimer.stopTime(0);
         if (server != null) {
             server.stop();
