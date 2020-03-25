@@ -10,7 +10,7 @@ This is the game of battleship, with classic rules. There are no special require
 
 # Work distribution
 Nadir El Tahir - Github management, Readme, Multi-threaded timer
-Dimitri Yu - Core code base, Large portion of gamedriver code, ship and attack code
+Dimitri Yu - Core code, Large portion of gamedriver code, ship and attack code
 Sheldon Choo - Socket IO, server, AI code
 Sam Mirzad - Provided ship pictures, some ship code and some of the player class, ship rotation
 
