@@ -63,7 +63,7 @@ public class Player {
                             if (!turn) {
                                 return;
                             }
-                            ta.appendText('\n' + this.name + " attacks " + s.getX() + " " + s.getY());
+                            ta.appendText('\n' + this.name + " attacks (" + s.getX() + ", " + s.getY() + ")");
                             if (s.hasShip()) {
                                 ta.appendText('\n' + "HIT!!");
                                 s.setStyle("-fx-background-color: red");
@@ -98,7 +98,7 @@ public class Player {
                                 int serverAtkX = in.readInt();
                                 int serverAtkY = in.readInt();
                                 Square temp = board.board[serverAtkX][serverAtkY];
-                                ta.appendText('\n' + player2.getName() + " attacks");
+                                ta.appendText('\n' + player2.getName() + " attacks (" + s.getX() + ","+ s.getY() + ")");
 
                                 //Check for hit
                                 if (temp.hasShip()) {

@@ -52,7 +52,6 @@ public class BattleshipGameDriver extends Application {
 
     //The main menu
     public void mainMenu(Stage stage) throws Exception {
-
         BorderPane menuPane = new BorderPane();
         menuPane.setMinSize(400,400);
         VBox buttons = new VBox();
@@ -120,7 +119,7 @@ public class BattleshipGameDriver extends Application {
         mainPane.setMinSize(660,700);
         mainPane.setStyle("-fx-background-color: lightblue");
         leftPane.setStyle("-fx-background-color: Green");
-        rightPane.setStyle("-fx-background-color: Green");
+        rightPane.setStyle("-fx-background-color: lightblue");
 
         //midPane
         TextField nameField = new TextField();
@@ -271,8 +270,6 @@ public class BattleshipGameDriver extends Application {
                 //Game starts
                 players[0].setTurn(true);
                 players[0].attack(players[1],toServer,fromServer, ta, mainPane);
-                System.out.println("player1 is dead? " + players[0].isDead);
-                System.out.println("player2 is dead? " + players[1].isDead);
             }
         });
     }
