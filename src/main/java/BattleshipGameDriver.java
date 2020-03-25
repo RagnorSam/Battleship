@@ -270,22 +270,63 @@ public class BattleshipGameDriver extends Application {
                 textAnnouncementPane.getChildren().remove(0,6);
                 //Game starts
                 players[0].setTurn(true);
-                for(int i = 0; i < 200; i++){
-                    players[0+(i%2)].attack(players[1-(i%2)],toServer,fromServer, ta);
-                }
+                //for(int i = 0; i < 200; i++){
+                    //players[0+(i%2)].attack(players[1-(i%2)],toServer,fromServer, ta);
+                //}
+                //Create thread for attack method
+                Thread attackThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        players[0].attack(players[1],toServer,fromServer, ta);
+                        while(true) {
+                            if(players[0].isDead || players[1].isDead) {
+                                break;
+                            }
+                        }
+                    }
+                });
+                attackThread.start();
 
+                while(true) {
+                    if(!attackThread.isAlive()) {
+                        check();
+                        break;
+                    }
+                    System.out.println("waiting"); //delete
+                }
+                //players[0].attack(players[1],toServer,fromServer, ta);
+                //Check win condition
+                /*
+                Thread checkWinnerThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        int winner = 0;
+                        while(winner == 0) {
+                            winner = check();
+                        }
+                    }
+                });
+                try {
+                    checkWinnerThread.start();
+                    checkWinnerThread.join();
+                } catch(Exception err) {
+                    err.printStackTrace();
+                }
+                //System.out.println("game ended");
+
+                 */
             }
         });
     }
-    public void check(Boolean gameOver){
+    public void check() { //Boolean gameOver){
         if(players[0].shipsDead >= 5){
             System.out.println("DEAD");
-            gameOver=true;
+            //gameOver=true;
             showGameOver(players[0].getName());
         }
         else if(players[1].shipsDead >= 5){
             System.out.println("DEAD");
-            gameOver=true;
+            //gameOver=true;
             showGameOver(players[1].getName());
         }
     }
