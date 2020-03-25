@@ -67,7 +67,6 @@ public class BattleshipGameDriver extends Application {
         buttons.setSpacing(5);
         buttons.setAlignment(Pos.CENTER);
         Button host = new Button("Host Game");
-        Button join = new Button("Join Game");
 
         //Background image
         Image image = new Image(new FileInputStream("src/images/menu_image.jpg"));
@@ -77,7 +76,7 @@ public class BattleshipGameDriver extends Application {
         menuPane.setBackground(background);
 
         //Button functionality
-        buttons.getChildren().addAll(host,join);
+        buttons.getChildren().add(host);
         menuPane.setCenter(buttons);
         host.setOnAction(e -> {
             //Start server instance
@@ -88,12 +87,6 @@ public class BattleshipGameDriver extends Application {
             connect();
 
             System.out.println("Hosting game");
-            ((Node)(e.getSource())).getScene().getWindow().hide();
-            makeGameScreen();
-        });
-        join.setOnAction(e -> {
-            //Connect to server only
-            System.out.println("Join game");
             ((Node)(e.getSource())).getScene().getWindow().hide();
             makeGameScreen();
         });

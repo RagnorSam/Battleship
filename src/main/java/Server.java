@@ -70,10 +70,11 @@ public class Server extends Application {
         }).start();
     }
 
-    public void stop() {
+    public void stop() throws Exception{
         for(Thread i: threads) {
             i.stop();
         }
+        socket.close();
         window.close();
         System.exit(1);
     }
