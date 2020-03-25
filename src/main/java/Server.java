@@ -17,16 +17,14 @@ public class Server extends Application {
     private int clientNo = 0;
     Socket socket;
     ArrayList<Thread> threads = new ArrayList<Thread>();
-    Stage window = null;
 
     @Override
     public void start(Stage primaryStage) {
 
         Scene scene = new Scene(new ScrollPane(ta), 450, 200);
-        primaryStage.setTitle("Server"); // Set the stage title
-        primaryStage.setScene(scene); // Place the scene in the stage
-        primaryStage.show(); // Display the stage
-        window = primaryStage; //testing
+        primaryStage.setTitle("Server");
+        primaryStage.setScene(scene);
+        //primaryStage.show();
 
         new Thread( () -> {
             try {
@@ -76,8 +74,7 @@ public class Server extends Application {
         for(Thread i: threads) {
             i.stop();
         }
-        window.close();
-        System.exit(1);
+        System.exit(0);
     }
 
     // Define the thread class for handling new connection
