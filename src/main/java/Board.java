@@ -19,7 +19,14 @@ public class Board {
     public Square[] getRow(int row) {
         Square[] temp = new Square[this.size];
         for (int i = 0; i < this.size; i++) {
-            temp[i] = board[row][i];
+            temp[i] = board[i][row];
+        }
+        return temp;
+    }
+    public Square[] getCol(int col) {
+        Square[] temp = new Square[this.size];
+        for (int i = 0; i < this.size; i++) {
+            temp[i] = board[col][i];
         }
         return temp;
     }
