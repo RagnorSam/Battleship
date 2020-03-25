@@ -49,7 +49,7 @@ public class Player {
                             if (!turn) {
                                 return;
                             }
-                            ta.appendText('\n' + this.name + " attacks");
+                            ta.appendText('\n' + this.name + " attacks " +s.getX() +" "+ s.getY());
                             if (s.hasShip()) {
                                 ta.appendText('\n' + "HIT!!");
                                 s.setStyle("-fx-background-color: red");
@@ -99,7 +99,7 @@ public class Player {
         }
     }
 
-    public void setShips(Scene scene, ImageView[] ships, GridPane pane, TextArea ta) {
+    public void setShips(Scene scene, ImageView[] ships, TextArea ta) {
         // place the ships imageview in map
         for(ImageView s: ships){
             mapShips.put(s, shipNum);
@@ -212,7 +212,75 @@ public class Player {
             });
         }
     }
-
+    public void setAIShips() {
+        int[] shipSizes = {2,3,3,4,5};          //array of sizes of each ship
+        Map<Integer,Integer[][]> shipInfo = new HashMap<>();
+        Integer loc[][];
+        Boolean flag;
+        for(int s = 0; s < 5; s++) {
+            flag = true;
+            int x = (int) (Math.random()*10);       //generate x
+            int y = (int) (Math.random()*10);       //generate y
+            int horiz = (int) (Math.random()*2);    //generate horizontal
+            loc = new Integer[5][2];
+            System.out.println("ship: " + s + " horizontal: " + horiz);
+            for (int i = 0; i < shipSizes[s]; i++) {
+                //check for collision
+                if (horiz == 0) {
+                    try {
+                        if (this.board.getRow(y)[x + i].hasShip()) {
+                            System.out.println("Has Ship: x = " + x);
+                            s--;
+                            flag = false;
+                            break;
+                        }
+                    } catch (ArrayIndexOutOfBoundsException l) {
+                        System.out.println("Out of Bounds: x = " + x);
+                        s--;
+                        flag = false;
+                        break;
+                    }
+                } else if (horiz == 1) {
+                    try {
+                        if (this.board.getCol(x)[y + i].hasShip()) {
+                            System.out.println("Has Ship: y = " + y);
+                            s--;
+                            flag = false;
+                            break;
+                        }
+                    } catch (ArrayIndexOutOfBoundsException l) {
+                        System.out.println("Out of Bounds: y = " + y);
+                        s--;
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            if(flag){
+                for(int i = 0; i < shipSizes[s]; i++){
+                    if(horiz == 0){
+                        loc[i][0] = x + i;
+                        loc[i][1] = y;
+                        this.board.getRow(y)[x+i].setHasShip(true);
+                    }
+                    else{
+                        loc[i][0] = x;
+                        loc[i][1] = y + i;
+                        this.board.getCol(x)[y+i].setHasShip(true);
+                    }
+                }
+                shipInfo.put(s, loc);
+                count++;
+            }
+        }
+        for(Integer[][] i:shipInfo.values()) {
+            System.out.println(i[0][0] + " " + i[0][1]);
+            System.out.println(i[1][0] + " " + i[1][1]);
+            System.out.println(i[2][0] + " " + i[2][1]);
+            System.out.println(i[3][0] + " " + i[3][1]);
+            System.out.println(i[4][0] + " " + i[4][1]);
+        }
+    }
     public void setName(String name) {
         this.name = name;
     }

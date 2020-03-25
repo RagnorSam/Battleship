@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.net.Socket;
 import java.io.FileInputStream;
+import java.util.Map;
 
 
 public class BattleshipGameDriver extends Application {
@@ -248,8 +249,10 @@ public class BattleshipGameDriver extends Application {
             }
         }
 
-        players[0].setShips(mainPane.getScene(), myShips, myGridPane, ta);
-        players[1].setShips(mainPane.getScene(), enemyShips, enemyGridPane, ta);
+        players[0].setShips(mainPane.getScene(), myShips, ta);
+
+        //ai sets their own board
+        players[1].setAIShips();
 
         playGame();
     }
