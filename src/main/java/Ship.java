@@ -4,6 +4,22 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class Ship {
+
+//                // beginning of file IO
+//                java.io.File file = new java.io.File("BattleshipHistory.txt");
+//                // Create a file
+//                java.io.PrintWriter output = new java.io.PrintWriter(file);
+//                // Write formatted output to the file
+//                output.print("soesdensJohn T Smith ");
+//                output.println(90);
+//                output.print("Eric K Jones ");
+//                output.println(85);
+//
+//                // Close the file
+//                output.close();
+//
+//                // end of fileIO
+
     Player player;
     public boolean isSet;
     public int shipSize;
@@ -18,6 +34,7 @@ public class Ship {
         this.shipSize = shipSize;
         this.shipLives = shipSize;
         this.isSet = false;
+
         try {
             this.shipPicture = new Image(new FileInputStream("Boat Pictures/" + name + ".png"),
                     30*(shipSize),30,false,true);
@@ -29,16 +46,22 @@ public class Ship {
     }
 
 
-    public boolean checkShipLives(Ship ship){
-        if(this.shipLives <= 0){
-            isAlive = false;
-            return false;
-        }
-        return true;
-    }
-
     public void hit(){
-        this.shipLives--;
+        shipLives--;
+        System.out.println("life reduced to");
+
+        System.out.println(shipLives);
+
+        if(shipLives == 0){
+            System.out.println("ship is dead");
+            isAlive = false;
+            player.shipsDead++;
+
+        }
+        else {
+            isAlive = true;
+            System.out.println("ship is not dead");
+        }
     }
 }
 

@@ -7,52 +7,41 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.control.*;
-
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-
-import javax.swing.*;
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.FileInputStream;
+import java.util.Map;
 
 
 public class BattleshipGameDriver extends Application {
-    BorderPane mainPane = new BorderPane();    //Main game pane
-    BorderPane leftPane = new BorderPane();    //Timer, Announcement, Move History
-    BorderPane midPane = new BorderPane();     //Display of both Boards
-    VBox rightPane = new VBox();         //Display ships' status for both players
-    GridPane enemyGridPane = new GridPane();
-    GridPane myGridPane = new GridPane();
+    //Panes to be used
+    BorderPane mainPane = new BorderPane();     //Parent/root pane
+    BorderPane leftPane = new BorderPane();     //Timer, Announcement, Move History
+    BorderPane midPane = new BorderPane();      //Display of both Boards
+    BorderPane rightPane = new BorderPane();    //Display ships' status for both players
+    VBox textAnnouncementPane = new VBox();     //Display in game announcements(ie. whose turn, attack hit/miss)
+    TextArea ta = new TextArea();
+    //Players
     Player[] players = new Player[2];
-    GameTimer gtimer = new GameTimer();
-    VBox textAnnouncementPane;
-    Label textAnnouncement;
     ImageView[] myShips;
     ImageView[] enemyShips;
-    VBox enemyVbox = new VBox();
-    VBox myVbox = new VBox();
-    Scene scene;
-
+    //Timer
+    GameTimer gtimer = new GameTimer();
     //IO streams
     DataOutputStream toServer = null;
     DataInputStream fromServer = null;
-    Server server = null; //server for the game
+    Server server = null;                  //server for the game
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -61,6 +50,7 @@ public class BattleshipGameDriver extends Application {
 
     //The main menu
     public void mainMenu(Stage stage) throws Exception {
+
         BorderPane menuPane = new BorderPane();
         menuPane.setMinSize(400,400);
         VBox buttons = new VBox();
@@ -98,7 +88,7 @@ public class BattleshipGameDriver extends Application {
             makeGameScreen();
         });
 
-        scene = new Scene(menuPane);
+        Scene scene = new Scene(menuPane);
         stage.setScene(scene);
         stage.show();
     }
@@ -122,9 +112,10 @@ public class BattleshipGameDriver extends Application {
 
     //create the "starting screen"
     private void makeGameScreen() {
+        //initialize players
         players[0] = new Player();
         players[1] = new Player("player 2");
-        mainPane.setMinSize(700, 750);
+        mainPane.setMinSize(660,700);
         mainPane.setStyle("-fx-background-color: lightblue");
         leftPane.setStyle("-fx-background-color: Green");
         rightPane.setStyle("-fx-background-color: Green");
@@ -134,25 +125,25 @@ public class BattleshipGameDriver extends Application {
         VBox text = new VBox(new Label("Enter your name"), nameField);
         Button enterName = new Button("Enter");
         text.getChildren().add(enterName);
+
         StackPane inputName = new StackPane(text);
+        inputName.setAlignment(Pos.CENTER);
         midPane.setCenter(inputName);
+        mainPane.setCenter(midPane);
 
         enterName.setOnMouseClicked(e -> {
             players[0].setName(nameField.getText());
-            gtimer.startTime(00);//start timer after name has been entered
             displayBoard();
         });
         nameField.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.ENTER){
                 players[0].setName(nameField.getText());
-                gtimer.startTime(00);//start timer after name has been entered
                 displayBoard();
             }
         });
 
-        mainPane.setCenter(midPane);
-
         //leftPane
+        leftPane.setMaxWidth(170);
         StackPane timerPane = new StackPane();
         timerPane.setStyle("-fx-border-color: black");
         Label timer = new Label(gtimer.getTotalTime().get());
@@ -165,23 +156,24 @@ public class BattleshipGameDriver extends Application {
         timerPane.getChildren().add(timer);
         leftPane.setTop(timerPane);
 
-        textAnnouncementPane = new VBox();
-        textAnnouncementPane.setStyle("-fx-border-color: black");
-        textAnnouncementPane.setAlignment(Pos.CENTER);
-        textAnnouncement = new Label("Text Announcement here");
-        textAnnouncementPane.getChildren().add(textAnnouncement);
-        leftPane.setCenter(textAnnouncementPane);
-
-        ScrollPane historyPane = new ScrollPane();
+        ta.setMaxWidth(leftPane.getMaxWidth());
+        ScrollPane historyPane = new ScrollPane(ta);
+        historyPane.setMaxWidth(leftPane.getMaxWidth());
         historyPane.setStyle("-fx-border-color: black");
         leftPane.setBottom(historyPane);
         mainPane.setLeft(leftPane);
 
         //rightPane
+        VBox enemyVbox = new VBox();            //to hold the images for enemy ships
+        VBox myVbox = new VBox();               //to hold the images for my ships
+        mainPane.setRight(rightPane);
+        rightPane.setTop(enemyVbox);
+        rightPane.setBottom(myVbox);
         enemyVbox.setStyle("-fx-border-color: black");
         enemyVbox.setAlignment(Pos.TOP_LEFT);
-        enemyVbox.setSpacing(35);
+        enemyVbox.setSpacing(10);
         enemyVbox.setPadding(new Insets(5,5,5,5));
+        enemyVbox.setPrefHeight(304);
         myShips = new ImageView[5];
         enemyShips = new ImageView[5];
         int count = 0;
@@ -194,14 +186,11 @@ public class BattleshipGameDriver extends Application {
             count++;
         }
         count = 0;
-        rightPane.getChildren().add(enemyVbox);
-        HBox border = new HBox(new Label(""));
-        border.setStyle("-fx-background-color: black");
-        rightPane.getChildren().add(border);
-        rightPane.getChildren().add(myVbox);
+        myVbox.setStyle("-fx-border-color: black");
         myVbox.setAlignment(Pos.TOP_LEFT);
-        myVbox.setSpacing(35);
+        myVbox.setSpacing(20);
         myVbox.setPadding(new Insets(5,5,5,5));
+        myVbox.setPrefHeight(304);
         for(Ship s: players[0].fleet){
             //Load image
             ImageView imgs = new ImageView(s.shipPicture);
@@ -210,11 +199,12 @@ public class BattleshipGameDriver extends Application {
             myVbox.getChildren().add(imgs);
             count++;
         }
-
-        mainPane.setRight(rightPane);
+        HBox border = new HBox(new Label(""));
+        border.setStyle("-fx-background-color: black");
+        rightPane.setCenter(border);
 
         //Create new window
-        scene = new Scene(mainPane);
+        Scene scene = new Scene(mainPane);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Battleship");
@@ -223,14 +213,35 @@ public class BattleshipGameDriver extends Application {
 
     //show your board and enemy's board
     private void displayBoard() {
+        //clear the mid pane
+        midPane.getChildren().removeAll();
+        //create my board and enemy board
+        GridPane enemyGridPane = new GridPane();
+        GridPane myGridPane = new GridPane();
         enemyGridPane.setGridLinesVisible(true);
         enemyGridPane.setAlignment(Pos.CENTER);
         myGridPane.setGridLinesVisible(true);
         myGridPane.setAlignment(Pos.CENTER);
-        midPane.getChildren().removeAll();
-        HBox border = new HBox(new Label(""));
+
+        textAnnouncementPane.setAlignment(Pos.CENTER);
+        Label lbl = new Label("Set your ships by choosing");
+        lbl.setStyle("-fx-stroke-color: white; -fx-font-weight: bold");
+        Label lbl2 = new Label("one, then choose a spot to");
+        lbl2.setStyle("-fx-stroke-color: white; -fx-font-weight: bold");
+        Label lbl3 = new Label("place your ship. When your");
+        lbl3.setStyle("-fx-stroke-color: white; -fx-font-weight: bold");
+        Label lbl4 = new Label("done ready up!");
+        lbl4.setStyle("-fx-stroke-color: white; -fx-font-weight: bold");
+        Label lbl5 = new Label("Press R to rotate.");
+        lbl5.setStyle("-fx-stroke-color: white; -fx-font-weight: bold");
+        Button bt = new Button("READY");
+        textAnnouncementPane.getChildren().addAll(lbl,lbl2,lbl3,lbl4,lbl5,bt);
+        leftPane.setCenter(textAnnouncementPane);
+        HBox border = new HBox();
         border.setStyle("-fx-background-color: black");
         midPane.setCenter(border);
+        midPane.setTop(enemyGridPane);
+        midPane.setBottom(myGridPane);
 
         for (int i = 0; i < 10; i++) {
             for (int k = 0; k < 10; k++) {
@@ -238,65 +249,62 @@ public class BattleshipGameDriver extends Application {
                 myGridPane.add(players[0].board.board[i][k], i, k);
             }
         }
-        midPane.setTop(enemyGridPane);
-        midPane.setBottom(myGridPane);
 
-        setPlayersShips();
+        players[0].setShips(mainPane.getScene(), myShips, ta);
+
+        //ai sets their own board
+        players[1].setAIShips();
+
+        playGame();
     }
-
-    public void setPlayersShips(){
-        textAnnouncementPane.getChildren().removeAll();
-        players[0].setShips(scene, myShips, myGridPane);
-        players[1].setShips(scene, enemyShips, enemyGridPane);
-        Button bt = new Button("READY");
-        textAnnouncementPane.getChildren().add(bt);
-        bt.setOnMouseClicked(e -> {
-            if(players[0].count >= 5 && players[1].count >= 5) {
-                bt.setVisible(false);
-                bt.setStyle("-fx-background-color: red");
+    public void playGame(){
+        //Gameplay
+        textAnnouncementPane.getChildren().get(5).setOnMouseClicked(e -> {
+            Boolean gameOver = false;
+            //check if all ships were placed on the board
+            if(players[0].count >= 5 && players[1].count >= 5 && !gameOver) {
+                gtimer.startTime(00);           //start timer after name has been entered
+                //remove the button
+                textAnnouncementPane.getChildren().get(5).setVisible(false);
+                textAnnouncementPane.getChildren().get(5).setStyle("-fx-background-color: red");
+                textAnnouncementPane.getChildren().remove(0,6);
+                //Game starts
                 players[0].setTurn(true);
-                textAnnouncementPane.getChildren().removeAll();
-                Boolean gameOver = false;
-                for(int i =0; i < 200; i++){
-                    players[0+(i%2)].attack(players[1-(i%2)],toServer,fromServer);
-                    gameOver = checkWin(i);
-                    if(gameOver){
-                        //gameOver Screen
-                        showGameOver();
-                    }
+                for(int i = 0; i < 200; i++){
+                    players[0+(i%2)].attack(players[1-(i%2)],toServer,fromServer, ta);
                 }
+
             }
         });
     }
-
-    public Boolean checkWin(int i){
-        Boolean check = true;
-        //Player 1 attacked last so check for win
-        if(i%2 == 0){
-            for(Ship s:players[1].fleet){
-                if(s.shipLives != 0){
-                    check = false;
-                    break;
-                }
-            }
+    public void check(Boolean gameOver){
+        if(players[0].shipsDead >= 5){
+            System.out.println("DEAD");
+            gameOver=true;
+            showGameOver(players[0].getName());
         }
-        //else check Player 2 for win
-        else{
-            for(Ship s:players[0].fleet){
-                if(s.shipLives != 0){
-                    check = false;
-                    break;
-                }
-            }
+        else if(players[1].shipsDead >= 5){
+            System.out.println("DEAD");
+            gameOver=true;
+            showGameOver(players[1].getName());
         }
-        return check;
     }
 
-    public void showGameOver(){
+    public void showGameOver(String name){
+        System.out.println("eovkjwefknowrjeigfbwr");
         textAnnouncementPane.getChildren().removeAll();
-        Label lbl = new Label("Game \n Over");
-        lbl.setFont(Font.font(30));
-        textAnnouncementPane.getChildren().add(lbl);
+        Label lbl = new Label("GAME OVER");
+        lbl.setFont(Font.font(20));
+        Label lbl2 = new Label(name +" WINS");
+        lbl2.setFont(Font.font(25));
+        Button exitGame = new Button("Exit Game");
+        exitGame.setAlignment(Pos.CENTER);
+        textAnnouncementPane.getChildren().addAll(lbl,lbl2, exitGame);
+
+        exitGame.setOnMouseClicked(e -> {
+            Stage stage = (Stage) mainPane.getScene().getWindow();
+            stage.close();
+        });
     }
 
     @Override
