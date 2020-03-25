@@ -287,6 +287,7 @@ public class BattleshipGameDriver extends Application {
 
     //Check to see if player has won
     public Boolean checkWin(int i){
+        System.out.println("HI");
         Boolean check = true;
         //Player 1 attacked last so check for win
         if(i%2 == 0){
