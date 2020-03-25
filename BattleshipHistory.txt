@@ -1,0 +1,680 @@
+
+asdsd attacks 2 5
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+asdsd attacks 4 6
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+asdsd attacks 3 5
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+asdsd attacks 3 6
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+asdsd attacks 1 6
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+asdsd attacks 1 5
+
+MISS!!
+
+player 2 attacks
+
+Hit!!
+
+asdsd attacks 2 4
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+asdsd attacks 2 6
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+asdsd attacks 2 3
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+asdsd attacks 2 2
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+asdsd attacks 5 6
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+asdsd attacks 6 6
+
+HIT!!
+
+player 2 attacks
+
+miss
+2 8
+2 9
+null null
+null null
+null null
+4 2
+5 2
+6 2
+null null
+null null
+9 3
+9 4
+9 5
+null null
+null null
+3 6
+4 6
+5 6
+6 6
+null null
+4 4
+5 4
+6 4
+7 4
+8 4
+
+Ship 0 selected
+
+Ship 1 selected
+
+Ship 2 selected
+
+Vertical
+
+Ship 3 selected
+
+Ship 4 selected
+
+Vertical
+
+Sam attacks 0 0
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 2 1
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 4 4
+
+HIT!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 5 6
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 7 7
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 5 7
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 4 7
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 5 5
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 3 6
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 3 4
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 4 6
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 6 6
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 5 4
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 6 4
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 7 4
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 8 4
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 9 4
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 9 7
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 9 8
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 8 9
+
+MISS!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 6 9
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 3 9
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 5 8
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 7 8
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 1 9
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 0 7
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 2 5
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 0 4
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 1 7
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 3 8
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 1 8
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 2 7
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 2 2
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 4 2
+
+HIT!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 6 2
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 7 2
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 5 2
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 7 1
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 9 0
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 9 2
+
+MISS!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 5 1
+
+MISS!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 4 0
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 3 2
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 4 3
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 6 3
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 7 3
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 8 3
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 2 3
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 1 3
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 1 1
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 1 5
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 8 5
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 8 6
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 8 7
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 1 6
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 0 2
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 2 0
+
+MISS!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 6 0
+
+MISS!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 8 1
+
+MISS!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 4 9
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 9 5
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 9 6
+
+MISS!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 9 3
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 7 6
+
+MISS!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 3 5
+
+MISS!!
+
+player 2 attacks
+
+Hit!!
+
+Sam attacks 2 6
+
+MISS!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 2 8
+
+HIT!!
+
+player 2 attacks
+
+miss
+
+Sam attacks 2 9
+
+HIT!!
+YOU Won
+
+player 2 attacks
+
+miss
