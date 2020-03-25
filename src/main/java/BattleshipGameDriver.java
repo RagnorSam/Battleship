@@ -13,17 +13,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import javax.print.attribute.standard.DateTimeAtCompleted;
 import java.io.*;
 import java.net.Socket;
 import java.io.FileInputStream;
-import java.util.Map;
 
 
 public class BattleshipGameDriver extends Application {
@@ -57,8 +50,7 @@ public class BattleshipGameDriver extends Application {
         VBox buttons = new VBox();
         buttons.setSpacing(5);
         buttons.setAlignment(Pos.CENTER);
-        Button host = new Button("Host Game");
-        Button join = new Button("Join Game");
+        Button play = new Button("Play Game");
 
         //Background image
         Image image = new Image(new FileInputStream("src/images/menu_image.jpg"));
@@ -68,9 +60,9 @@ public class BattleshipGameDriver extends Application {
         menuPane.setBackground(background);
 
         //Button functionality
-        buttons.getChildren().addAll(host,join);
+        buttons.getChildren().addAll(play);
         menuPane.setCenter(buttons);
-        host.setOnAction(e -> {
+        play.setOnAction(e -> {
             //Start server instance
             server = new Server();
             server.start(new Stage());
@@ -78,13 +70,7 @@ public class BattleshipGameDriver extends Application {
             //Connect to server
             connect();
 
-            System.out.println("Hosting game");
-            ((Node)(e.getSource())).getScene().getWindow().hide();
-            makeGameScreen();
-        });
-        join.setOnAction(e -> {
-            //Connect to server only
-            System.out.println("Join game");
+            System.out.println("playing game");
             ((Node)(e.getSource())).getScene().getWindow().hide();
             makeGameScreen();
         });
@@ -98,7 +84,7 @@ public class BattleshipGameDriver extends Application {
     public void connect() {
         try {
             //Create a socket to connect to the server
-            //Change host to be address
+            //Change play to be address
             Socket socket = new Socket("localhost", 8000);
 
             //Create an input stream to receive data to the server
@@ -126,7 +112,6 @@ public class BattleshipGameDriver extends Application {
         VBox text = new VBox(new Label("Enter your name"), nameField);
         Button enterName = new Button("Enter");
         text.getChildren().add(enterName);
-
         StackPane inputName = new StackPane(text);
         inputName.setAlignment(Pos.CENTER);
         midPane.setCenter(inputName);
