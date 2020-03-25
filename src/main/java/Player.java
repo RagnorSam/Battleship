@@ -1,9 +1,15 @@
+import javafx.geometry.Pos;
 import javafx.geometry.Side;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,30 +48,35 @@ public class Player {
         return this.name;
     }
 
-    public void attack(Player player2, DataOutputStream out, DataInputStream in, TextArea ta) {
+    public void attack(Square target){
+
+    }
+
+    public void attack(Player player2, DataOutputStream out, DataInputStream in, TextArea ta, BorderPane mainPane) {
+        VBox pane = new VBox();
+        pane.setAlignment(Pos.CENTER);
         for (int i = 0; i < this.board.size(); i++) {
             for (Square s : player2.board.getRow(i)) {
                 s.setOnMouseClicked(e -> {
-                    if(!s.getIsHit()) { //stop player from clicking buttons that are already pressed
+                    if (!s.getIsHit()) { //stop player from clicking buttons that are already pressed
                         if (count >= 5) {
                             if (!turn) {
                                 return;
                             }
-                            ta.appendText('\n' + this.name + " attacks " +s.getX() +" "+ s.getY());
+                            ta.appendText('\n' + this.name + " attacks " + s.getX() + " " + s.getY());
                             if (s.hasShip()) {
                                 ta.appendText('\n' + "HIT!!");
                                 s.setStyle("-fx-background-color: red");
-
                                 //get hit
-                                fleet[s.whichShip].hit();
-
+                                player2.fleet[s.whichShip].hit();
                                 // Verify if fleet is defeated
-                                if(this.shipsDead >= 5) {
+                                if (player2.shipsDead >= 5) {
+                                    mainPane.setCenter(pane);
                                     System.out.println("YOU Won");
-                                    this.isDead = true;
+                                    pane.getChildren().add(new Label ("YOU WIN"));
+                                    printWin(pane);
+                                    return;
                                 }
-
-
                             } else {
                                 ta.appendText('\n' + "miss");
                                 s.setStyle("-fx-background-color: grey");
@@ -87,13 +98,21 @@ public class Player {
                                 int serverAtkX = in.readInt();
                                 int serverAtkY = in.readInt();
                                 Square temp = board.board[serverAtkX][serverAtkY];
-
                                 ta.appendText('\n' + player2.getName() + " attacks");
 
                                 //Check for hit
                                 if (temp.hasShip()) {
                                     ta.appendText('\n' + "Hit!!");
                                     temp.setStyle("-fx-background-color: red");
+                                    //get hit
+                                    this.fleet[s.whichShip].hit();
+                                    // Verify if fleet is defeated
+                                    if (this.shipsDead >= 5) {
+                                        mainPane.setCenter(pane);
+                                        pane.getChildren().add(new Label("YOU LOSE"));
+                                        printWin(pane);
+                                        return;
+                                    }
                                 } else {
                                     ta.appendText('\n' + "miss");
                                     temp.setStyle("-fx-background-color: grey");
@@ -105,6 +124,7 @@ public class Player {
                             ta.appendText('\n' + this.name + " Fix Your Ships!");
                         }
                     }
+
                 });
             }
         }
@@ -301,6 +321,18 @@ public class Player {
             System.out.println(i[4][0] + " " + i[4][1]);
         }
     }
+
+    public void printWin(VBox pane){
+        Button exitGame = new Button("Exit Game");
+        exitGame.setAlignment(Pos.CENTER);
+        pane.getChildren().add(exitGame);
+
+        exitGame.setOnMouseClicked(e -> {
+            Stage stage = (Stage) pane.getScene().getWindow();
+            stage.close();
+        });
+    }
+
     public void setName(String name) {
         this.name = name;
     }

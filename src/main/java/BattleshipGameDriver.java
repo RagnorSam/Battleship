@@ -18,6 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
 import java.io.*;
 import java.net.Socket;
 import java.io.FileInputStream;
@@ -257,53 +259,21 @@ public class BattleshipGameDriver extends Application {
 
         playGame();
     }
+    Boolean gameOver = false;
     public void playGame(){
-        //Gameplay
         textAnnouncementPane.getChildren().get(5).setOnMouseClicked(e -> {
-            Boolean gameOver = false;
             //check if all ships were placed on the board
             if(players[0].count >= 5 && players[1].count >= 5 && !gameOver) {
                 gtimer.startTime(00);           //start timer after name has been entered
-                //remove the button
                 textAnnouncementPane.getChildren().get(5).setVisible(false);
                 textAnnouncementPane.getChildren().get(5).setStyle("-fx-background-color: red");
                 textAnnouncementPane.getChildren().remove(0,6);
                 //Game starts
                 players[0].setTurn(true);
-                for(int i = 0; i < 200; i++){
-                    players[0+(i%2)].attack(players[1-(i%2)],toServer,fromServer, ta);
-                }
-
+                players[0].attack(players[1],toServer,fromServer, ta, mainPane);
+                System.out.println("player1 is dead? " + players[0].isDead);
+                System.out.println("player2 is dead? " + players[1].isDead);
             }
-        });
-    }
-    public void check(Boolean gameOver){
-        if(players[0].shipsDead >= 5){
-            System.out.println("DEAD");
-            gameOver=true;
-            showGameOver(players[0].getName());
-        }
-        else if(players[1].shipsDead >= 5){
-            System.out.println("DEAD");
-            gameOver=true;
-            showGameOver(players[1].getName());
-        }
-    }
-
-    public void showGameOver(String name){
-        System.out.println("eovkjwefknowrjeigfbwr");
-        textAnnouncementPane.getChildren().removeAll();
-        Label lbl = new Label("GAME OVER");
-        lbl.setFont(Font.font(20));
-        Label lbl2 = new Label(name +" WINS");
-        lbl2.setFont(Font.font(25));
-        Button exitGame = new Button("Exit Game");
-        exitGame.setAlignment(Pos.CENTER);
-        textAnnouncementPane.getChildren().addAll(lbl,lbl2, exitGame);
-
-        exitGame.setOnMouseClicked(e -> {
-            Stage stage = (Stage) mainPane.getScene().getWindow();
-            stage.close();
         });
     }
 
