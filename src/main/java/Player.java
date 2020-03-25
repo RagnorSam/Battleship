@@ -14,7 +14,7 @@ public class Player {
     int count = 0;
     int shipNum = 0;
     Ship[] fleet = new Ship[5];
-    Map<ImageView, Integer> mapShips = new HashMap<>();
+    Map<ImageView, Integer> mapShips = new HashMap<>(); //To recognize which ship was clicked
 
     Player() {
         this.board = new Board();
@@ -52,6 +52,8 @@ public class Player {
                             if (s.hasShip()) {
                                 System.out.println("HIT!!");
                                 s.setStyle("-fx-background-color: red");
+                                //Implement the damage later
+                                //ship.hit();
                             } else {
                                 s.setStyle("-fx-background-color: grey");
                             }
@@ -93,7 +95,7 @@ public class Player {
     }
 
     public void setShips(Scene scene, ImageView[] ships, GridPane pane) {
-        //map for ships
+        // place the ships imageview in map
         for(ImageView s: ships){
             mapShips.put(s, shipNum);
             shipNum++;
@@ -102,15 +104,19 @@ public class Player {
         System.out.println(mapShips.get(ships[0]));
         for(ImageView s: ships){
             s.setOnMouseClicked(e -> {
+                // get the ship that has been clicked
                 int setNum = mapShips.get(e.getTarget());
+                // set the isHorizontal for rotation
                 scene.setOnKeyPressed(ex -> {
                     if(ex.getCode() == KeyCode.R){
                         fleet[setNum].isHorizontal = !fleet[setNum].isHorizontal;
                     }
                 });
+                // Iterate over the board
                 for (int i = 0; i < this.board.size(); i++) {
                     for (Square sq : this.board.getRow(i)) {
                         sq.setOnMouseClicked(ex -> {
+                            // Check if clicked button has a ship already
                             if (sq.hasShip()) {
                                 System.out.println("Already has a ship on it");
                                 return;
@@ -119,15 +125,15 @@ public class Player {
                             if(fleet[setNum].isSet){
                                 return;
                             }
+                            // Check if you have set all 5 ships
                             if (count < 5) {
-                                System.out.println(this.name + " ship #" + count + " set at square " + sq.getX() + " " + sq.getY());
+                                //Check to see if the location has an error
                                 for(int k = 0; k < fleet[setNum].shipSize; k++){
                                     if(fleet[setNum].isHorizontal){
+                                        //The try is to see if the ship will be placed outside of the board
                                         try{
+                                            //This is to see if the ship is placed on top of another
                                             if(this.board.getRow(sq.getY())[sq.getX()+k].hasShip()){
-                                                if(k+sq.getX() > 9){
-                                                    return;
-                                                }
                                                 System.out.println("Colliding");
                                                 return;
                                             }
@@ -138,11 +144,10 @@ public class Player {
                                         }
                                     }
                                     else{
+                                        //The try is to see if the ship will be placed outside of the board
                                         try {
+                                            //This is to see if the ship is placed on top of another
                                             if (this.board.getCol(sq.getX())[sq.getY() + k].hasShip()) {
-                                                if (k + sq.getY() > 9) {
-                                                    return;
-                                                }
                                                 System.out.println("Collide");
                                                 return;
                                             }
@@ -153,24 +158,31 @@ public class Player {
                                         }
                                     }
                                 }
+
+                                System.out.println(this.name + " ship #" + count + " set at square "
+                                        + sq.getX() + " " + sq.getY());
                                 fleet[setNum].isSet = !fleet[setNum].isSet;
 
+                                //Load the ship Image as Background in the buttons
                                 for(int k = 0; k < fleet[setNum].shipSize; k++){
-                                    double db = (k+1)/(double)fleet[setNum].shipSize;
-                                    System.out.println(db);
+                                    //horizontal ship placement
                                     if(fleet[setNum].isHorizontal){
-                                        BackgroundImage backgroundI = new BackgroundImage(fleet[setNum].shipPicture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-                                                new BackgroundPosition(Side.LEFT, db,true,Side.BOTTOM,0.5,true),
+                                        BackgroundImage backgroundI = new BackgroundImage(fleet[setNum].shipPicture,
+                                                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                                                new BackgroundPosition(Side.LEFT, 0 -(30*k),false,
+                                                        Side.BOTTOM,0.5,true),
                                                 BackgroundSize.DEFAULT);
                                         Background background = new Background(backgroundI);
                                         this.board.getRow(sq.getY())[sq.getX()+k].setShip(true);
                                         this.board.getRow(sq.getY())[sq.getX()+k].setBackground(background);
                                         System.out.println("hello");
-                                    }else {
-                                        //This is for vertical ship placement
-                                        //Needs a vertical picture for background to work
-                                        BackgroundImage backgroundI = new BackgroundImage(fleet[setNum].shipPicture, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-                                                new BackgroundPosition(Side.LEFT, db,true,Side.BOTTOM,0.5,true),
+                                    }
+                                    // vertical ship placement
+                                    else {
+                                        BackgroundImage backgroundI = new BackgroundImage(fleet[setNum].shipPictureH,
+                                                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                                                new BackgroundPosition(Side.RIGHT, 0.5,true,
+                                                        Side.TOP, 0 -(k*30),false),
                                                 BackgroundSize.DEFAULT);
                                         Background background = new Background(backgroundI);
                                         this.board.getCol(sq.getX())[sq.getY()+k].setShip(true);
@@ -178,7 +190,6 @@ public class Player {
                                         System.out.println("hi");
                                     }
                                 }
-
                                 if (count == 5) {
                                     this.turn = true;
                                 }

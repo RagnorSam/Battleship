@@ -241,10 +241,10 @@ public class BattleshipGameDriver extends Application {
         midPane.setTop(enemyGridPane);
         midPane.setBottom(myGridPane);
 
-        setShips();
+        setPlayersShips();
     }
 
-    public void setShips(){
+    public void setPlayersShips(){
         textAnnouncementPane.getChildren().removeAll();
         players[0].setShips(scene, myShips, myGridPane);
         players[1].setShips(scene, enemyShips, enemyGridPane);

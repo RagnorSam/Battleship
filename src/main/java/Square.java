@@ -1,7 +1,4 @@
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.Pane;
 
 public class Square extends Button {
     private int x;
