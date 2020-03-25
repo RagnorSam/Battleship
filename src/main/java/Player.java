@@ -79,10 +79,10 @@ public class Player {
                                 return;
                             }
                             ta.appendText('\n' + this.name + " attacks (" + s.getX() + ", " + s.getY() + ")");
-                            Print('\n' + this.name + " attacks(" + s.getX() + ", " + s.getY() +")");
+                            Print(this.name + " attacks(" + s.getX() + ", " + s.getY() +")");
                             if (s.hasShip()) {
                                 ta.appendText('\n' + "HIT!!");
-                                Print('\n' + "HIT!!");
+                                Print("HIT!!");
                                 s.setStyle("-fx-background-color: red");
                                 //get hit
                                 player2.fleet[s.whichShip].hit();
@@ -90,14 +90,14 @@ public class Player {
                                 if (player2.shipsDead >= 5) {
                                     mainPane.setCenter(pane);
                                     ta.appendText('\n' + "You Win");
-                                    Print("YOU WIN");
-                                    pane.getChildren().add(new Label ("YOU WIN"));
+                                    Print("You Win");
+                                    pane.getChildren().add(new Label ("You Win"));
                                     printWin(pane);
                                     return;
                                 }
                             } else {
                                 ta.appendText('\n' + "miss");
-                                Print('\n' + "MISS!!");
+                                Print("miss");
                                 s.setStyle("-fx-background-color: grey");
                             }
                             s.setIsHit(true);
@@ -118,12 +118,12 @@ public class Player {
                                 int serverAtkY = in.readInt();
                                 Square temp = board.board[serverAtkX][serverAtkY];
                                 ta.appendText('\n' + player2.getName() + " attacks (" + s.getX() + ","+ s.getY() + ")");
-                                Print('\n' + player2.getName() + " attacks(" + s.getX() + ","+ s.getY() + ")");
+                                Print(player2.getName() + " attacks(" + s.getX() + ","+ s.getY() + ")");
 
                                 //Check for hit
                                 if (temp.hasShip()) {
                                     ta.appendText('\n' + "Hit!!");
-                                    Print('\n' + "Hit!!");
+                                    Print("Hit!!");
                                     temp.setStyle("-fx-background-color: red");
                                     //get hit
                                     this.fleet[s.whichShip].hit();
@@ -136,7 +136,7 @@ public class Player {
                                     }
                                 } else {
                                     ta.appendText('\n' + "miss");
-                                    Print('\n' + "miss");
+                                    Print("miss");
                                     temp.setStyle("-fx-background-color: grey");
                                 }
                             } catch (IOException err) {
@@ -164,7 +164,7 @@ public class Player {
                 // get the ship that has been clicked
                 int setNum = mapShips.get(e.getTarget());
                 ta.appendText('\n' + "Ship " + setNum + " selected");
-                Print('\n' + "Ship " + setNum + " selected");
+                Print("Ship " + setNum + " selected");
 
                 // set the isHorizontal for rotation
                 scene.setOnKeyPressed(ex -> {
@@ -172,11 +172,11 @@ public class Player {
                         fleet[setNum].isHorizontal = !fleet[setNum].isHorizontal;
                         if(fleet[setNum].isHorizontal){
                             ta.appendText('\n' + "Horizontal");
-                            Print('\n' + "Horizontal");
+                            Print("Horizontal");
                         }
                         else{
                             ta.appendText('\n' + "Vertical");
-                            Print('\n' + "Vertical");
+                            Print("Vertical");
                         }
                     }
                 });
@@ -191,7 +191,7 @@ public class Player {
                             // Check if clicked button has a ship already
                             if (sq.hasShip()) {
                                 ta.appendText('\n' + "Already has a ship on it");
-                                Print('\n' + "Already has a ship on it");
+                                Print("Already has a ship on it");
                                 return;
                             }
 
@@ -268,7 +268,7 @@ public class Player {
                                 this.count++;
                             } else {
                                 ta.appendText('\n' + "Your ships are set, ready up!");
-                                Print('\n' + "Your ships are set, ready up!");}
+                                Print("Your ships are set, ready up!");}
                         });
                     }
                 }

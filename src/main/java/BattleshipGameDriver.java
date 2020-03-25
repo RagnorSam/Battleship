@@ -157,7 +157,7 @@ public class BattleshipGameDriver extends Application {
         rightPane.setBottom(myVbox);
         enemyVbox.setStyle("-fx-border-color: black");
         enemyVbox.setAlignment(Pos.TOP_LEFT);
-        enemyVbox.setSpacing(10);
+        enemyVbox.setSpacing(20);
         enemyVbox.setPadding(new Insets(5,5,5,5));
         enemyVbox.setPrefHeight(304);
         myShips = new ImageView[5];
