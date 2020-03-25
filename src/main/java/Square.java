@@ -28,7 +28,7 @@ public class Square extends Button {
     }
     public void setY(int y){ this.y = y; }
     public boolean hasShip(){ return hasShip; }
-    public void setShip(boolean hasShip) { this.hasShip = hasShip;}
+    public void setHasShip(boolean hasShip) { this.hasShip = hasShip;}
     public boolean getIsHit() { return this.isHit; }
     public void setIsHit(boolean isHit) { this.isHit = isHit; }
 }

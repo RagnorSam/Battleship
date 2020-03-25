@@ -9,6 +9,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
+import static java.lang.Thread.sleep;
+
 public class Server extends Application {
 
     private TextArea ta = new TextArea();
