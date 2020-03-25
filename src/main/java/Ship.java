@@ -2,8 +2,9 @@ import javafx.scene.image.Image;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 
-public class Ship {
+public class Ship implements Serializable {
     Player player;
     public boolean isSet;
     public int shipSize;
@@ -38,6 +39,19 @@ public class Ship {
 
     Ship(Player player, int shipSize, String name){
         this.player = player;
+        this.shipSize = shipSize;
+        this.shipLives = shipSize;
+        this.isSet = false;
+        try {
+            this.shipPicture = new Image(new FileInputStream("Boat Pictures/" + name + ".png"),
+                    35*(shipSize),35,false,true);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    Ship(int shipSize, String name){
+        this.player = null;
         this.shipSize = shipSize;
         this.shipLives = shipSize;
         this.isSet = false;

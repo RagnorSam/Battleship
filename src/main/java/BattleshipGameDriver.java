@@ -52,6 +52,8 @@ public class BattleshipGameDriver extends Application {
     //IO streams
     DataOutputStream toServer = null;
     DataInputStream fromServer = null;
+    ObjectOutputStream osOut = null;
+    ObjectInputStream osIn = null;
     Server server = null; //server for the game
 
     @Override
@@ -108,6 +110,10 @@ public class BattleshipGameDriver extends Application {
 
             //Create an output stream to send data to the server
             toServer = new DataOutputStream(socket.getOutputStream());
+
+            osIn = new ObjectInputStream(socket.getInputStream());
+            osOut = new ObjectOutputStream(socket.getOutputStream());
+
         } catch (IOException ex) {
             System.out.println("Failed to connect to server");
         }
@@ -240,18 +246,18 @@ public class BattleshipGameDriver extends Application {
     public void setShips(){
         textAnnouncementPane.getChildren().removeAll();
         players[0].setShips(scene, myShips, myGridPane);
-        players[1].setShips(scene, enemyShips, enemyGridPane);
+        //players[1].setShips(scene, enemyShips, enemyGridPane);
         Button bt = new Button("READY");
         textAnnouncementPane.getChildren().add(bt);
         bt.setOnMouseClicked(e -> {
-            if(players[0].count >= 5 && players[1].count >= 5) {
+            if(players[0].count >= 5) { //&& players[1].count >= 5) {
                 bt.setVisible(false);
                 bt.setStyle("-fx-background-color: red");
                 players[0].setTurn(true);
                 textAnnouncementPane.getChildren().removeAll();
                 Boolean gameOver = false;
                 for(int i =0; i < 200; i++){
-                    players[0+(i%2)].attack(players[1-(i%2)],toServer,fromServer);
+                    players[0+(i%2)].attack(players[1-(i%2)],toServer,fromServer,osOut,osIn);
                     gameOver = checkWin(i);
                     if(gameOver){
                         //gameOver Screen

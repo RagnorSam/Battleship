@@ -18,7 +18,7 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player {
+public class Player implements Serializable{
     protected Boolean turn = false;
     Board board;
     String name;
@@ -50,7 +50,24 @@ public class Player {
         return this.name;
     }
 
-    public void attack(Player player2, DataOutputStream out, DataInputStream in) {
+    public void attack(Player player2, DataOutputStream out, DataInputStream in,
+                       ObjectOutputStream osOut, ObjectInputStream osIn) {
+        //Set computer player's ships using server
+        try {
+            osOut.writeObject(player2.board); //send board
+            /*
+            for(int i = 0; i < player2.fleet.length; i++) { //can't send ships
+                Ship send = player2.fleet[i];
+                osOut.writeObject(send);
+            }
+             */
+
+            //Read in board with ships placed on it
+            player2.board = (Board)osIn.readObject();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
         for (int i = 0; i < this.board.size(); i++) {
             for (Square s : player2.board.getRow(i)) {
                 s.setOnMouseClicked(e -> {

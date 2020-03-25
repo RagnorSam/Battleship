@@ -3,7 +3,9 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
 
-public class Square extends Button {
+import java.io.Serializable;
+
+public class Square extends Button implements Serializable {
     private int x;
     private int y;
     private Boolean hasShip = false;

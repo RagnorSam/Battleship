@@ -1,4 +1,6 @@
-public class Board {
+import java.io.Serializable;
+
+public class Board implements Serializable {
     int size = 10;
     Square[][] board = new Square[size][size];
 
