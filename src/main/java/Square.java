@@ -7,6 +7,7 @@ public class Square extends Button {
     private int x;
     private int y;
     private Boolean hasShip = false;
+    private Boolean isHit = false;
 
     Square(){
         this.setMinSize(30,30);
@@ -31,4 +32,6 @@ public class Square extends Button {
     public void setY(int y){ this.y = y; }
     public boolean hasShip(){ return hasShip; }
     public void setShip(boolean hasShip) { this.hasShip = hasShip;}
+    public boolean getIsHit() { return this.isHit; }
+    public void setIsHit(boolean isHit) { this.isHit = isHit; }
 }

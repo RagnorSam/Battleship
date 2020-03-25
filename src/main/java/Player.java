@@ -43,46 +43,49 @@ public class Player {
         for (int i = 0; i < this.board.size(); i++) {
             for (Square s : player2.board.getRow(i)) {
                 s.setOnMouseClicked(e -> {
-                    if (count >= 5) {
-                        if (!turn) {
-                            return;
-                        }
-                        System.out.println(this.name + " attack " + e.getTarget());
-                        if (s.hasShip()) {
-                            System.out.println("HIT!!");
-                            s.setStyle("-fx-background-color: red");
-                        }
-                        else {
-                            s.setStyle("-fx-background-color: grey");
-                        }
-                        //player2.setTurn(true);
-                        //this.turn = false;
-
-                        //Run other player's turn (using server) (for testing purposes)
-                        try {
-                            //Send data
-                            out.writeUTF(name);
-                            out.writeInt(s.getX());
-                            out.writeInt(s.getY());
-
-                            //Receive attack info
-                            int serverAtkX = in.readInt();
-                            int serverAtkY = in.readInt();
-
-                            //Check for hit
-                            Square temp = board.board[serverAtkX][serverAtkY];
-                            if(temp.hasShip()) {
+                    if(!s.getIsHit()) { //stop player from clicking buttons that are already pressed
+                        if (count >= 5) {
+                            if (!turn) {
+                                return;
+                            }
+                            System.out.println(this.name + " attack " + e.getTarget());
+                            if (s.hasShip()) {
                                 System.out.println("HIT!!");
-                                temp.setStyle("-fx-background-color: red");
+                                s.setStyle("-fx-background-color: red");
+                            } else {
+                                s.setStyle("-fx-background-color: grey");
                             }
-                            else {
-                                temp.setStyle("-fx-background-color: grey");
+                            s.setIsHit(true);
+
+                            //player2.setTurn(true);
+                            //this.turn = false;
+
+                            //Run other player's turn (using server) (for testing purposes)
+                            try {
+                                //Send data
+                                out.writeUTF(name);
+                                out.writeInt(s.getX());
+                                out.writeInt(s.getY());
+
+                                //Check if valid move
+                                //Receive attack info
+                                int serverAtkX = in.readInt();
+                                int serverAtkY = in.readInt();
+                                Square temp = board.board[serverAtkX][serverAtkY];
+
+                                //Check for hit
+                                if (temp.hasShip()) {
+                                    System.out.println("HIT!!");
+                                    temp.setStyle("-fx-background-color: red");
+                                } else {
+                                    temp.setStyle("-fx-background-color: grey");
+                                }
+                            } catch (IOException err) {
+                                System.out.println("fatal error");
                             }
-                        } catch (IOException err) {
-                            System.out.println("fatal error");
+                        } else {
+                            System.out.println(this.name + " Fix Your Ships!");
                         }
-                    } else {
-                        System.out.println(this.name + " Fix Your Ships!");
                     }
                 });
             }
