@@ -13,6 +13,7 @@ public class Player {
     String name;
     int count = 0;
     int shipNum = 0;
+    int shipsDead = 0;
     Ship[] fleet = new Ship[5];
     Map<ImageView, Integer> mapShips = new HashMap<>(); //To recognize which ship was clicked
 
@@ -52,8 +53,15 @@ public class Player {
                             if (s.hasShip()) {
                                 System.out.println("HIT!!");
                                 s.setStyle("-fx-background-color: red");
-                                //Implement the damage later
-                                //ship.hit();
+
+                                //get hit
+                                fleet[s.whichShip].hit();
+
+                                // Verify if fleet is defeated
+                                if(this.shipsDead >= 5) {
+                                    System.out.println("YOU Won");
+                                }
+
                             } else {
                                 s.setStyle("-fx-background-color: grey");
                             }
@@ -119,6 +127,7 @@ public class Player {
                             // Check if clicked button has a ship already
                             if (sq.hasShip()) {
                                 System.out.println("Already has a ship on it");
+
                                 return;
                             }
                             // The ship has been set so cannot set it again
@@ -175,7 +184,9 @@ public class Player {
                                         Background background = new Background(backgroundI);
                                         this.board.getRow(sq.getY())[sq.getX()+k].setShip(true);
                                         this.board.getRow(sq.getY())[sq.getX()+k].setBackground(background);
-                                        System.out.println("hello");
+
+                                        // assign Ship to the square
+                                        this.board.getRow(sq.getY())[sq.getX()+k].setWhichShip(setNum);
                                     }
                                     // vertical ship placement
                                     else {
@@ -187,7 +198,6 @@ public class Player {
                                         Background background = new Background(backgroundI);
                                         this.board.getCol(sq.getX())[sq.getY()+k].setShip(true);
                                         this.board.getCol(sq.getX())[sq.getY()+k].setBackground(background);
-                                        System.out.println("hi");
                                     }
                                 }
                                 if (count == 5) {
