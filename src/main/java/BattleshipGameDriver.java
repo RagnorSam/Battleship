@@ -46,14 +46,15 @@ public class BattleshipGameDriver extends Application {
     //The main menu
     public void mainMenu(Stage stage) throws Exception {
         BorderPane menuPane = new BorderPane();
-        menuPane.setMinSize(400,400);
+        menuPane.setMinSize(600,375);
         VBox buttons = new VBox();
         buttons.setSpacing(5);
-        buttons.setAlignment(Pos.CENTER);
+        buttons.setAlignment(Pos.BOTTOM_CENTER);
+        //buttons.setAlignment(Pos.BAS);
         Button play = new Button("Play Game");
-
+        //play.setStyle(-fx-background-color: lightBlue");
         //Background image
-        Image image = new Image(new FileInputStream("src/images/menu_image.jpg"));
+        Image image = new Image(new FileInputStream("Boat Pictures/WorldOfWarships2.jpg"));
         BackgroundImage backgroundI = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background background = new Background(backgroundI);
@@ -103,14 +104,17 @@ public class BattleshipGameDriver extends Application {
         players[0] = new Player();
         players[1] = new Player("player 2");
         mainPane.setMinSize(660,700);
-        mainPane.setStyle("-fx-background-color: lightblue");
-        leftPane.setStyle("-fx-background-color: Green");
-        rightPane.setStyle("-fx-background-color: lightblue");
+        mainPane.setStyle("-fx-background-color: lightBlue");
+        leftPane.setStyle("-fx-background-color: lightGreen");
+        rightPane.setStyle("-fx-background-color: lightBlue");
 
         //midPane
         TextField nameField = new TextField();
+        nameField.setAlignment(Pos.CENTER);
         VBox text = new VBox(new Label("Enter your name"), nameField);
+        text.setAlignment(Pos.TOP_CENTER);
         Button enterName = new Button("Enter");
+        enterName.setAlignment(Pos.TOP_CENTER);
         text.getChildren().add(enterName);
         StackPane inputName = new StackPane(text);
         inputName.setAlignment(Pos.CENTER);
@@ -141,10 +145,11 @@ public class BattleshipGameDriver extends Application {
         });
         timerPane.getChildren().add(timer);
         leftPane.setTop(timerPane);
-
+        ta.setMinHeight(700); // set max height for announcements
         ta.setMaxWidth(leftPane.getMaxWidth());
         ScrollPane historyPane = new ScrollPane(ta);
         historyPane.setMaxWidth(leftPane.getMaxWidth());
+        historyPane.setMinHeight(700);
         historyPane.setStyle("-fx-border-color: black");
         leftPane.setBottom(historyPane);
         mainPane.setLeft(leftPane);
@@ -166,7 +171,7 @@ public class BattleshipGameDriver extends Application {
         for(Ship s: players[1].fleet){
             //load image
             ImageView imgs = new ImageView(s.shipPicture);
-            imgs.setStyle("-fx-border-color: black");
+            imgs.setStyle("-fx-border-color: lightBlue");
             enemyShips[count] = imgs;
             enemyVbox.getChildren().add(imgs);
             count++;
@@ -186,7 +191,7 @@ public class BattleshipGameDriver extends Application {
             count++;
         }
         HBox border = new HBox(new Label(""));
-        border.setStyle("-fx-background-color: black");
+        border.setStyle("-fx-background-color: lightBlue");
         rightPane.setCenter(border);
 
         //Create new window
@@ -204,28 +209,31 @@ public class BattleshipGameDriver extends Application {
         //create my board and enemy board
         GridPane enemyGridPane = new GridPane();
         GridPane myGridPane = new GridPane();
+
         enemyGridPane.setGridLinesVisible(true);
         enemyGridPane.setAlignment(Pos.CENTER);
         myGridPane.setGridLinesVisible(true);
         myGridPane.setAlignment(Pos.CENTER);
 
+
         textAnnouncementPane.setAlignment(Pos.CENTER);
-        Label lbl = new Label("Set your ships by choosing");
+        Label lbl = new Label("Set your ships by choosing one,");
         lbl.setStyle("-fx-stroke-color: white; -fx-font-weight: bold");
-        Label lbl2 = new Label("one, then choose a spot to");
+        Label lbl2 = new Label("then choose a spot to place your");
         lbl2.setStyle("-fx-stroke-color: white; -fx-font-weight: bold");
-        Label lbl3 = new Label("place your ship. When your");
+        Label lbl3 = new Label("ship. When your done ready up!");
         lbl3.setStyle("-fx-stroke-color: white; -fx-font-weight: bold");
-        Label lbl4 = new Label("done ready up!");
+        Label lbl4 = new Label("Press R to rotate.");
         lbl4.setStyle("-fx-stroke-color: white; -fx-font-weight: bold");
-        Label lbl5 = new Label("Press R to rotate.");
-        lbl5.setStyle("-fx-stroke-color: white; -fx-font-weight: bold");
         Button bt = new Button("READY");
-        textAnnouncementPane.getChildren().addAll(lbl,lbl2,lbl3,lbl4,lbl5,bt);
-        leftPane.setCenter(textAnnouncementPane);
-        HBox border = new HBox();
-        border.setStyle("-fx-background-color: black");
-        midPane.setCenter(border);
+        textAnnouncementPane.getChildren().addAll(lbl,lbl2,lbl3,lbl4,bt);
+        midPane.setCenter(textAnnouncementPane);
+
+
+
+//        HBox border = new HBox();
+//        border.setStyle("-fx-background-color: lightBlue");
+//        midPane.setCenter(border);
         midPane.setTop(enemyGridPane);
         midPane.setBottom(myGridPane);
 
@@ -245,13 +253,13 @@ public class BattleshipGameDriver extends Application {
     }
     Boolean gameOver = false;
     public void playGame(){
-        textAnnouncementPane.getChildren().get(5).setOnMouseClicked(e -> {
+        textAnnouncementPane.getChildren().get(4).setOnMouseClicked(e -> {
             //check if all ships were placed on the board
             if(players[0].count >= 5 && players[1].count >= 5 && !gameOver) {
                 gtimer.startTime(00);           //start timer after name has been entered
-                textAnnouncementPane.getChildren().get(5).setVisible(false);
-                textAnnouncementPane.getChildren().get(5).setStyle("-fx-background-color: red");
-                textAnnouncementPane.getChildren().remove(0,6);
+                textAnnouncementPane.getChildren().get(4).setVisible(false);
+                textAnnouncementPane.getChildren().get(4).setStyle("-fx-background-color: red");
+                textAnnouncementPane.getChildren().remove(0,5);
                 //Game starts
                 players[0].setTurn(true);
                 players[0].attack(players[1],toServer,fromServer, ta, mainPane);
