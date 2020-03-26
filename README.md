@@ -9,9 +9,9 @@
 This is the game of battleship, with classic rules. There are no special requirements to running it outside of Java, JavaFX and gradle, download the code to your computer and run gradle build, then gradle run. When placing the ships, you can press R before placing one down to rotate it vertically.
 
 # Work distribution
-Nadir El Tahir - Github management, Readme, Multi-threaded timer
-Dimitri Yu - Core code, Large portion of gamedriver code, ship and attack code
-Sheldon Choo - Socket IO, server, AI code
+Nadir El Tahir - Github management, Readme, Multi-threaded timer \
+Dimitri Yu - Core code, Large portion of gamedriver code, ship and attack code \
+Sheldon Choo - Socket IO, server, AI code \
 Sam Mirzad - Ship class and File IO code. Major improvement to overall design, contribution to player and gameplaydriver class.
 
 # Link to the repository
