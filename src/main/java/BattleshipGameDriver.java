@@ -13,15 +13,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.*;
 import java.net.Socket;
 import java.io.FileInputStream;
-import java.util.Map;
 
 
 public class BattleshipGameDriver extends Application {
@@ -50,14 +45,12 @@ public class BattleshipGameDriver extends Application {
 
     //The main menu
     public void mainMenu(Stage stage) throws Exception {
-
         BorderPane menuPane = new BorderPane();
         menuPane.setMinSize(400,400);
         VBox buttons = new VBox();
         buttons.setSpacing(5);
         buttons.setAlignment(Pos.CENTER);
-        Button host = new Button("Host Game");
-        Button join = new Button("Join Game");
+        Button play = new Button("Play Game");
 
         //Background image
         Image image = new Image(new FileInputStream("src/images/menu_image.jpg"));
@@ -67,9 +60,9 @@ public class BattleshipGameDriver extends Application {
         menuPane.setBackground(background);
 
         //Button functionality
-        buttons.getChildren().addAll(host,join);
+        buttons.getChildren().addAll(play);
         menuPane.setCenter(buttons);
-        host.setOnAction(e -> {
+        play.setOnAction(e -> {
             //Start server instance
             server = new Server();
             server.start(new Stage());
@@ -77,13 +70,7 @@ public class BattleshipGameDriver extends Application {
             //Connect to server
             connect();
 
-            System.out.println("Hosting game");
-            ((Node)(e.getSource())).getScene().getWindow().hide();
-            makeGameScreen();
-        });
-        join.setOnAction(e -> {
-            //Connect to server only
-            System.out.println("Join game");
+            System.out.println("playing game");
             ((Node)(e.getSource())).getScene().getWindow().hide();
             makeGameScreen();
         });
@@ -97,7 +84,7 @@ public class BattleshipGameDriver extends Application {
     public void connect() {
         try {
             //Create a socket to connect to the server
-            //Change host to be address
+            //Change play to be address
             Socket socket = new Socket("localhost", 8000);
 
             //Create an input stream to receive data to the server
@@ -118,14 +105,13 @@ public class BattleshipGameDriver extends Application {
         mainPane.setMinSize(660,700);
         mainPane.setStyle("-fx-background-color: lightblue");
         leftPane.setStyle("-fx-background-color: Green");
-        rightPane.setStyle("-fx-background-color: Green");
+        rightPane.setStyle("-fx-background-color: lightblue");
 
         //midPane
         TextField nameField = new TextField();
         VBox text = new VBox(new Label("Enter your name"), nameField);
         Button enterName = new Button("Enter");
         text.getChildren().add(enterName);
-
         StackPane inputName = new StackPane(text);
         inputName.setAlignment(Pos.CENTER);
         midPane.setCenter(inputName);
@@ -171,7 +157,7 @@ public class BattleshipGameDriver extends Application {
         rightPane.setBottom(myVbox);
         enemyVbox.setStyle("-fx-border-color: black");
         enemyVbox.setAlignment(Pos.TOP_LEFT);
-        enemyVbox.setSpacing(10);
+        enemyVbox.setSpacing(20);
         enemyVbox.setPadding(new Insets(5,5,5,5));
         enemyVbox.setPrefHeight(304);
         myShips = new ImageView[5];
@@ -257,53 +243,19 @@ public class BattleshipGameDriver extends Application {
 
         playGame();
     }
+    Boolean gameOver = false;
     public void playGame(){
-        //Gameplay
         textAnnouncementPane.getChildren().get(5).setOnMouseClicked(e -> {
-            Boolean gameOver = false;
             //check if all ships were placed on the board
             if(players[0].count >= 5 && players[1].count >= 5 && !gameOver) {
                 gtimer.startTime(00);           //start timer after name has been entered
-                //remove the button
                 textAnnouncementPane.getChildren().get(5).setVisible(false);
                 textAnnouncementPane.getChildren().get(5).setStyle("-fx-background-color: red");
                 textAnnouncementPane.getChildren().remove(0,6);
                 //Game starts
                 players[0].setTurn(true);
-                for(int i = 0; i < 200; i++){
-                    players[0+(i%2)].attack(players[1-(i%2)],toServer,fromServer, ta);
-                }
-
+                players[0].attack(players[1],toServer,fromServer, ta, mainPane);
             }
-        });
-    }
-    public void check(Boolean gameOver){
-        if(players[0].shipsDead >= 5){
-            System.out.println("DEAD");
-            gameOver=true;
-            showGameOver(players[0].getName());
-        }
-        else if(players[1].shipsDead >= 5){
-            System.out.println("DEAD");
-            gameOver=true;
-            showGameOver(players[1].getName());
-        }
-    }
-
-    public void showGameOver(String name){
-        System.out.println("eovkjwefknowrjeigfbwr");
-        textAnnouncementPane.getChildren().removeAll();
-        Label lbl = new Label("GAME OVER");
-        lbl.setFont(Font.font(20));
-        Label lbl2 = new Label(name +" WINS");
-        lbl2.setFont(Font.font(25));
-        Button exitGame = new Button("Exit Game");
-        exitGame.setAlignment(Pos.CENTER);
-        textAnnouncementPane.getChildren().addAll(lbl,lbl2, exitGame);
-
-        exitGame.setOnMouseClicked(e -> {
-            Stage stage = (Stage) mainPane.getScene().getWindow();
-            stage.close();
         });
     }
 

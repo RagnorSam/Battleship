@@ -4,22 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class Ship {
-
-//                // beginning of file IO
-//                java.io.File file = new java.io.File("BattleshipHistory.txt");
-//                // Create a file
-//                java.io.PrintWriter output = new java.io.PrintWriter(file);
-//                // Write formatted output to the file
-//                output.print("soesdensJohn T Smith ");
-//                output.println(90);
-//                output.print("Eric K Jones ");
-//                output.println(85);
-//
-//                // Close the file
-//                output.close();
-//
-//                // end of fileIO
-
     Player player;
     public boolean isSet;
     public int shipSize;
@@ -48,103 +32,14 @@ public class Ship {
 
     public void hit(){
         shipLives--;
-        System.out.println("life reduced to");
-
-        System.out.println(shipLives);
-
         if(shipLives == 0){
-            System.out.println("ship is dead");
             isAlive = false;
             player.shipsDead++;
 
         }
         else {
             isAlive = true;
-            System.out.println("ship is not dead");
         }
     }
 }
 
-
-/* this should be added to the player class,
-    private Ship[] fleet;
-    private Ship ship1;
-    private Ship ship2;
-    private Ship ship3;
-    private Ship ship4;
-    private Ship ship5;
-
-    // create fleet
-    createFleet(Player player){
-        this.ship1 = Ship(player,2,shipPicture1);
-        fleet[0] = this.ship1 ;
-
-        this.ship2 = Ship(player,3,shipPicture2);
-        fleet[1] = this.ship2 ;
-
-        this.ship3 = Ship(player,3,shipPicture3);
-        fleet[2] = this.ship3 ;
-
-        this.ship4 = Ship(player,4,shipPicture4);
-        fleet[3] = this.ship4 ;
-
-        this.ship5 = Ship(player,5,shipPicture5);
-        fleet[5] = this.ship5 ;
-    }
-
-    // run function that will allow you to place the ships
-    //player class should place the ships after creating them
-    public placeShip(Player player, Ship ship){
-
-        // upload image
-        Pane pane = new Pane();
-        final ImageView selectedImage = new ImageView();
-        Image image1 = new Image(new File("boat5.png").toURI().toString(),  100, 100, true, true);
-        selectedImage.setImage(image1);
-        pane.getChildren().addAll(selectedImage);
-
-        // move boat image in multiple direction and allow image to rotate
-        // call this function only when you are placing boats. need to add button that says placing boat
-        // and done placing boats. Then call this function: setShipLocation(Ship ship)
-        //if (isPlacingBoats == true){
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
-            @Override
-            public void handle(KeyEvent event){
-                int shipAngle = 0;
-                if (event.getCode() == KeyCode.RIGHT) {
-                    selectedImage.setLayoutX(selectedImage.getLayoutX() + 10);
-                } else if (event.getCode() == KeyCode.LEFT) {
-                    selectedImage.setLayoutX(selectedImage.getLayoutX() - 10);
-                } else if (event.getCode() == KeyCode.DOWN){
-                    selectedImage.setLayoutY(selectedImage.getLayoutY() + 10);
-                } else if (event.getCode() == KeyCode.UP){
-                    selectedImage.setLayoutY(selectedImage.getLayoutY() - 10);
-                } else if (event.getCode() == KeyCode.H){
-                    isHorizontal = true;
-                    shipAngle = 0;
-                    selectedImage.setRotate(shipAngle);
-                } else if (event.getCode() == KeyCode.V){
-                    isHorizontal = false;
-                    shipAngle -= 90;
-                    selectedImage.setRotate(shipAngle);
-                }
-            }
-        });
-
-    public boolean isDestroyed(){
-        if(this.life == 0) {
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    public Image getImg(){
-        return this.img;
-    }
-    public String getName(){
-        return this.name;
-    }
-
-
- */
