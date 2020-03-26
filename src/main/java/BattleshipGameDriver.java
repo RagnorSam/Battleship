@@ -52,7 +52,9 @@ public class BattleshipGameDriver extends Application {
         buttons.setAlignment(Pos.BOTTOM_CENTER);
         //buttons.setAlignment(Pos.BAS);
         Button play = new Button("Play Game");
-        //play.setStyle(-fx-background-color: lightBlue");
+        play.setStyle("-fx-background-color: lightBlue");
+        play.setMaxWidth(100);
+        play.setMaxHeight(50);
         //Background image
         Image image = new Image(new FileInputStream("Boat Pictures/WorldOfWarships2.jpg"));
         BackgroundImage backgroundI = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,

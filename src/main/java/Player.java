@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
@@ -18,7 +19,7 @@ public class Player {
     String name;
     int count = 0;
     int shipNum = 0;
-    int shipsDead = 0;
+    int shipsDead = 0; // total# of dead ships
     Boolean isDead = false;
     Ship[] fleet = new Ship[5];
     Map<ImageView, Integer> mapShips = new HashMap<>(); //To recognize which ship was clicked
@@ -47,10 +48,11 @@ public class Player {
         try {
             // Create a file
             File file = new File("BattleshipHistory.txt");
+            // enable appending to an already existing file
             FileWriter fr = new FileWriter(file, true);
             BufferedWriter br = new BufferedWriter(fr);
             PrintWriter pr = new PrintWriter(br);
-            // Write formatted output to the file
+            // Write  message to the file
             pr.println(message);
             // Close the file
 
@@ -83,9 +85,21 @@ public class Player {
                             if (s.hasShip()) {
                                 ta.appendText('\n' + "HIT!!");
                                 Print("HIT!!");
-                                s.setStyle("-fx-background-color: red");
+                                //s.setStyle("-fx-background-color: red");
                                 //get hit
                                 player2.fleet[s.whichShip].hit();
+                                Image image = null;
+                                try {
+                                    image = new Image(new FileInputStream("Boat Pictures/hit.png"));
+                                } catch (FileNotFoundException ex) {
+                                    ex.printStackTrace();
+                                }
+
+                                BackgroundImage backgroundI = new BackgroundImage(image,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                                        BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+                                Background background = new Background(backgroundI);
+                                s.setBackground(background);
+
                                 // Verify if fleet is defeated
                                 if (player2.shipsDead >= 5) {
                                     mainPane.setCenter(pane);
@@ -98,12 +112,9 @@ public class Player {
                             } else {
                                 ta.appendText('\n' + "miss");
                                 Print("miss");
-                                s.setStyle("-fx-background-color: grey");
+                                s.setStyle("-fx-background-color: lightBlue");
                             }
                             s.setIsHit(true);
-
-                            //player2.setTurn(true);
-                            //this.turn = false;
 
                             //Run other player's turn (using server) (for testing purposes)
                             try {
@@ -122,11 +133,25 @@ public class Player {
 
                                 //Check for hit
                                 if (temp.hasShip()) {
-                                    ta.appendText('\n' + "Hit!!");
+                                    ta.appendText('\n' + "Just Hit!!");
                                     Print("Hit!!");
-                                    temp.setStyle("-fx-background-color: red");
+                                    //temp.setStyle("-fx-background-color: red");
                                     //get hit
                                     this.fleet[s.whichShip].hit();
+
+                                    Image image2 = null;
+                                    try {
+                                        image2 = new Image(new FileInputStream("Boat Pictures/hit.png"));
+                                    } catch (FileNotFoundException ex) {
+                                        ex.printStackTrace();
+                                    }
+
+                                    BackgroundImage background2 = new BackgroundImage(image2,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                                            BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+                                    Background background2a = new Background(background2);
+                                    temp.setBackground(background2a);
+
+
                                     // Verify if fleet is defeated
                                     if (this.shipsDead >= 5) {
                                         mainPane.setCenter(pane);
@@ -137,7 +162,7 @@ public class Player {
                                 } else {
                                     ta.appendText('\n' + "miss");
                                     Print("miss");
-                                    temp.setStyle("-fx-background-color: grey");
+                                    temp.setStyle("-fx-background-color: lightBlue");
                                 }
                             } catch (IOException err) {
                                 System.out.println("fatal error");

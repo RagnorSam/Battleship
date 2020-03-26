@@ -3070,3 +3070,2263 @@ Samander attacks(7, 7)
 miss
 player 2 attacks(7,7)
 miss
+1 4
+2 4
+null null
+null null
+null null
+9 2
+9 3
+9 4
+null null
+null null
+6 9
+7 9
+8 9
+null null
+null null
+0 6
+1 6
+2 6
+3 6
+null null
+3 1
+4 1
+5 1
+6 1
+7 1
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 3 selected
+Ship 4 selected
+Sam attacks(3, 6)
+HIT!!
+player 2 attacks(3,6)
+Hit!!
+Sam attacks(5, 8)
+miss
+player 2 attacks(5,8)
+miss
+Sam attacks(8, 9)
+HIT!!
+player 2 attacks(8,9)
+miss
+Sam attacks(8, 6)
+miss
+player 2 attacks(8,6)
+miss
+7 8
+8 8
+null null
+null null
+null null
+7 2
+8 2
+9 2
+null null
+null null
+3 8
+4 8
+5 8
+null null
+null null
+2 7
+3 7
+4 7
+5 7
+null null
+1 9
+2 9
+3 9
+4 9
+5 9
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 4 selected
+Ship 3 selected
+Ship 4 selected
+Sam attacks(4, 7)
+HIT!!
+player 2 attacks(4,7)
+miss
+1 1
+1 2
+null null
+null null
+null null
+2 8
+3 8
+4 8
+null null
+null null
+5 3
+6 3
+7 3
+null null
+null null
+3 2
+4 2
+5 2
+6 2
+null null
+8 4
+8 5
+8 6
+8 7
+8 8
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Vertical
+Ship 3 selected
+Ship 4 selected
+sam attacks(0, 9)
+miss
+player 2 attacks(0,9)
+miss
+sam attacks(1, 8)
+miss
+player 2 attacks(1,8)
+miss
+sam attacks(2, 9)
+miss
+player 2 attacks(2,9)
+miss
+sam attacks(3, 8)
+HIT!!
+player 2 attacks(3,8)
+miss
+sam attacks(4, 9)
+miss
+player 2 attacks(4,9)
+miss
+sam attacks(5, 8)
+miss
+player 2 attacks(5,8)
+miss
+sam attacks(3, 9)
+miss
+player 2 attacks(3,9)
+miss
+sam attacks(2, 8)
+HIT!!
+player 2 attacks(2,8)
+miss
+sam attacks(4, 8)
+HIT!!
+player 2 attacks(4,8)
+miss
+sam attacks(6, 9)
+miss
+player 2 attacks(6,9)
+miss
+sam attacks(7, 8)
+miss
+player 2 attacks(7,8)
+miss
+sam attacks(8, 9)
+miss
+player 2 attacks(8,9)
+miss
+sam attacks(9, 8)
+miss
+player 2 attacks(9,8)
+miss
+sam attacks(8, 7)
+HIT!!
+player 2 attacks(8,7)
+miss
+sam attacks(7, 7)
+miss
+player 2 attacks(7,7)
+miss
+sam attacks(9, 7)
+miss
+player 2 attacks(9,7)
+Hit!!
+sam attacks(8, 8)
+HIT!!
+player 2 attacks(8,8)
+miss
+sam attacks(8, 6)
+HIT!!
+player 2 attacks(8,6)
+Hit!!
+sam attacks(8, 5)
+HIT!!
+player 2 attacks(8,5)
+miss
+sam attacks(8, 4)
+HIT!!
+player 2 attacks(8,4)
+miss
+sam attacks(8, 3)
+miss
+player 2 attacks(8,3)
+miss
+sam attacks(5, 7)
+miss
+player 2 attacks(5,7)
+miss
+sam attacks(4, 6)
+miss
+player 2 attacks(4,6)
+Hit!!
+sam attacks(3, 5)
+miss
+player 2 attacks(3,5)
+miss
+sam attacks(2, 4)
+miss
+player 2 attacks(2,4)
+miss
+sam attacks(1, 3)
+miss
+player 2 attacks(1,3)
+Hit!!
+sam attacks(0, 2)
+miss
+player 2 attacks(0,2)
+miss
+sam attacks(0, 4)
+miss
+player 2 attacks(0,4)
+miss
+sam attacks(1, 5)
+miss
+player 2 attacks(1,5)
+miss
+sam attacks(2, 6)
+miss
+player 2 attacks(2,6)
+Hit!!
+sam attacks(3, 7)
+miss
+player 2 attacks(3,7)
+miss
+sam attacks(1, 7)
+miss
+player 2 attacks(1,7)
+Hit!!
+sam attacks(0, 6)
+miss
+player 2 attacks(0,6)
+miss
+sam attacks(0, 7)
+miss
+player 2 attacks(0,7)
+Hit!!
+sam attacks(6, 6)
+miss
+player 2 attacks(6,6)
+miss
+sam attacks(6, 7)
+miss
+player 2 attacks(6,7)
+miss
+sam attacks(5, 5)
+miss
+player 2 attacks(5,5)
+miss
+sam attacks(4, 4)
+miss
+player 2 attacks(4,4)
+miss
+sam attacks(3, 3)
+miss
+player 2 attacks(3,3)
+miss
+sam attacks(2, 2)
+miss
+player 2 attacks(2,2)
+miss
+sam attacks(1, 1)
+HIT!!
+player 2 attacks(1,1)
+miss
+sam attacks(0, 0)
+miss
+player 2 attacks(0,0)
+Hit!!
+sam attacks(0, 1)
+miss
+player 2 attacks(0,1)
+Hit!!
+sam attacks(1, 2)
+HIT!!
+player 2 attacks(1,2)
+miss
+sam attacks(2, 1)
+miss
+player 2 attacks(2,1)
+miss
+sam attacks(1, 0)
+miss
+player 2 attacks(1,0)
+miss
+sam attacks(3, 1)
+miss
+player 2 attacks(3,1)
+miss
+sam attacks(4, 0)
+miss
+player 2 attacks(4,0)
+miss
+sam attacks(3, 0)
+miss
+player 2 attacks(3,0)
+miss
+sam attacks(6, 0)
+miss
+player 2 attacks(6,0)
+Hit!!
+sam attacks(8, 0)
+miss
+player 2 attacks(8,0)
+miss
+sam attacks(9, 1)
+miss
+player 2 attacks(9,1)
+miss
+sam attacks(9, 3)
+miss
+player 2 attacks(9,3)
+Hit!!
+sam attacks(9, 5)
+miss
+player 2 attacks(9,5)
+miss
+sam attacks(6, 4)
+miss
+player 2 attacks(6,4)
+miss
+sam attacks(7, 4)
+miss
+player 2 attacks(7,4)
+miss
+sam attacks(7, 2)
+miss
+player 2 attacks(7,2)
+miss
+sam attacks(6, 1)
+miss
+player 2 attacks(6,1)
+Hit!!
+sam attacks(5, 2)
+HIT!!
+player 2 attacks(5,2)
+miss
+sam attacks(5, 1)
+miss
+player 2 attacks(5,1)
+miss
+sam attacks(5, 4)
+miss
+player 2 attacks(5,4)
+miss
+sam attacks(4, 2)
+HIT!!
+player 2 attacks(4,2)
+Hit!!
+sam attacks(6, 2)
+HIT!!
+player 2 attacks(6,2)
+miss
+sam attacks(3, 2)
+HIT!!
+player 2 attacks(3,2)
+miss
+sam attacks(5, 3)
+HIT!!
+player 2 attacks(5,3)
+Hit!!
+sam attacks(6, 3)
+HIT!!
+player 2 attacks(6,3)
+Hit!!
+sam attacks(7, 3)
+HIT!!
+You Win
+2 0
+3 0
+null null
+null null
+null null
+0 4
+0 5
+0 6
+null null
+null null
+2 3
+3 3
+4 3
+null null
+null null
+1 4
+2 4
+3 4
+4 4
+null null
+2 1
+3 1
+4 1
+5 1
+6 1
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 3 selected
+Ship 4 selected
+asd attacks(0, 9)
+miss
+player 2 attacks(0,9)
+Hit!!
+asd attacks(1, 8)
+miss
+player 2 attacks(1,8)
+miss
+asd attacks(2, 7)
+miss
+player 2 attacks(2,7)
+miss
+asd attacks(3, 6)
+miss
+player 2 attacks(3,6)
+miss
+asd attacks(2, 9)
+miss
+player 2 attacks(2,9)
+miss
+asd attacks(3, 8)
+miss
+player 2 attacks(3,8)
+miss
+asd attacks(4, 7)
+miss
+player 2 attacks(4,7)
+miss
+asd attacks(4, 5)
+miss
+player 2 attacks(4,5)
+miss
+asd attacks(5, 6)
+miss
+player 2 attacks(5,6)
+miss
+asd attacks(6, 7)
+miss
+player 2 attacks(6,7)
+Hit!!
+asd attacks(7, 8)
+miss
+player 2 attacks(7,8)
+Hit!!
+asd attacks(8, 9)
+miss
+player 2 attacks(8,9)
+miss
+asd attacks(5, 4)
+miss
+player 2 attacks(5,4)
+miss
+asd attacks(6, 5)
+miss
+player 2 attacks(6,5)
+Hit!!
+asd attacks(7, 6)
+miss
+player 2 attacks(7,6)
+miss
+asd attacks(8, 7)
+miss
+player 2 attacks(8,7)
+miss
+asd attacks(9, 8)
+miss
+player 2 attacks(9,8)
+miss
+asd attacks(5, 2)
+miss
+player 2 attacks(5,2)
+miss
+asd attacks(6, 3)
+miss
+player 2 attacks(6,3)
+Hit!!
+asd attacks(7, 4)
+miss
+player 2 attacks(7,4)
+miss
+asd attacks(8, 5)
+miss
+player 2 attacks(8,5)
+miss
+asd attacks(9, 6)
+miss
+player 2 attacks(9,6)
+miss
+asd attacks(5, 8)
+miss
+player 2 attacks(5,8)
+miss
+asd attacks(5, 9)
+miss
+player 2 attacks(5,9)
+miss
+asd attacks(3, 9)
+miss
+player 2 attacks(3,9)
+Hit!!
+asd attacks(6, 9)
+miss
+player 2 attacks(6,9)
+miss
+asd attacks(4, 9)
+miss
+player 2 attacks(4,9)
+Hit!!
+asd attacks(0, 7)
+miss
+player 2 attacks(0,7)
+miss
+asd attacks(1, 6)
+miss
+player 2 attacks(1,6)
+miss
+asd attacks(2, 5)
+miss
+player 2 attacks(2,5)
+Hit!!
+asd attacks(3, 4)
+HIT!!
+player 2 attacks(3,4)
+miss
+asd attacks(4, 3)
+HIT!!
+player 2 attacks(4,3)
+miss
+asd attacks(4, 4)
+HIT!!
+player 2 attacks(4,4)
+Hit!!
+asd attacks(2, 4)
+HIT!!
+player 2 attacks(2,4)
+miss
+asd attacks(1, 4)
+HIT!!
+player 2 attacks(1,4)
+miss
+asd attacks(0, 4)
+HIT!!
+player 2 attacks(0,4)
+miss
+asd attacks(4, 2)
+miss
+player 2 attacks(4,2)
+miss
+asd attacks(5, 3)
+miss
+player 2 attacks(5,3)
+miss
+asd attacks(3, 3)
+HIT!!
+player 2 attacks(3,3)
+Hit!!
+asd attacks(2, 3)
+HIT!!
+player 2 attacks(2,3)
+miss
+asd attacks(1, 3)
+miss
+player 2 attacks(1,3)
+miss
+asd attacks(0, 3)
+miss
+player 2 attacks(0,3)
+miss
+asd attacks(0, 1)
+miss
+player 2 attacks(0,1)
+miss
+asd attacks(1, 2)
+miss
+player 2 attacks(1,2)
+miss
+asd attacks(2, 1)
+HIT!!
+player 2 attacks(2,1)
+miss
+asd attacks(3, 2)
+miss
+player 2 attacks(3,2)
+miss
+asd attacks(3, 1)
+HIT!!
+player 2 attacks(3,1)
+miss
+asd attacks(1, 1)
+miss
+player 2 attacks(1,1)
+miss
+asd attacks(4, 1)
+HIT!!
+player 2 attacks(4,1)
+miss
+asd attacks(5, 1)
+HIT!!
+player 2 attacks(5,1)
+miss
+asd attacks(6, 1)
+HIT!!
+player 2 attacks(6,1)
+Hit!!
+asd attacks(6, 2)
+miss
+player 2 attacks(6,2)
+Hit!!
+asd attacks(7, 1)
+miss
+player 2 attacks(7,1)
+miss
+asd attacks(8, 2)
+miss
+player 2 attacks(8,2)
+miss
+asd attacks(9, 3)
+miss
+player 2 attacks(9,3)
+miss
+asd attacks(8, 4)
+miss
+player 2 attacks(8,4)
+miss
+asd attacks(7, 3)
+miss
+player 2 attacks(7,3)
+miss
+asd attacks(9, 5)
+miss
+player 2 attacks(9,5)
+miss
+asd attacks(9, 1)
+miss
+player 2 attacks(9,1)
+miss
+asd attacks(8, 0)
+miss
+player 2 attacks(8,0)
+miss
+asd attacks(6, 0)
+miss
+player 2 attacks(6,0)
+miss
+asd attacks(4, 0)
+miss
+player 2 attacks(4,0)
+miss
+asd attacks(3, 0)
+HIT!!
+player 2 attacks(3,0)
+miss
+asd attacks(2, 0)
+HIT!!
+player 2 attacks(2,0)
+miss
+asd attacks(1, 0)
+miss
+player 2 attacks(1,0)
+miss
+asd attacks(0, 0)
+miss
+player 2 attacks(0,0)
+miss
+asd attacks(0, 5)
+HIT!!
+player 2 attacks(0,5)
+miss
+asd attacks(0, 6)
+HIT!!
+You Win
+4 1
+4 2
+null null
+null null
+null null
+0 3
+1 3
+2 3
+null null
+null null
+5 7
+6 7
+7 7
+null null
+null null
+6 2
+7 2
+8 2
+9 2
+null null
+4 3
+4 4
+4 5
+4 6
+4 7
+Ship 0 selected
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 3 selected
+Ship 4 selected
+sam attacks(4, 9)
+miss
+player 2 attacks(4,9)
+miss
+sam attacks(3, 8)
+miss
+player 2 attacks(3,8)
+miss
+sam attacks(2, 7)
+miss
+player 2 attacks(2,7)
+Hit!!
+sam attacks(1, 8)
+miss
+player 2 attacks(1,8)
+Hit!!
+sam attacks(2, 9)
+miss
+player 2 attacks(2,9)
+miss
+sam attacks(0, 9)
+miss
+player 2 attacks(0,9)
+miss
+sam attacks(0, 7)
+miss
+player 2 attacks(0,7)
+miss
+sam attacks(0, 6)
+miss
+player 2 attacks(0,6)
+miss
+sam attacks(0, 5)
+miss
+player 2 attacks(0,5)
+miss
+sam attacks(1, 6)
+miss
+player 2 attacks(1,6)
+miss
+sam attacks(4, 6)
+HIT!!
+player 2 attacks(4,6)
+miss
+sam attacks(6, 7)
+HIT!!
+player 2 attacks(6,7)
+Hit!!
+sam attacks(8, 9)
+miss
+player 2 attacks(8,9)
+Hit!!
+sam attacks(8, 7)
+miss
+player 2 attacks(8,7)
+miss
+sam attacks(7, 5)
+miss
+player 2 attacks(7,5)
+Hit!!
+sam attacks(6, 4)
+miss
+player 2 attacks(6,4)
+miss
+sam attacks(4, 4)
+HIT!!
+player 2 attacks(4,4)
+Hit!!
+sam attacks(2, 3)
+HIT!!
+player 2 attacks(2,3)
+miss
+sam attacks(3, 2)
+miss
+player 2 attacks(3,2)
+miss
+sam attacks(5, 2)
+miss
+player 2 attacks(5,2)
+miss
+sam attacks(7, 2)
+HIT!!
+player 2 attacks(7,2)
+Hit!!
+sam attacks(8, 2)
+HIT!!
+player 2 attacks(8,2)
+miss
+sam attacks(8, 3)
+miss
+player 2 attacks(8,3)
+miss
+sam attacks(9, 3)
+miss
+player 2 attacks(9,3)
+miss
+8 1
+9 1
+null null
+null null
+null null
+5 5
+5 6
+5 7
+null null
+null null
+7 4
+7 5
+7 6
+null null
+null null
+4 0
+5 0
+6 0
+7 0
+null null
+0 5
+1 5
+2 5
+3 5
+4 5
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 3 selected
+Ship 4 selected
+sam attacks(7, 7)
+miss
+player 2 attacks(7,7)
+miss
+sam attacks(6, 7)
+miss
+player 2 attacks(6,7)
+miss
+sam attacks(7, 8)
+miss
+player 2 attacks(7,8)
+Hit!!
+sam attacks(8, 9)
+miss
+player 2 attacks(8,9)
+miss
+sam attacks(4, 8)
+miss
+player 2 attacks(4,8)
+Hit!!
+sam attacks(2, 8)
+miss
+player 2 attacks(2,8)
+miss
+sam attacks(1, 9)
+miss
+player 2 attacks(1,9)
+Hit!!
+sam attacks(2, 5)
+HIT!!
+player 2 attacks(2,5)
+miss
+7 8
+7 9
+null null
+null null
+null null
+5 0
+6 0
+7 0
+null null
+null null
+0 0
+0 1
+0 2
+null null
+null null
+3 4
+3 5
+3 6
+3 7
+null null
+1 1
+2 1
+3 1
+4 1
+5 1
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 2 selected
+Ship 3 selected
+Ship 4 selected
+Ship 4 selected
+kh attacks(4, 7)
+miss
+player 2 attacks(4,7)
+miss
+kh attacks(3, 6)
+HIT!!
+player 2 attacks(3,6)
+miss
+kh attacks(8, 8)
+miss
+player 2 attacks(8,8)
+miss
+kh attacks(7, 6)
+miss
+player 2 attacks(7,6)
+miss
+kh attacks(4, 6)
+miss
+player 2 attacks(4,6)
+miss
+kh attacks(2, 6)
+miss
+player 2 attacks(2,6)
+miss
+kh attacks(2, 7)
+miss
+player 2 attacks(2,7)
+miss
+kh attacks(3, 7)
+HIT!!
+player 2 attacks(3,7)
+miss
+kh attacks(4, 8)
+miss
+player 2 attacks(4,8)
+Hit!!
+kh attacks(3, 8)
+miss
+player 2 attacks(3,8)
+miss
+kh attacks(3, 9)
+miss
+player 2 attacks(3,9)
+miss
+kh attacks(3, 5)
+HIT!!
+player 2 attacks(3,5)
+miss
+kh attacks(4, 5)
+miss
+player 2 attacks(4,5)
+Hit!!
+kh attacks(3, 4)
+HIT!!
+player 2 attacks(3,4)
+miss
+kh attacks(3, 3)
+miss
+player 2 attacks(3,3)
+miss
+kh attacks(4, 4)
+miss
+player 2 attacks(4,4)
+miss
+kh attacks(2, 5)
+miss
+player 2 attacks(2,5)
+miss
+kh attacks(2, 4)
+miss
+player 2 attacks(2,4)
+miss
+kh attacks(2, 3)
+miss
+player 2 attacks(2,3)
+miss
+kh attacks(6, 4)
+miss
+player 2 attacks(6,4)
+Hit!!
+kh attacks(6, 5)
+miss
+player 2 attacks(6,5)
+miss
+kh attacks(6, 6)
+miss
+player 2 attacks(6,6)
+Hit!!
+kh attacks(6, 7)
+miss
+player 2 attacks(6,7)
+miss
+kh attacks(6, 8)
+miss
+player 2 attacks(6,8)
+miss
+kh attacks(7, 9)
+HIT!!
+player 2 attacks(7,9)
+miss
+kh attacks(8, 9)
+miss
+player 2 attacks(8,9)
+miss
+kh attacks(8, 7)
+miss
+player 2 attacks(8,7)
+miss
+kh attacks(8, 6)
+miss
+player 2 attacks(8,6)
+miss
+kh attacks(8, 3)
+miss
+player 2 attacks(8,3)
+miss
+kh attacks(6, 2)
+miss
+player 2 attacks(6,2)
+miss
+kh attacks(4, 2)
+miss
+player 2 attacks(4,2)
+miss
+kh attacks(3, 2)
+miss
+player 2 attacks(3,2)
+Hit!!
+kh attacks(5, 5)
+miss
+player 2 attacks(5,5)
+miss
+kh attacks(5, 7)
+miss
+player 2 attacks(5,7)
+miss
+kh attacks(5, 9)
+miss
+player 2 attacks(5,9)
+miss
+kh attacks(1, 9)
+miss
+player 2 attacks(1,9)
+miss
+kh attacks(0, 8)
+miss
+player 2 attacks(0,8)
+Hit!!
+kh attacks(1, 7)
+miss
+player 2 attacks(1,7)
+miss
+kh attacks(0, 6)
+miss
+player 2 attacks(0,6)
+Hit!!
+kh attacks(1, 6)
+miss
+player 2 attacks(1,6)
+miss
+kh attacks(1, 5)
+miss
+player 2 attacks(1,5)
+miss
+kh attacks(0, 4)
+miss
+player 2 attacks(0,4)
+miss
+kh attacks(1, 3)
+miss
+player 2 attacks(1,3)
+miss
+kh attacks(0, 2)
+HIT!!
+player 2 attacks(0,2)
+miss
+kh attacks(1, 2)
+miss
+player 2 attacks(1,2)
+Hit!!
+kh attacks(0, 1)
+HIT!!
+player 2 attacks(0,1)
+Hit!!
+kh attacks(0, 0)
+HIT!!
+player 2 attacks(0,0)
+miss
+5 4
+5 5
+null null
+null null
+null null
+8 5
+8 6
+8 7
+null null
+null null
+4 7
+5 7
+6 7
+null null
+null null
+1 5
+2 5
+3 5
+4 5
+null null
+0 3
+0 4
+0 5
+0 6
+0 7
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 3 selected
+Ship 4 selected
+kh attacks(4, 9)
+miss
+player 2 attacks(4,9)
+miss
+kh attacks(4, 8)
+miss
+player 2 attacks(4,8)
+miss
+kh attacks(4, 7)
+HIT!!
+player 2 attacks(4,7)
+miss
+kh attacks(4, 6)
+miss
+player 2 attacks(4,6)
+miss
+kh attacks(5, 7)
+HIT!!
+player 2 attacks(5,7)
+miss
+kh attacks(3, 7)
+miss
+player 2 attacks(3,7)
+miss
+kh attacks(6, 7)
+HIT!!
+player 2 attacks(6,7)
+miss
+kh attacks(7, 7)
+miss
+player 2 attacks(7,7)
+miss
+kh attacks(7, 8)
+miss
+player 2 attacks(7,8)
+miss
+kh attacks(8, 9)
+miss
+player 2 attacks(8,9)
+miss
+kh attacks(9, 8)
+miss
+player 2 attacks(9,8)
+miss
+kh attacks(8, 6)
+HIT!!
+player 2 attacks(8,6)
+Hit!!
+kh attacks(8, 5)
+HIT!!
+player 2 attacks(8,5)
+miss
+kh attacks(8, 7)
+HIT!!
+player 2 attacks(8,7)
+Hit!!
+kh attacks(8, 8)
+miss
+player 2 attacks(8,8)
+miss
+kh attacks(8, 4)
+miss
+player 2 attacks(8,4)
+Hit!!
+kh attacks(5, 3)
+miss
+player 2 attacks(5,3)
+miss
+kh attacks(4, 4)
+miss
+player 2 attacks(4,4)
+miss
+kh attacks(1, 4)
+miss
+player 2 attacks(1,4)
+miss
+kh attacks(1, 6)
+miss
+player 2 attacks(1,6)
+miss
+kh attacks(1, 7)
+miss
+player 2 attacks(1,7)
+miss
+kh attacks(1, 8)
+miss
+player 2 attacks(1,8)
+miss
+kh attacks(2, 8)
+miss
+player 2 attacks(2,8)
+Hit!!
+kh attacks(3, 9)
+miss
+player 2 attacks(3,9)
+miss
+kh attacks(2, 4)
+miss
+player 2 attacks(2,4)
+Hit!!
+kh attacks(2, 3)
+miss
+player 2 attacks(2,3)
+Hit!!
+kh attacks(4, 2)
+miss
+player 2 attacks(4,2)
+miss
+kh attacks(6, 2)
+miss
+player 2 attacks(6,2)
+Hit!!
+kh attacks(7, 2)
+miss
+player 2 attacks(7,2)
+Hit!!
+kh attacks(9, 2)
+miss
+player 2 attacks(9,2)
+Hit!!
+kh attacks(7, 1)
+miss
+player 2 attacks(7,1)
+miss
+kh attacks(5, 1)
+miss
+player 2 attacks(5,1)
+miss
+kh attacks(3, 1)
+miss
+player 2 attacks(3,1)
+miss
+kh attacks(1, 2)
+miss
+player 2 attacks(1,2)
+miss
+kh attacks(1, 3)
+miss
+player 2 attacks(1,3)
+miss
+kh attacks(2, 5)
+HIT!!
+player 2 attacks(2,5)
+miss
+kh attacks(4, 5)
+HIT!!
+player 2 attacks(4,5)
+Hit!!
+kh attacks(6, 6)
+miss
+player 2 attacks(6,6)
+Hit!!
+kh attacks(6, 5)
+miss
+player 2 attacks(6,5)
+miss
+kh attacks(6, 4)
+miss
+player 2 attacks(6,4)
+Hit!!
+kh attacks(6, 3)
+miss
+player 2 attacks(6,3)
+miss
+kh attacks(5, 4)
+HIT!!
+player 2 attacks(5,4)
+miss
+kh attacks(5, 5)
+HIT!!
+player 2 attacks(5,5)
+miss
+kh attacks(5, 6)
+miss
+player 2 attacks(5,6)
+miss
+kh attacks(5, 8)
+miss
+player 2 attacks(5,8)
+miss
+kh attacks(5, 9)
+miss
+player 2 attacks(5,9)
+miss
+kh attacks(6, 8)
+miss
+player 2 attacks(6,8)
+miss
+kh attacks(6, 9)
+miss
+player 2 attacks(6,9)
+miss
+kh attacks(7, 9)
+miss
+player 2 attacks(7,9)
+miss
+kh attacks(9, 9)
+miss
+player 2 attacks(9,9)
+miss
+kh attacks(2, 9)
+miss
+player 2 attacks(2,9)
+miss
+kh attacks(1, 9)
+miss
+player 2 attacks(1,9)
+miss
+kh attacks(0, 9)
+miss
+player 2 attacks(0,9)
+miss
+kh attacks(0, 8)
+miss
+player 2 attacks(0,8)
+miss
+kh attacks(0, 7)
+HIT!!
+player 2 attacks(0,7)
+miss
+kh attacks(0, 6)
+HIT!!
+player 2 attacks(0,6)
+Hit!!
+kh attacks(0, 4)
+HIT!!
+player 2 attacks(0,4)
+miss
+kh attacks(0, 2)
+miss
+player 2 attacks(0,2)
+miss
+kh attacks(0, 3)
+HIT!!
+player 2 attacks(0,3)
+miss
+kh attacks(0, 1)
+miss
+player 2 attacks(0,1)
+miss
+kh attacks(0, 0)
+miss
+player 2 attacks(0,0)
+miss
+kh attacks(1, 0)
+miss
+player 2 attacks(1,0)
+miss
+kh attacks(2, 0)
+miss
+player 2 attacks(2,0)
+miss
+kh attacks(3, 0)
+miss
+player 2 attacks(3,0)
+Hit!!
+kh attacks(4, 0)
+miss
+player 2 attacks(4,0)
+miss
+kh attacks(2, 1)
+miss
+player 2 attacks(2,1)
+Hit!!
+kh attacks(1, 1)
+miss
+player 2 attacks(1,1)
+miss
+kh attacks(2, 2)
+miss
+player 2 attacks(2,2)
+Hit!!
+kh attacks(3, 2)
+miss
+player 2 attacks(3,2)
+miss
+kh attacks(4, 1)
+miss
+player 2 attacks(4,1)
+miss
+kh attacks(3, 3)
+miss
+player 2 attacks(3,3)
+miss
+kh attacks(4, 3)
+miss
+player 2 attacks(4,3)
+miss
+kh attacks(3, 5)
+HIT!!
+player 2 attacks(3,5)
+miss
+kh attacks(3, 4)
+miss
+player 2 attacks(3,4)
+miss
+kh attacks(1, 5)
+HIT!!
+player 2 attacks(1,5)
+miss
+kh attacks(2, 6)
+miss
+player 2 attacks(2,6)
+miss
+kh attacks(3, 6)
+miss
+player 2 attacks(3,6)
+miss
+kh attacks(2, 7)
+miss
+player 2 attacks(2,7)
+miss
+kh attacks(3, 8)
+miss
+player 2 attacks(3,8)
+Hit!!
+kh attacks(7, 6)
+miss
+player 2 attacks(7,6)
+miss
+kh attacks(9, 7)
+miss
+player 2 attacks(9,7)
+miss
+kh attacks(9, 6)
+miss
+player 2 attacks(9,6)
+miss
+kh attacks(9, 5)
+miss
+player 2 attacks(9,5)
+miss
+kh attacks(9, 4)
+miss
+player 2 attacks(9,4)
+miss
+kh attacks(9, 3)
+miss
+player 2 attacks(9,3)
+miss
+kh attacks(8, 3)
+miss
+player 2 attacks(8,3)
+miss
+kh attacks(7, 3)
+miss
+player 2 attacks(7,3)
+miss
+kh attacks(7, 4)
+miss
+player 2 attacks(7,4)
+miss
+kh attacks(7, 5)
+miss
+player 2 attacks(7,5)
+miss
+kh attacks(8, 2)
+miss
+player 2 attacks(8,2)
+miss
+kh attacks(9, 1)
+miss
+player 2 attacks(9,1)
+miss
+kh attacks(8, 1)
+miss
+player 2 attacks(8,1)
+miss
+kh attacks(5, 2)
+miss
+player 2 attacks(5,2)
+miss
+kh attacks(6, 1)
+miss
+player 2 attacks(6,1)
+miss
+kh attacks(5, 0)
+miss
+player 2 attacks(5,0)
+miss
+kh attacks(6, 0)
+miss
+player 2 attacks(6,0)
+miss
+kh attacks(7, 0)
+miss
+player 2 attacks(7,0)
+miss
+kh attacks(8, 0)
+miss
+player 2 attacks(8,0)
+miss
+kh attacks(9, 0)
+miss
+player 2 attacks(9,0)
+miss
+2 8
+3 8
+null null
+null null
+null null
+7 0
+8 0
+9 0
+null null
+null null
+6 0
+6 1
+6 2
+null null
+null null
+1 9
+2 9
+3 9
+4 9
+null null
+2 5
+3 5
+4 5
+5 5
+6 5
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 2 selected
+Ship 2 selected
+Ship 3 selected
+Ship 3 selected
+Ship 4 selected
+lk attacks(4, 8)
+miss
+player 2 attacks(4,8)
+miss
+lk attacks(6, 9)
+miss
+player 2 attacks(6,9)
+miss
+lk attacks(8, 8)
+miss
+player 2 attacks(8,8)
+miss
+lk attacks(4, 6)
+miss
+player 2 attacks(4,6)
+miss
+lk attacks(3, 4)
+miss
+player 2 attacks(3,4)
+miss
+lk attacks(6, 3)
+miss
+player 2 attacks(6,3)
+miss
+lk attacks(8, 5)
+miss
+player 2 attacks(8,5)
+miss
+lk attacks(1, 7)
+miss
+player 2 attacks(1,7)
+miss
+lk attacks(0, 9)
+miss
+player 2 attacks(0,9)
+miss
+lk attacks(2, 2)
+miss
+player 2 attacks(2,2)
+miss
+lk attacks(4, 2)
+miss
+player 2 attacks(4,2)
+miss
+lk attacks(5, 3)
+miss
+player 2 attacks(5,3)
+miss
+lk attacks(1, 3)
+miss
+player 2 attacks(1,3)
+miss
+lk attacks(1, 4)
+miss
+player 2 attacks(1,4)
+Hit!!
+1 9
+2 9
+null null
+null null
+null null
+1 1
+2 1
+3 1
+null null
+null null
+3 7
+3 8
+3 9
+null null
+null null
+5 5
+5 6
+5 7
+5 8
+null null
+0 5
+1 5
+2 5
+3 5
+4 5
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 3 selected
+Ship 4 selected
+lkasd attacks(4, 8)
+miss
+player 2 attacks(4,8)
+miss
+lkasd attacks(4, 6)
+miss
+player 2 attacks(4,6)
+miss
+lkasd attacks(5, 6)
+HIT!!
+player 2 attacks(5,6)
+miss
+lkasd attacks(6, 7)
+miss
+player 2 attacks(6,7)
+miss
+lkasd attacks(5, 5)
+HIT!!
+player 2 attacks(5,5)
+miss
+lkasd attacks(5, 4)
+miss
+player 2 attacks(5,4)
+miss
+lkasd attacks(3, 4)
+miss
+player 2 attacks(3,4)
+miss
+lkasd attacks(2, 2)
+miss
+player 2 attacks(2,2)
+miss
+lkasd attacks(7, 2)
+miss
+player 2 attacks(7,2)
+miss
+lkasd attacks(1, 6)
+miss
+player 2 attacks(1,6)
+miss
+lkasd attacks(1, 7)
+miss
+player 2 attacks(1,7)
+miss
+lkasd attacks(3, 8)
+HIT!!
+player 2 attacks(3,8)
+miss
+lkasd attacks(1, 9)
+HIT!!
+player 2 attacks(1,9)
+miss
+lkasd attacks(9, 8)
+miss
+player 2 attacks(9,8)
+miss
+lkasd attacks(9, 6)
+miss
+player 2 attacks(9,6)
+miss
+lkasd attacks(8, 5)
+miss
+player 2 attacks(8,5)
+miss
+lkasd attacks(8, 4)
+miss
+player 2 attacks(8,4)
+miss
+lkasd attacks(8, 3)
+miss
+player 2 attacks(8,3)
+miss
+lkasd attacks(7, 3)
+miss
+player 2 attacks(7,3)
+miss
+lkasd attacks(6, 3)
+miss
+player 2 attacks(6,3)
+miss
+lkasd attacks(5, 1)
+miss
+player 2 attacks(5,1)
+miss
+lkasd attacks(3, 1)
+HIT!!
+player 2 attacks(3,1)
+miss
+lkasd attacks(2, 1)
+HIT!!
+player 2 attacks(2,1)
+miss
+lkasd attacks(1, 0)
+miss
+player 2 attacks(1,0)
+Hit!!
+lkasd attacks(2, 9)
+HIT!!
+player 2 attacks(2,9)
+Hit!!
+lkasd attacks(0, 9)
+miss
+player 2 attacks(0,9)
+Hit!!
+lkasd attacks(3, 9)
+HIT!!
+player 2 attacks(3,9)
+miss
+lkasd attacks(4, 9)
+miss
+player 2 attacks(4,9)
+Hit!!
+lkasd attacks(5, 8)
+HIT!!
+player 2 attacks(5,8)
+miss
+lkasd attacks(6, 9)
+miss
+player 2 attacks(6,9)
+miss
+lkasd attacks(7, 9)
+miss
+player 2 attacks(7,9)
+miss
+3 3
+3 4
+null null
+null null
+null null
+7 4
+8 4
+9 4
+null null
+null null
+4 9
+5 9
+6 9
+null null
+null null
+8 5
+8 6
+8 7
+8 8
+null null
+0 0
+0 1
+0 2
+0 3
+0 4
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 3 selected
+Ship 4 selected
+kg attacks(4, 6)
+miss
+player 2 attacks(4,6)
+miss
+kg attacks(5, 7)
+miss
+player 2 attacks(5,7)
+miss
+kg attacks(7, 7)
+miss
+player 2 attacks(7,7)
+Hit!!
+kg attacks(7, 6)
+miss
+player 2 attacks(7,6)
+miss
+kg attacks(5, 5)
+miss
+player 2 attacks(5,5)
+miss
+kg attacks(4, 4)
+miss
+player 2 attacks(4,4)
+Hit!!
+kg attacks(2, 4)
+miss
+player 2 attacks(2,4)
+miss
+kg attacks(2, 6)
+miss
+player 2 attacks(2,6)
+miss
+kg attacks(0, 8)
+miss
+player 2 attacks(0,8)
+miss
+kg attacks(2, 8)
+miss
+player 2 attacks(2,8)
+miss
+kg attacks(5, 9)
+HIT!!
+player 2 attacks(5,9)
+miss
+kg attacks(7, 9)
+miss
+player 2 attacks(7,9)
+Hit!!
+kg attacks(0, 7)
+miss
+player 2 attacks(0,7)
+miss
+kg attacks(1, 6)
+miss
+player 2 attacks(1,6)
+miss
+kg attacks(1, 7)
+miss
+player 2 attacks(1,7)
+miss
+kg attacks(2, 7)
+miss
+player 2 attacks(2,7)
+Hit!!
+kg attacks(4, 2)
+miss
+player 2 attacks(4,2)
+miss
+kg attacks(7, 2)
+miss
+player 2 attacks(7,2)
+miss
+kg attacks(8, 4)
+HIT!!
+player 2 attacks(8,4)
+miss
+kg attacks(8, 5)
+HIT!!
+player 2 attacks(8,5)
+miss
+kg attacks(8, 6)
+HIT!!
+player 2 attacks(8,6)
+Hit!!
+kg attacks(8, 7)
+HIT!!
+player 2 attacks(8,7)
+miss
+kg attacks(8, 8)
+HIT!!
+player 2 attacks(8,8)
+miss
+kg attacks(8, 9)
+miss
+player 2 attacks(8,9)
+miss
+kg attacks(8, 3)
+miss
+player 2 attacks(8,3)
+miss
+kg attacks(6, 4)
+miss
+player 2 attacks(6,4)
+Hit!!
+kg attacks(5, 4)
+miss
+player 2 attacks(5,4)
+miss
+kg attacks(5, 3)
+miss
+player 2 attacks(5,3)
+miss
+kg attacks(2, 3)
+miss
+player 2 attacks(2,3)
+miss
+kg attacks(3, 3)
+HIT!!
+player 2 attacks(3,3)
+miss
+5 1
+5 2
+null null
+null null
+null null
+0 2
+0 3
+0 4
+null null
+null null
+1 0
+2 0
+3 0
+null null
+null null
+9 6
+9 7
+9 8
+9 9
+null null
+3 9
+4 9
+5 9
+6 9
+7 9
+Ship 0 selected
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 3 selected
+Ship 4 selected
+Vertical
+asf attacks(4, 5)
+miss
+player 2 attacks(4,5)
+miss
+asf attacks(2, 4)
+miss
+player 2 attacks(2,4)
+Hit!!
+asf attacks(5, 4)
+miss
+player 2 attacks(5,4)
+miss
+asf attacks(7, 6)
+miss
+player 2 attacks(7,6)
+miss
+asf attacks(8, 5)
+miss
+player 2 attacks(8,5)
+miss
+asf attacks(7, 3)
+miss
+player 2 attacks(7,3)
+Hit!!
+asf attacks(4, 2)
+miss
+player 2 attacks(4,2)
+miss
+asf attacks(2, 6)
+miss
+player 2 attacks(2,6)
+miss
+asf attacks(4, 7)
+miss
+player 2 attacks(4,7)
+Hit!!
+asf attacks(6, 8)
+miss
+player 2 attacks(6,8)
+miss
+asf attacks(8, 9)
+miss
+player 2 attacks(8,9)
+miss
+asf attacks(9, 8)
+HIT!!
+player 2 attacks(9,8)
+miss
+asf attacks(1, 2)
+miss
+player 2 attacks(1,2)
+miss
+asf attacks(1, 4)
+miss
+player 2 attacks(1,4)
+miss
+asf attacks(1, 5)
+miss
+player 2 attacks(1,5)
+miss
+asf attacks(1, 7)
+miss
+player 2 attacks(1,7)
+miss
+asf attacks(1, 8)
+miss
+player 2 attacks(1,8)
+miss
+asf attacks(2, 8)
+miss
+player 2 attacks(2,8)
+miss
+asf attacks(4, 8)
+miss
+player 2 attacks(4,8)
+miss
+asf attacks(6, 7)
+miss
+player 2 attacks(6,7)
+Hit!!
+asf attacks(6, 6)
+miss
+player 2 attacks(6,6)
+miss
+asf attacks(6, 5)
+miss
+player 2 attacks(6,5)
+miss
+asf attacks(5, 3)
+miss
+player 2 attacks(5,3)
+Hit!!
+asf attacks(5, 2)
+HIT!!
+player 2 attacks(5,2)
+miss
+asf attacks(7, 1)
+miss
+player 2 attacks(7,1)
+miss
+asf attacks(7, 2)
+miss
+player 2 attacks(7,2)
+miss
+asf attacks(6, 2)
+miss
+player 2 attacks(6,2)
+miss
+asf attacks(5, 1)
+HIT!!
+player 2 attacks(5,1)
+miss
+asf attacks(5, 0)
+miss
+player 2 attacks(5,0)
+miss
+asf attacks(4, 1)
+miss
+player 2 attacks(4,1)
+miss
+asf attacks(3, 2)
+miss
+player 2 attacks(3,2)
+miss
+asf attacks(3, 3)
+miss
+player 2 attacks(3,3)
+miss
+asf attacks(3, 4)
+miss
+player 2 attacks(3,4)
+miss
+asf attacks(3, 5)
+miss
+player 2 attacks(3,5)
+miss
+asf attacks(3, 6)
+miss
+player 2 attacks(3,6)
+miss
+asf attacks(3, 7)
+miss
+player 2 attacks(3,7)
+miss
+asf attacks(3, 8)
+miss
+player 2 attacks(3,8)
+miss
+asf attacks(4, 9)
+HIT!!
+player 2 attacks(4,9)
+miss
+asf attacks(5, 9)
+HIT!!
+player 2 attacks(5,9)
+miss
+asf attacks(6, 9)
+HIT!!
+player 2 attacks(6,9)
+miss
+asf attacks(7, 9)
+HIT!!
+player 2 attacks(7,9)
+miss
+asf attacks(3, 9)
+HIT!!
+player 2 attacks(3,9)
+miss
+asf attacks(2, 9)
+miss
+player 2 attacks(2,9)
+miss
+3 3
+3 4
+null null
+null null
+null null
+1 2
+1 3
+1 4
+null null
+null null
+7 9
+8 9
+9 9
+null null
+null null
+3 0
+4 0
+5 0
+6 0
+null null
+0 3
+0 4
+0 5
+0 6
+0 7
+Ship 0 selected
+Ship 1 selected
+Ship 2 selected
+Ship 3 selected
+Ship 4 selected
+Vertical
+asdasd attacks(3, 9)
+miss
+player 2 attacks(3,9)
+miss
+asdasd attacks(4, 9)
+miss
+player 2 attacks(4,9)
+miss
+asdasd attacks(5, 9)
+miss
+player 2 attacks(5,9)
+miss
+asdasd attacks(6, 9)
+miss
+player 2 attacks(6,9)
+miss
+asdasd attacks(7, 9)
+HIT!!
+player 2 attacks(7,9)
+miss
+asdasd attacks(8, 8)
+miss
+player 2 attacks(8,8)
+Hit!!
+asdasd attacks(7, 8)
+miss
+player 2 attacks(7,8)
+miss
+asdasd attacks(6, 8)
+miss
+player 2 attacks(6,8)
+miss
+asdasd attacks(5, 8)
+miss
+player 2 attacks(5,8)
+miss
+asdasd attacks(4, 8)
+miss
+player 2 attacks(4,8)
+miss
+asdasd attacks(3, 8)
+miss
+player 2 attacks(3,8)
+miss
+asdasd attacks(2, 8)
+miss
+player 2 attacks(2,8)
+Hit!!
+asdasd attacks(2, 9)
+miss
+player 2 attacks(2,9)
+miss
+asdasd attacks(1, 9)
+miss
+player 2 attacks(1,9)
+Hit!!
+asdasd attacks(8, 9)
+HIT!!
+player 2 attacks(8,9)
+miss
+asdasd attacks(9, 9)
+HIT!!
+player 2 attacks(9,9)
+miss
+asdasd attacks(9, 8)
+miss
+player 2 attacks(9,8)
+miss
+asdasd attacks(9, 7)
+miss
+player 2 attacks(9,7)
+Hit!!
+asdasd attacks(8, 7)
+miss
+player 2 attacks(8,7)
+miss
+asdasd attacks(7, 7)
+miss
+player 2 attacks(7,7)
+miss
+asdasd attacks(7, 6)
+miss
+player 2 attacks(7,6)
+miss
+asdasd attacks(6, 5)
+miss
+player 2 attacks(6,5)
+miss
+asdasd attacks(5, 5)
+miss
+player 2 attacks(5,5)
+miss
+asdasd attacks(4, 4)
+miss
+player 2 attacks(4,4)
+miss
+asdasd attacks(3, 4)
+HIT!!
+player 2 attacks(3,4)
+Hit!!
+asdasd attacks(3, 5)
+miss
+player 2 attacks(3,5)
+Hit!!
+asdasd attacks(2, 4)
+miss
+player 2 attacks(2,4)
+miss
+asdasd attacks(3, 3)
+HIT!!
+player 2 attacks(3,3)
+Hit!!
+asdasd attacks(3, 2)
+miss
+player 2 attacks(3,2)
+miss
+
